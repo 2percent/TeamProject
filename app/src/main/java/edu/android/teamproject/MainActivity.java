@@ -1,5 +1,6 @@
 package edu.android.teamproject;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -24,10 +25,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+        Intent intent = new Intent(this,LoginActivity.class);
+        startActivity(intent);
+        finish();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mainText = (TextView) findViewById(R.id.textView2);
+        mainText = (TextView) findViewById(R.id.topText);
 
         mSectionsPagerAdapter = new SelectionsPagerAdapter(getSupportFragmentManager());
 
