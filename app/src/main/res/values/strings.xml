@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TeamProject</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Diary">일기장</string>
+    <string name="DW">일기쓰기</string>
+    <string name="us">우리</string>
+</resources>
