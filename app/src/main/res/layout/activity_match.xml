@@ -9,13 +9,13 @@
     tools:context="edu.android.teamproject.MatchActivity">
 
     <ImageView
-        android:id="@+id/image_second_step"
+        android:id="@+id/image_matchingProgressBar_2step"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         app:srcCompat="@drawable/login_second_step" />
 
     <ImageView
-        android:id="@+id/image_logo"
+        android:id="@+id/image_LoginLogo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="36dp"
