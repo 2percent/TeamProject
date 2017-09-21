@@ -8,10 +8,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import static edu.android.teamproject.LoginActivity.KEY_MEMBER;
 
 public class MatchActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String KEY_MEMBER = "key_member";
     //멤버변수
     private ImageButton btn_calender,
                 btn_link;
@@ -28,11 +28,11 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match);
 
-        btn_calender = (ImageButton) findViewById(R.id.btn_calender);
-        btn_link = (ImageButton) findViewById(R.id.btn_link);
-        edit_my_phone = (EditText) findViewById(R.id.edit_my_phone);
-        edit_your_phone = (EditText) findViewById(R.id.edit_your_phone);
-        text_start_day = (TextView) findViewById(R.id.text_start_day);
+        btn_calender = (ImageButton) findViewById(R.id.imagebtn_match_calender);
+        btn_link = (ImageButton) findViewById(R.id.imagebtn_match_link);
+        edit_my_phone = (EditText) findViewById(R.id.edit_match_my_phone);
+        edit_your_phone = (EditText) findViewById(R.id.edit_match_your_phone);
+        text_start_day = (TextView) findViewById(R.id.text_match_start_day);
 
         btn_calender.setOnClickListener(this);
         btn_link.setOnClickListener(this);

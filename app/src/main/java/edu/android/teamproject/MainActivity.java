@@ -33,15 +33,15 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mainText = (TextView) findViewById(R.id.topText);
+        mainText = (TextView) findViewById(R.id.text_main_tab_selected);
 
         mSectionsPagerAdapter = new SelectionsPagerAdapter(getSupportFragmentManager());
 
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager = (ViewPager) findViewById(R.id.viewpager_main_container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         //MainActivity TabView Image -> onTabSelected()
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs_main);
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.couple_o));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.write_o));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.letter_x));

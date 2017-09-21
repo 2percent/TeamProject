@@ -8,23 +8,16 @@
     android:weightSum="1">
 
     <android.support.design.widget.TabLayout
-        android:id="@+id/tabs"
-        android:layout_width="374dp"
+        android:id="@+id/tabs_diary"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="0dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp" />
+        android:layout_gravity="center" />
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/container"
+        android:id="@+id/viewpager_diary_container"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp" />
+        android:layout_margin="8dp" />
 
 
 </LinearLayout>
