@@ -16,6 +16,8 @@ public class DiaryLab {
     static List<ModelDiary> lab;
 
     private static DiaryLab instance;
+    private DiaryLab(){}
+
     public static DiaryLab getInstance(){
         if(instance == null){
             instance = new DiaryLab();

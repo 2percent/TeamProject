@@ -10,14 +10,21 @@ public class ModelMember {
     private String password;
     private String myPhoneNum;
     private String yourPhoneNum;
+    private String startDay;
 
     public ModelMember(){}
-    public ModelMember(String id, String password, String myPhoneNum, String yourPhoneNum) {
+
+    public ModelMember(String id, String password, String myPhoneNum, String yourPhoneNum, String startDay) {
         this.id = id;
         this.password = password;
         this.myPhoneNum = myPhoneNum;
         this.yourPhoneNum = yourPhoneNum;
+        this.startDay = startDay;
     }
+
+    public String getStartDay() {return startDay;}
+
+    public void setStartDay(String startDay) {this.startDay = startDay;}
 
     public String getMyPhoneNum() {
         return myPhoneNum;

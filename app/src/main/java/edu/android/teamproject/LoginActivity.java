@@ -10,9 +10,11 @@ import android.widget.ImageButton;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     // 멤버변수
-    ImageButton btn;
-    EditText edit_ID,edit_PW;
-    Intent intent;
+    private ImageButton btn_next;
+    private EditText edit_ID,edit_PW;
+
+    public static final String KEY_MEMBER = "ID,PW";
+
 
 
     @Override
@@ -20,18 +22,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        btn = (ImageButton) findViewById(R.id.btn_next);
-        intent = new Intent(this,MatchActivity.class);
+        btn_next = (ImageButton) findViewById(R.id.btn_next);
         edit_ID = (EditText) findViewById(R.id.edit_ID);
         edit_PW = (EditText) findViewById(R.id.edit_PW);
 
-        btn.setOnClickListener(this);
+        btn_next.setOnClickListener(this);
 
     } // end onCreate()
 
-    // 로그인 버튼
+    // 로그인 버튼 눌렀을 때 matchActivity로 id 와 pw 값을 가지고 감.
     @Override
     public void onClick(View view) {
+
+        Intent intent = new Intent(this,MatchActivity.class);
+        String[] member = {
+                edit_ID.getText().toString(),
+                edit_PW.getText().toString()
+        };
+
+        intent.putExtra(KEY_MEMBER,member);
         startActivity(intent);
         finish();
     } // end onClick()
