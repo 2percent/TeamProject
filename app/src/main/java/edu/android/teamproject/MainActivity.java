@@ -26,9 +26,9 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     protected void onCreate(Bundle savedInstanceState) {
 
 
-        Intent intent = new Intent(this,LoginActivity.class);
-        startActivity(intent);
-        finish();
+//        Intent intent = new Intent(this,LoginActivity.class);
+//        startActivity(intent);
+//        finish();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

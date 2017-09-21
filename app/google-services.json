@@ -1,35 +1,27 @@
 {
   "project_info": {
-    "project_number": "418859764823",
-    "firebase_url": "https://teamprojectreal-master.firebaseio.com",
-    "project_id": "teamprojectreal-master",
-    "storage_bucket": "teamprojectreal-master.appspot.com"
+    "project_number": "284021027235",
+    "firebase_url": "https://teamproject-4600b.firebaseio.com",
+    "project_id": "teamproject-4600b",
+    "storage_bucket": "teamproject-4600b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:418859764823:android:88419b8519bff019",
+        "mobilesdk_app_id": "1:284021027235:android:88419b8519bff019",
         "android_client_info": {
           "package_name": "edu.android.teamproject"
         }
       },
       "oauth_client": [
         {
-          "client_id": "418859764823-0qavsl3b60hescpihb7jsisjqn7q0gqq.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "edu.android.teamproject",
-            "certificate_hash": "f2655eacce05ed880182748cb54dbe995edcd37b"
-          }
-        },
-        {
-          "client_id": "418859764823-c342jp3qlocs5he0hjgs1c8e9s0sqcuh.apps.googleusercontent.com",
+          "client_id": "284021027235-t40f7khgt889901bnbqjacsm20m576dn.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAScaBGKyq7_I0AKxmNOgjDSB9PM4Uk_Sg"
+          "current_key": "AIzaSyCkIjhHznnSF-RY65aXhaw82rh5nNcST60"
         }
       ],
       "services": {
@@ -37,13 +29,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "418859764823-c342jp3qlocs5he0hjgs1c8e9s0sqcuh.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2

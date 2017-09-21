@@ -55,7 +55,7 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
             String startday = text_start_day.getText().toString(); // 사귄 날짜
             ModelMember m = new ModelMember(id,pw,my,your,startday); // 가져온 값 모델에 담아줌.
 
-            dao.insertMember(m);
+//            dao.insertMember(m);
 
         }// 캘린더 버튼을 클릭 했을 때
         else if(btn == btn_calender){
