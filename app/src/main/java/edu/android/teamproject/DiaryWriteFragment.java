@@ -12,11 +12,11 @@ import android.widget.TextView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DWFragment extends Fragment {
+public class DiaryWriteFragment extends Fragment {
 
     TextView textView;
 
-    public DWFragment() {
+    public DiaryWriteFragment() {
         // Required empty public constructor
     }
 

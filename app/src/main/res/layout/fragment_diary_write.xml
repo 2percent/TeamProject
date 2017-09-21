@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_margin="8dp"
-    tools:context="edu.android.teamproject.DdetailFragment">
-
+    tools:context="edu.android.teamproject.DiaryDivideFragment">
 
 
     <LinearLayout
@@ -20,35 +19,35 @@
             android:id="@+id/textView100"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="16sp"
             android:layout_gravity="center"
+            android:layout_weight="1"
             android:gravity="center"
-            android:text="편지\n도착 날" />
+            android:text="일기\n도착 날"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_diary_write_receiveday"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:textSize="18sp"
             android:layout_gravity="center"
+            android:layout_weight="3"
             android:gravity="center"
-            android:text="2017/12/25" />
+            android:text="2017/12/25"
+            android:textSize="18sp" />
 
         <ImageButton
             android:id="@+id/imagebtn_diary_write_calender"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/calender"
             android:layout_weight="1"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"/>
+            app:srcCompat="@drawable/calender" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="2">
+            android:layout_weight="2"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/text_diary_write_weather"
@@ -63,10 +62,10 @@
                 android:id="@+id/text_diary_write_kimozzi"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:textSize="16sp"
-                android:gravity="center"
                 android:layout_weight="1"
-                android:text="행복해요 ^-^" />
+                android:gravity="center"
+                android:text="행복해요 ^-^"
+                android:textSize="16sp" />
 
 
         </LinearLayout>
@@ -141,7 +140,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="여기에 편지를 써보세요"
+            android:hint="여기에 일기를 써보세요"
             android:inputType="text" />
 
     </ScrollView>

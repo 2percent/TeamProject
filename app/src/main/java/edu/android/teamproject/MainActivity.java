@@ -85,11 +85,11 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         public Fragment getItem(int position) {
             Fragment fragment = null;
             if(position == 0) {
-                fragment = new DWFragment();
+                fragment = new DiaryWriteFragment();
             } else if (position == 1){
-                fragment = new DFragment();
+                fragment = new DiaryFragment();
             } else if (position == 2){
-                fragment = new AnniFragment();
+                fragment = new AnniversaryFragment();
             }
             return fragment;
         }

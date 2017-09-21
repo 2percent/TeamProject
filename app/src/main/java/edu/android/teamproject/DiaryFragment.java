@@ -16,13 +16,13 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DFragment extends Fragment {
+public class DiaryFragment extends Fragment {
 
     private SelectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     private TabLayout tabLayout;
 
-    public DFragment() {
+    public DiaryFragment() {
         // Required empty public constructor
     }
 
@@ -60,9 +60,9 @@ public class DFragment extends Fragment {
         public Fragment getItem(int position) {
             Fragment fragment = null;
             if(position == 0){
-                fragment = new DdetailFragment();
+                fragment = new DiaryDivideFragment();
             } else if (position == 1){
-                fragment = new DdetailFragment();
+                fragment = new DiaryDivideFragment();
             }
             return fragment;
         }

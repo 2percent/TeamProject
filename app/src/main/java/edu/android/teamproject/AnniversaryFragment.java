@@ -11,19 +11,18 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DdetailFragment extends Fragment {
+public class AnniversaryFragment extends Fragment {
 
 
-    public DdetailFragment() {
+    public AnniversaryFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_diary_divide, container, false);
+        return inflater.inflate(R.layout.fragment_anniversary, container, false);
     }
 
 }
