@@ -12,9 +12,11 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener{
 
     private static final String TAG = "edu.android";
+    private static final String[] TAB_TITLES = {"일기쓰기", "일기장", "우리"};
+
     private SelectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     private TextView mainText;
@@ -41,30 +43,13 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        //MainActivity TabView Image -> onTabSelected()
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                if(tab.isSelected() == true && tab.getText().equals("일기쓰기")){
-                    mainText.setText("일기쓰기");
-                } else if (tab.isSelected() == true && tab.getText().equals("일기장")){
-                    mainText.setText("일기장");
-                } else if (tab.isSelected() == true && tab.getText().equals("우리")){
-                    mainText.setText("우리");
-                }
-            }
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.couple_o));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.write_o));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.letter_x));
+        tabLayout.addOnTabSelectedListener(this);
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-        tabLayout.setupWithViewPager(mViewPager);
     }
 
     @Override
@@ -72,6 +57,21 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG,""+item);
         return super.onOptionsItemSelected(item);
     }
+
+
+    @Override
+    public void onTabSelected(TabLayout.Tab tab) {
+        //MainActivity TabView Image
+        int tabPosition = tab.getPosition();
+        mainText.setText(TAB_TITLES[tabPosition]);
+
+        mViewPager.setCurrentItem(tabPosition);
+    }
+    @Override
+    public void onTabUnselected(TabLayout.Tab tab) {}
+    @Override
+    public void onTabReselected(TabLayout.Tab tab) {}
+
 
 
     public static class SelectionsPagerAdapter extends FragmentPagerAdapter {

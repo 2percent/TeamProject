@@ -1,15 +1,14 @@
 package edu.android.teamproject;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button btn;
+    ImageButton btn;
     Intent intent;
 
     @Override
@@ -17,7 +16,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        btn = (Button) findViewById(R.id.confirm);
+        btn = (ImageButton) findViewById(R.id.confirm);
         intent = new Intent(this,MatchActivity.class);
 
         btn.setOnClickListener(new View.OnClickListener() {
