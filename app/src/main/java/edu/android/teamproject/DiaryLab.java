@@ -39,14 +39,15 @@ public class DiaryLab {
     private static final String MEMBER_COLUMN = "Member";
 
     // 회원 가입 메소드
-//    public int insertMember(ModelMember m) {
-//        try{
-//            Log.i(TAG, m+"");
-//            databaseReference.child(MEMBER_COLUMN).setValue(m);
-//        }catch(Exception e){
-//            return 0;
-//        }
-//        return 1;
-//    }// end insertMember()
+    public int insertMember(ModelMember m) {
+        Log.i(TAG, m+"");
+        try{
+            Log.i(TAG, m+"");
+            databaseReference.child(MEMBER_COLUMN).setValue(m);
+        }catch(Exception e){
+            return 0;
+        }
+        return 1;
+    }// end insertMember()
 
 }
