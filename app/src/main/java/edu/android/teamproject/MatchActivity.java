@@ -9,9 +9,9 @@ import android.widget.TextView;
 public class MatchActivity extends AppCompatActivity {
 
     //멤버변수
-    ImageButton btn;
-    EditText et;
-    TextView tv;
+    ImageButton btn_calender,btn_link;
+    EditText edit_my_phone,edit_your_phone;
+    TextView text_start_day;
 
 
     @Override
@@ -19,11 +19,11 @@ public class MatchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match);
 
-        btn = (ImageButton) findViewById(R.id.btn_calender);
-        btn = (ImageButton) findViewById(R.id.btn_link);
-        et = (EditText) findViewById(R.id.edit_my_phone);
-        et = (EditText) findViewById(R.id.edit_your_phone);
-        tv = (TextView) findViewById(R.id.text_start_day);
+        btn_calender = (ImageButton) findViewById(R.id.btn_calender);
+        btn_link = (ImageButton) findViewById(R.id.btn_link);
+        edit_my_phone = (EditText) findViewById(R.id.edit_my_phone);
+        edit_your_phone = (EditText) findViewById(R.id.edit_your_phone);
+        text_start_day = (TextView) findViewById(R.id.text_start_day);
 
 
     } // end onCreate()

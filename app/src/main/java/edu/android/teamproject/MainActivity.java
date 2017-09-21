@@ -21,9 +21,6 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     private ViewPager mViewPager;
     private TextView mainText;
 
-//    private String DW = getString(R.string.DW);
-//    private String Diary = getString(R.string.Diary);
-//    private String us = getString(R.string.us);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

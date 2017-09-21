@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by STU on 2017-09-19.
  */
 
-public class Diary {
+public class ModelDiary {
 
     private int DNO;
     private int MNO;

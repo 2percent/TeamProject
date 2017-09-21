@@ -4,17 +4,19 @@ package edu.android.teamproject;
  * Created by STU on 2017-09-19.
  */
 
-public class MemberInfo {
+public class ModelMember {
 
-    private int MemberNum;
     private String id;
     private String password;
     private String myPhoneNum;
     private String yourPhoneNum;
 
-    public MemberInfo(String id, String password) {
+    public ModelMember(){}
+    public ModelMember(String id, String password, String myPhoneNum, String yourPhoneNum) {
         this.id = id;
         this.password = password;
+        this.myPhoneNum = myPhoneNum;
+        this.yourPhoneNum = yourPhoneNum;
     }
 
     public String getMyPhoneNum() {
@@ -48,14 +50,5 @@ public class MemberInfo {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public int getMemberNum() {
-        return MemberNum;
-    }
-
-    public void setMemberNum(int memberNum) {
-        MemberNum = memberNum;
-    }
-
 
 }

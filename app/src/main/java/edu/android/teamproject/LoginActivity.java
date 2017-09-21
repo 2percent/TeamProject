@@ -11,7 +11,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     // 멤버변수
     ImageButton btn;
-    EditText et;
+    EditText edit_ID,edit_PW;
     Intent intent;
 
 
@@ -22,8 +22,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         btn = (ImageButton) findViewById(R.id.btn_next);
         intent = new Intent(this,MatchActivity.class);
-        et = (EditText) findViewById(R.id.edit_ID);
-        et = (EditText) findViewById(R.id.edit_PW);
+        edit_ID = (EditText) findViewById(R.id.edit_ID);
+        edit_PW = (EditText) findViewById(R.id.edit_PW);
 
         btn.setOnClickListener(this);
 

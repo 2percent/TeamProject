@@ -8,17 +8,17 @@ import java.util.List;
  * Created by STU on 2017-09-19.
  */
 
-public class Dday {
+public class ModelDday {
 
     private int MemberNum;
     private int AnniverNum;
     Date firstMeeting;
     List<String> anniversary = new ArrayList<>();
 
-    private static Dday instance;
-    public static Dday getInstace(){
+    private static ModelDday instance;
+    public static ModelDday getInstace(){
         if(instance == null){
-            instance = new Dday();
+            instance = new ModelDday();
         }
         return instance;
     }
