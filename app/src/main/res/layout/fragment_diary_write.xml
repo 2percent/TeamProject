@@ -1,0 +1,150 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="8dp"
+    tools:context="edu.android.teamproject.DdetailFragment">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView100"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="편지\n도착 날" />
+
+        <TextView
+            android:id="@+id/text_diary_write_receiveday"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="2017/12/25" />
+
+        <ImageButton
+            android:id="@+id/imagebtn_diary_write_calender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/calender"
+            android:layout_weight="1"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="2">
+
+            <TextView
+                android:id="@+id/text_diary_write_weather"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="맑음!"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/text_diary_write_kimozzi"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="행복해요 ^-^" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/imagebtn_diary_write_add_picture"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        app:srcCompat="@drawable/plus" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/imagebtn_emoticon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            app:srcCompat="@drawable/happy" />
+
+        <ImageButton
+            android:id="@+id/imagebtn_emoticon2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            app:srcCompat="@drawable/happy2" />
+
+        <ImageButton
+            android:id="@+id/imagebtn_emoticon3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            app:srcCompat="@drawable/loveeye" />
+
+        <ImageButton
+            android:id="@+id/imagebtn_emoticon4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            app:srcCompat="@drawable/unhappy" />
+
+        <ImageButton
+            android:id="@+id/imagebtn_emoticon5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            app:srcCompat="@drawable/heart" />
+
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
+
+        <EditText
+            android:id="@+id/edit_diary_write_diary_write"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="여기에 편지를 써보세요"
+            android:inputType="text" />
+
+    </ScrollView>
+
+
+</LinearLayout>

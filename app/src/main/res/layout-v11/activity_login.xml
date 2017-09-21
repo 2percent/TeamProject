@@ -10,20 +10,20 @@
 
 
     <ImageView
-        android:id="@+id/image_loginProgressBar_1step"
+        android:id="@+id/image_login_first_step"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         app:srcCompat="@drawable/login_first_step" />
 
     <ImageView
-        android:id="@+id/image_LoginLogo"
+        android:id="@+id/image_match_logo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="36dp"
         app:srcCompat="@drawable/login_logo" />
 
     <ImageView
-        android:id="@+id/image_LoginInfo"
+        android:id="@+id/image_login_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/login_info" />
@@ -48,7 +48,7 @@
         android:layout_gravity="center"/>
 
     <ImageButton
-        android:id="@+id/btn_next"
+        android:id="@+id/imagebtn_login_next"
         android:onClick=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
