@@ -10,7 +10,7 @@
 
 
     <ImageView
-        android:id="@+id/image_first_step"
+        android:id="@+id/image_login_first_step"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         app:srcCompat="@drawable/login_first_step" />

@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     ImageButton btn;
     Intent intent;
@@ -19,12 +19,12 @@ public class LoginActivity extends AppCompatActivity {
         btn = (ImageButton) findViewById(R.id.confirm);
         intent = new Intent(this,MatchActivity.class);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(intent);
-                finish();
-            }
-        });
+        btn.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        startActivity(intent);
+        finish();
     }
 }
