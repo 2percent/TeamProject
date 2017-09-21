@@ -26,6 +26,7 @@ public class MatchActivity extends AppCompatActivity {
         text_start_day = (TextView) findViewById(R.id.text_start_day);
 
 
+
     } // end onCreate()
 
 } // end class MatchActivity
