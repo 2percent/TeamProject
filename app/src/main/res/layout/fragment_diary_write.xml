@@ -41,6 +41,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_gravity="center"
             app:srcCompat="@drawable/calender" />
 
         <LinearLayout
@@ -49,28 +50,34 @@
             android:layout_weight="2"
             android:orientation="vertical">
 
-            <TextView
+            <EditText
                 android:id="@+id/text_diary_write_weather"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:layout_gravity="center"
                 android:gravity="center"
-                android:text="맑음!"
-                android:textSize="16sp" />
+                android:inputType="text"
+                android:text="맑음^^"
+                android:maxLength="6"
+                android:textSize="16sp"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/text_diary_write_kimozzi"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:layout_gravity="center"
                 android:gravity="center"
+                android:inputType="text"
                 android:text="행복해요 ^-^"
-                android:textSize="16sp" />
+                android:textSize="16sp"/>
 
 
         </LinearLayout>
 
     </LinearLayout>
+
 
     <ImageButton
         android:id="@+id/imagebtn_diary_write_add_picture"
@@ -78,7 +85,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        app:srcCompat="@drawable/plus" />
+        app:srcCompat="@drawable/addpicture" />
 
 
     <LinearLayout
@@ -149,20 +156,22 @@
         android:layout_height="0dp"
         android:layout_weight="0.5"
         android:orientation="horizontal">
+
         <ImageButton
-            android:id="@+id/imagebtn_cancel"
+            android:id="@+id/imagebtn_temporary_save"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
-            app:srcCompat="@drawable/back_arrow" />
+            app:srcCompat="@drawable/temporarysave" />
+
         <ImageButton
             android:id="@+id/imagebtn_sendto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
-            app:srcCompat="@drawable/logo_2" />
+            app:srcCompat="@drawable/sendto" />
 
         </LinearLayout>
 

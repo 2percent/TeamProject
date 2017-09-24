@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
         //MainActivity TabView Image -> onTabSelected()
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs_main);
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.couple_o));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.write_o));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.letter_x));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.pen));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.lovediary));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.couple));
         tabLayout.addOnTabSelectedListener(this);
 
     }

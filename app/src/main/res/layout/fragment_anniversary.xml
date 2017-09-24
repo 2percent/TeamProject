@@ -30,6 +30,7 @@
             app:srcCompat="@drawable/calender"
             android:layout_weight="1"
             android:layout_margin="4dp"
+            android:layout_gravity="center"
             style="@style/Base.Widget.AppCompat.Button.Borderless"/>
 
     </LinearLayout>
