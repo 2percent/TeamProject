@@ -25,7 +25,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MatchActivity"></activity>
+        <activity android:name=".MatchActivity" />
+        <activity
+            android:name=".FontActivity"
+            android:label="@string/title_activity_basic"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>

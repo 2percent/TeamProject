@@ -46,25 +46,25 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
         Intent intent = getIntent();
         String[] member = intent.getStringArrayExtra(KEY_MEMBER);
 
-        ImageButton btn = (ImageButton)view;
+        ImageButton btn = (ImageButton) view;
         // 다음 버튼을 클릭 했을 때
-        if(btn == imagebtn_match_link){
+        if (btn == imagebtn_match_link) {
 
             String id = member[0]; // id 값
             String pw = member[1]; // pw 값
             String my = edit_match_my_phone.getText().toString(); // 내폰번
             String your = edit_match_your_phone.getText().toString(); // 상대폰번
             String startday = text_match_start_day.getText().toString(); // 사귄 날짜
-            ModelMember m = new ModelMember(id,pw,my,your,startday); // 가져온 값 모델에 담아줌.
-            Log.i(TAG, m+"");
+            ModelMember m = new ModelMember(id, pw, my, your, startday); // 가져온 값 모델에 담아줌.
+            Log.i(TAG, m + "");
 
             dao.insertMember(m);
 
         }// 캘린더 버튼을 클릭 했을 때
-        else if(btn == imagebtn_match_calender){
+        else if (btn == imagebtn_match_calender) {
             Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
         }// error
-        else{
+        else {
             Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
         }
     }
