@@ -1,5 +1,6 @@
 package edu.android.teamproject;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -10,8 +11,10 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -65,6 +68,8 @@ public class GoodPaintBoardActivity extends AppCompatActivity {
     }
 
     /** Called when the activity is first created. */
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    @RequiresApi(api = Build.VERSION_CODES.ECLAIR)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,15 +77,19 @@ public class GoodPaintBoardActivity extends AppCompatActivity {
 
         Intent data = getIntent();
         Uri imageUri = data.getParcelableExtra("image_uri");
+//        Bitmap bitmap = data.getParcelableExtra("image");
+//        Log.i("TAG","image_bitmap"+bitmap);
 
+//        Log.i("tag", "uri: " + imageUri);
+//        Log.i("tag", "path: " + imageUri.getPath());
         String realPath = getRealPathFromURI(this, imageUri);
-
+//        Log.i("tag", "real path: " + realPath);
 
         BitmapDrawable bitmapDrawable = null;
         try {
             bitmapDrawable = new BitmapDrawable(getResources(), new FileInputStream(new File(realPath)));
             Log.i("tag", "drawable: " + bitmapDrawable);
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -92,6 +101,11 @@ public class GoodPaintBoardActivity extends AppCompatActivity {
         undoBtn = (ImageButton) findViewById(R.id.undoBtn);
 
 
+        Bitmap bitmap = drawableToBitmap(bitmapDrawable);
+        resizeBitmapImage(bitmap,1920);
+
+
+
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
         		LinearLayout.LayoutParams.MATCH_PARENT,
@@ -100,7 +114,9 @@ public class GoodPaintBoardActivity extends AppCompatActivity {
         board = new GoodPaintBoard(this);
         board.setLayoutParams(params);
         board.setPadding(2, 2, 2, 2);
-
+//        Drawable drawable = (Drawable)new BitmapDrawable(image_bitmap);
+//        board.picture(bitmapDrawable);
+//        Log.i("TAG" , "image_bitmap" + image_bitmap);
 
 
 
@@ -175,5 +191,58 @@ public class GoodPaintBoardActivity extends AppCompatActivity {
     public int getPenThickness() {
     	return mSize;
     }
+    public Bitmap resizeBitmapImage(Bitmap source, int maxResolution)
+    {
+        int width = source.getWidth();
+        int height = source.getHeight();
+        int newWidth = width;
+        int newHeight = height;
+        float rate = 0.0f;
+
+        if(width > height)
+        {
+            if(maxResolution < width)
+            {
+                rate = maxResolution / (float) width;
+                newHeight = (int) (height * rate);
+                newWidth = maxResolution;
+            }
+        }
+        else
+        {
+            if(maxResolution < height)
+            {
+                rate = maxResolution / (float) height;
+                newWidth = (int) (width * rate);
+                newHeight = maxResolution;
+            }
+        }
+
+        return Bitmap.createScaledBitmap(source, newWidth, newHeight, true);
+    }
+
+
+    public static Bitmap drawableToBitmap (Drawable drawable) {
+        Bitmap bitmap = null;
+
+        if (drawable instanceof BitmapDrawable) {
+            BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
+            if(bitmapDrawable.getBitmap() != null) {
+                return bitmapDrawable.getBitmap();
+            }
+        }
+
+        if(drawable.getIntrinsicWidth() <= 0 || drawable.getIntrinsicHeight() <= 0) {
+            bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888); // Single color bitmap will be created of 1x1 pixel
+        } else {
+            bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        }
+
+        Canvas canvas = new Canvas(bitmap);
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        drawable.draw(canvas);
+        return bitmap;
+    }
+
 
 }
