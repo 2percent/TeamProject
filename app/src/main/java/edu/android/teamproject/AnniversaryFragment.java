@@ -13,7 +13,6 @@ import android.view.ViewGroup;
  */
 public class AnniversaryFragment extends Fragment {
 
-
     public AnniversaryFragment() {
         // Required empty public constructor
     }

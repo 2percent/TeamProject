@@ -6,4 +6,5 @@
     <string name="Diary">일기장</string>
     <string name="DW">일기쓰기</string>
     <string name="us">우리</string>
+    <string name="title_activity_basic">BasicActivity</string>
 </resources>

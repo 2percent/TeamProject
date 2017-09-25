@@ -51,7 +51,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/text_diary_write_weather"
+                android:id="@+id/edit_diary_write_weather"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -63,7 +63,7 @@
                 android:textSize="16sp"/>
 
             <EditText
-                android:id="@+id/text_diary_write_kimozzi"
+                android:id="@+id/edit_diary_write_kimozzi"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -85,9 +85,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        app:srcCompat="@drawable/plus" />
         app:srcCompat="@drawable/addpicture" />
 
 
@@ -140,20 +137,44 @@
     </LinearLayout>
 
 
-    <ScrollView
+        <EditText
+            android:id="@+id/edit_diary_write"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:ems="10"
+            android:hint="여기에 일기를 써보세요"
+            android:layout_gravity="center"
+            android:inputType="textMultiLine"
+            android:scrollbars="vertical"
+            android:scrollHorizontally="false"
+            android:lines="10"
+            />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3">
+        android:layout_weight="0.5"
+        android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/edit_diary_write_diary_write"
+        <ImageButton
+            android:id="@+id/imagebtn_temporary_save"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="여기에 편지를 써보세요"
-            android:inputType="text" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            app:srcCompat="@drawable/temporarysave" />
 
-    </ScrollView>
+        <ImageButton
+            android:id="@+id/imagebtn_sendto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            app:srcCompat="@drawable/sendto" />
+
+        </LinearLayout>
+
 
 
 </LinearLayout>

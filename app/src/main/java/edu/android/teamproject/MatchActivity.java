@@ -46,9 +46,9 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
         Intent intent = getIntent();
         String[] member = intent.getStringArrayExtra(MEMBER);
 
-        ImageButton btn = (ImageButton)view;
+        ImageButton btn = (ImageButton) view;
         // 다음 버튼을 클릭 했을 때
-        if(btn == imagebtn_match_link){
+        if (btn == imagebtn_match_link) {
 
             String id = member[0]; // id 값
             String pw = member[1]; // pw 값
