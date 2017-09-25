@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -33,6 +34,7 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
     ImageButton imagebtn_diary_write_sendTo;
     ImageButton imagebtn_diary_write_add_picture;
     ImageButton imagebtn_edit;
+    ImageButton imagebtn_diary_write_calender;
     Uri image_uri ;
     private Bitmap image_bitmap;
 
@@ -57,7 +59,8 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
         imagebtn_edit.setOnClickListener(this);
         imagebtn_diary_write_sendTo = view.findViewById(R.id.imagebtn_diary_write_sendto);
         imagebtn_diary_write_sendTo.setOnClickListener(this);
-
+        imagebtn_diary_write_calender = view.findViewById(R.id.imagebtn_diary_write_calender);
+        imagebtn_diary_write_calender.setOnClickListener(this);
 
 
         return view;
@@ -102,12 +105,12 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
             intent.putExtra("image_uri",image_uri);
             startActivity(intent);
         }else if(view == imagebtn_diary_write_add_picture){
-
             Intent intent = new Intent(Intent.ACTION_PICK);
             intent.setType(android.provider.MediaStore.Images.Media.CONTENT_TYPE);
             intent.setData(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(intent, SELECT_IMAGE);
-
+        }else if(view == imagebtn_diary_write_calender){
+            Log.i(TAG, "다이얼로그 버튼 클릭");
         }
     }
 
