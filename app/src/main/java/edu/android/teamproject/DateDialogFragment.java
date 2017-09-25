@@ -61,9 +61,6 @@ public class DateDialogFragment extends DialogFragment
 
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-        Toast.makeText(getContext(),
-                year + "/" + month + "/" + dayOfMonth,
-                Toast.LENGTH_SHORT).show();
         if (listener != null) {
             listener.dateSelected(year, month, dayOfMonth);
         }

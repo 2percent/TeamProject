@@ -1,6 +1,7 @@
 package edu.android.teamproject;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -21,14 +22,22 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     private ViewPager mViewPager;
     private TextView mainText;
 
+    private int loginCount = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // 아이디 존재 유무에 따라 로그인창 보여줄지 말지
+        SharedPreferences pref = getSharedPreferences("id", MODE_PRIVATE);
+        String id = pref.getString("id", "0");
+
+         if(id.equals("0")){
+             Intent intent2 = new Intent(this, LoginActivity.class);
+             startActivity(intent2);
+             finish();
+         }
 
 
-//        Intent intent = new Intent(this,LoginActivity.class);
-//        startActivity(intent);
-//        finish();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
