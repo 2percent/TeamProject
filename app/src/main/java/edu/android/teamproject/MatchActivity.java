@@ -10,9 +10,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MatchActivity extends AppCompatActivity implements View.OnClickListener {
+public class MatchActivity extends AppCompatActivity implements View.OnClickListener,DateDialogFragment.DateSelectListener {
 
-    private static final String KEY_MEMBER = "key_member";
+    private static final String MEMBER = "member";
     private static final String TAG = "edu.android";
     //멤버변수
     private ImageButton imagebtn_match_calender,
@@ -44,7 +44,7 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         Intent intent = getIntent();
-        String[] member = intent.getStringArrayExtra(KEY_MEMBER);
+        String[] member = intent.getStringArrayExtra(MEMBER);
 
         ImageButton btn = (ImageButton)view;
         // 다음 버튼을 클릭 했을 때
@@ -56,16 +56,26 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
             String your = edit_match_your_phone.getText().toString(); // 상대폰번
             String startday = text_match_start_day.getText().toString(); // 사귄 날짜
             ModelMember m = new ModelMember(id,pw,my,your,startday); // 가져온 값 모델에 담아줌.
-            Log.i(TAG, m+"");
 
             dao.insertMember(m);
 
+            Intent intent2 = new Intent(this, MainActivity.class);
+            intent2.putExtra("id",id);
+            startActivity(intent2);
+            finish();
+
         }// 캘린더 버튼을 클릭 했을 때
         else if(btn == imagebtn_match_calender){
-            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
+            DateDialogFragment dlg = new DateDialogFragment();
+            dlg.show(getSupportFragmentManager(), "date_picker_dlg");
         }// error
         else{
             Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void dateSelected(int year, int month, int day) {
+        text_match_start_day.setText(year+"/"+(month+1)+"/"+day);
     }
 } // end class MatchActivity
