@@ -3,20 +3,26 @@ package edu.android.teamproject;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ImageButton;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DiaryWriteFragment extends Fragment {
+public class DiaryWriteFragment extends Fragment implements View.OnClickListener{
 
-    TextView textView;
-    EditText edit_diary_write;
+    private static final String TAG = "edu.android";
+
+    EditText edit_diary_write_weather,
+            edit_diary_write_kimozzi,
+            edit_diary_write_content;
+    ImageButton imagebtn_diary_write_sendTo;
 
     public DiaryWriteFragment() {
         // Required empty public constructor
@@ -28,11 +34,25 @@ public class DiaryWriteFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_diary_write, container, false);
 
-        edit_diary_write = (EditText)view.findViewById(R.id.edit_diary_write);
+        edit_diary_write_weather = view.findViewById(R.id.edit_diary_write_weather);
+        edit_diary_write_kimozzi = view.findViewById(R.id.edit_diary_write_kimozzi);
+        edit_diary_write_content = view.findViewById(R.id.edit_diary_write_content);
         //edittext 자동 줄바꿈
-        edit_diary_write.setHorizontallyScrolling(false);
+        edit_diary_write_content.setHorizontallyScrolling(false);
+
+        imagebtn_diary_write_sendTo = view.findViewById(R.id.imagebtn_diary_write_sendto);
+        imagebtn_diary_write_sendTo.setOnClickListener(this);
+
 
         return view;
     }
 
+    @Override
+    public void onClick(View view) {
+        if(view == imagebtn_diary_write_sendTo){
+            Log.i(TAG, "edit_diary_write_weather : " + edit_diary_write_weather.getText());
+            Log.i(TAG, "edit_diary_write_kimozzi : " + edit_diary_write_kimozzi.getText());
+            Log.i(TAG, "edit_diary_write_content : " + edit_diary_write_content.getText());
+        }
+    }
 }
