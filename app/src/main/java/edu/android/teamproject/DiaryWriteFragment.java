@@ -13,9 +13,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.net.URI;
 
@@ -23,7 +25,7 @@ import java.net.URI;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DiaryWriteFragment extends Fragment implements View.OnClickListener{
+public class DiaryWriteFragment extends Fragment implements View.OnClickListener, DateDialogFragment.DateSelectListener{
 
     private static final String TAG = "edu.android";
     private static final int SELECT_IMAGE = 100;
@@ -31,9 +33,11 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
     EditText edit_diary_write_weather,
             edit_diary_write_kimozzi,
             edit_diary_write_content;
+    TextView text_diary_write_receiveday;
     ImageButton imagebtn_diary_write_sendTo;
     ImageView image_diary_write_add_picture;
     ImageButton imagebtn_edit;
+    ImageButton imagebtn_diary_write_calender;
     Uri image_uri ;
     private Bitmap image_bitmap;
 
@@ -59,7 +63,10 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
         imagebtn_edit.setOnClickListener(this);
         imagebtn_diary_write_sendTo = view.findViewById(R.id.imagebtn_diary_write_sendto);
         imagebtn_diary_write_sendTo.setOnClickListener(this);
+        imagebtn_diary_write_calender = view.findViewById(R.id.imagebtn_diary_write_calender);
+        imagebtn_diary_write_calender.setOnClickListener(this);
 
+        text_diary_write_receiveday = view.findViewById(R.id.text_diary_write_receiveday);
 
 
         return view;
@@ -115,9 +122,14 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
             intent.setType(android.provider.MediaStore.Images.Media.CONTENT_TYPE);
             intent.setData(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(intent, SELECT_IMAGE);
-
+        }else if(view == imagebtn_diary_write_calender){
+            DateDialogFragment dlg = new DateDialogFragment(this);
+            dlg.show(getFragmentManager(),"DiaryWrite_Fragment_Date_dlg");
         }
     }
 
-
+    @Override
+    public void dateSelected(int year, int month, int dayOfMonth) {
+        text_diary_write_receiveday.setText(year + " / " + (1+month) + " / " + dayOfMonth);
+    }
 }

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
@@ -19,6 +20,9 @@ import java.util.Calendar;
 public class DateDialogFragment extends DialogFragment
     implements DatePickerDialog.OnDateSetListener {
 
+    private static final String TAG = "edu.android";
+    private static Fragment frag;
+
     public interface DateSelectListener {
         void dateSelected(int year, int month, int dayOfMonth);
     }
@@ -28,12 +32,18 @@ public class DateDialogFragment extends DialogFragment
     public DateDialogFragment() {
         // Required empty public constructor
     }
+    public DateDialogFragment(Fragment frag){
+        this.frag = frag;
+    }
 
     @Override
     public void onAttach(Context context) {
+
         super.onAttach(context);
         if (context instanceof DateSelectListener) {
             listener = (DateSelectListener) context;
+        }else if(frag instanceof DateSelectListener){
+            listener = (DateSelectListener) frag;
         }
     }
 

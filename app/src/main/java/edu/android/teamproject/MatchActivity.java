@@ -1,6 +1,7 @@
 package edu.android.teamproject;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -23,7 +24,6 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
 
     // Controller 객체 DiaryLab 생성
     DiaryLab dao = DiaryLab.getInstance();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +56,21 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
             String your = edit_match_your_phone.getText().toString().trim(); // 상대폰번
             String startday = text_match_start_day.getText().toString().trim(); // 사귄 날짜
 
+            SharedPreferences pref = getSharedPreferences("id", MODE_PRIVATE);
+            SharedPreferences.Editor edit = pref.edit();
+            edit.putString("id", id);
+            edit.commit();
+
+
             if(my.equals("")){
-                Toast.makeText(this, "자신의 전화번호를 적어주세요", Toast.LENGTH_SHORT).show();
-                edit_match_my_phone.setText("");
+                edit_match_my_phone.setHintTextColor(getResources().getColor(R.color.colorAccent));
+                edit_match_my_phone.setHint("내 전화번호를 입력하세요");
             }else if(your.equals("")){
-                Toast.makeText(this, "상대의 전화번호를 적어주세요", Toast.LENGTH_SHORT).show();
-                edit_match_your_phone.setText("");
+                edit_match_your_phone.setHintTextColor(getResources().getColor(R.color.colorAccent));
+                edit_match_your_phone.setHint("상대방 전화번호를 입력하세요");
             }else if(startday.equals("")){
-                Toast.makeText(this, "날짜를 선택해 주세요.", Toast.LENGTH_SHORT).show();
-                text_match_start_day.setText("");
+                text_match_start_day.setHintTextColor(getResources().getColor(R.color.colorAccent));
+                text_match_start_day.setHint("연애시작 날짜를 적어주세요.");
             }else{
                 ModelMember m = new ModelMember(id,pw,my,your,startday); // 가져온 값 모델에 담아줌.
 
