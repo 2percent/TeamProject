@@ -2,6 +2,9 @@ package edu.android.teamproject;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,13 +14,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
-
+    private int i = 0;
     private static final String TAG = "edu.android";
     private static final String[] TAB_TITLES = {"일기쓰기", "일기장", "우리"};
 
+    private TabLayout tabLayout;
     private SelectionsPagerAdapter mSelectionsPagerAdapter;
     private ViewPager mViewPager;
     private TextView mainText;
@@ -31,11 +38,11 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         SharedPreferences pref = getSharedPreferences("id", MODE_PRIVATE);
         String id = pref.getString("id", "0");
 
-         if(id.equals("0")){
-             Intent intent2 = new Intent(this, LoginActivity.class);
-             startActivity(intent2);
-             finish();
-         }
+        if(id.equals("0")){
+            Intent intent2 = new Intent(this, LoginActivity.class);
+            startActivity(intent2);
+            finish();
+        }
 
 
 
@@ -45,20 +52,50 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        AppBarLayout app = (AppBarLayout)findViewById(R.id.appbar);
+        app.setBackgroundColor(Color.rgb(232,60,60));
+
         mainText = (TextView) findViewById(R.id.text_main_tab_selected);
+        Typeface typeFace = Typeface.createFromAsset(getAssets(), "fonts/BMJUA.ttf");
+        mainText.setTypeface(typeFace);
 
         mSelectionsPagerAdapter = new SelectionsPagerAdapter(getSupportFragmentManager());
 
         mViewPager = (ViewPager) findViewById(R.id.viewpager_main_container);
         mViewPager.setAdapter(mSelectionsPagerAdapter);
 
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                tabLayout.getTabAt(position).select();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
 //        MainActivity TabView Image -> onTabSelected()
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs_main);
+        tabLayout = (TabLayout) findViewById(R.id.tabs_main);
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.pen));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.lovediary));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.couple));
         tabLayout.addOnTabSelectedListener(this);
 
+        ImageButton setting = (ImageButton) findViewById(R.id.btn_main_settings);
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,SettingActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
