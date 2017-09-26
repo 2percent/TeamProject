@@ -71,31 +71,7 @@ public class AnniversaryFragment extends Fragment implements View.OnClickListene
 
 
 
-
-
-
-
-
-
-
-
-
         return view;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -106,42 +82,6 @@ public class AnniversaryFragment extends Fragment implements View.OnClickListene
     public void setContentView(int contentView) {
         //this.contentView = contentView;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
