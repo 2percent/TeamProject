@@ -74,8 +74,6 @@ public class AnniversaryFragment extends Fragment implements View.OnClickListene
         return view;
 
 
-
-
     } // end onCreateView()
 
 
@@ -90,15 +88,10 @@ public class AnniversaryFragment extends Fragment implements View.OnClickListene
     @Override
     public void onClick(View view) {
 
-
-        Log.i(TAG, "들어왔?");
-//        Intent intent = getIntent();
-//        String[] member = intent.getStringArrayExtra(MEMBER);
-
         ImageButton btn = (ImageButton) view;
+
         // 캘린더 버튼 클릭 시,
         if (btn == imagebtn_anniversary_calender) {
-            Log.i(TAG, "빠큐모고");
             DateDialogFragment d = new DateDialogFragment(this);
             d.show(getFragmentManager(), "datePicker");
 
