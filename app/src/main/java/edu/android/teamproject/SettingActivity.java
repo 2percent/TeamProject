@@ -35,7 +35,7 @@ public class SettingActivity extends AppCompatActivity {
         //      toolbar = (Toolbar)findViewById(R.id.toolBar);
         //      toolbar.setTitle("Expandable Layout Tutorial");
         //     setSupportActionBar(toolbar);
-        button2 = (Button)findViewById(R.id.expandableButton2);
+        button2 = (Button) findViewById(R.id.expandableButton2);
 //        button2.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -53,9 +53,13 @@ public class SettingActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(expandableLayout2.isExpanded()){
-            expandableLayout2.collapse();
-        } else {
+        try {
+            if (expandableLayout2.isExpanded() == true) {
+                expandableLayout2.collapse();
+            } else {
+                super.onBackPressed();
+            }
+        } catch (Exception e) {
             super.onBackPressed();
         }
     }
