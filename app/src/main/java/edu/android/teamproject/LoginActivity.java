@@ -42,11 +42,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String pw = edit_PW.getText().toString().trim();
 
         if(id.equals("")){
-            Toast.makeText(this,"아이디를 입력하세요.", Toast.LENGTH_SHORT).show();
-            edit_ID.setText("");
+            edit_ID.setHintTextColor(getResources().getColor(R.color.colorAccent));
+            edit_ID.setHint("아이디를 입력하세요!");
         }else if(pw.equals("")){
-            Toast.makeText(this,"비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show();
-            edit_PW.setText("");
+            edit_PW.setHintTextColor(getResources().getColor(R.color.colorAccent));
+            edit_PW.setHint("비밀번호를 입력하세요");
         }else{
             DiaryLab dao = DiaryLab.getInstance(this);
             dao.isSelectAll(id);
@@ -56,11 +56,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void idResult(boolean bool){
         String id = edit_ID.getText().toString();
         String pw = edit_PW.getText().toString();
-
-        SharedPreferences pref = getSharedPreferences("id", MODE_PRIVATE);
-        SharedPreferences.Editor edit = pref.edit();
-        edit.putString("id", id);
-        edit.commit();
 
         if(bool){
             Toast.makeText(this, "이미 존재하는 아이디 입니다.", Toast.LENGTH_SHORT).show();

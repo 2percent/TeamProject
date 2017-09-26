@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         mViewPager = (ViewPager) findViewById(R.id.viewpager_main_container);
         mViewPager.setAdapter(mSelectionsPagerAdapter);
 
-        //MainActivity TabView Image -> onTabSelected()
+//        MainActivity TabView Image -> onTabSelected()
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs_main);
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.pen));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.lovediary));

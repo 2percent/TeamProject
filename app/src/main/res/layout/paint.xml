@@ -3,27 +3,35 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal" >
+    android:orientation="vertical" >
 
 
 	<LinearLayout
-		android:layout_width="0dp"
+		android:id="@+id/boardLayout"
+		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:layout_weight="1"
+		android:layout_weight="7"
 		android:orientation="vertical">
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:orientation="horizontal">
 
 		<ImageButton
 			android:id="@+id/colorBtn"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_weight="1.00"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			style="@style/Base.Widget.AppCompat.Button.Borderless"
             app:srcCompat="@drawable/colorpalette" />
 
 		<ImageButton
 			android:id="@+id/penBtn"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
 			android:layout_weight="1"
 			app:srcCompat="@drawable/penpalette" />
@@ -31,27 +39,18 @@
 		<ImageButton
 			android:id="@+id/undoBtn"
 			style="@style/Base.Widget.AppCompat.Button.Borderless"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
 			android:layout_weight="1"
 			app:srcCompat="@drawable/undo" />
 
 		<ImageButton
 			android:id="@+id/savebtn"
-			android:layout_width="match_parent"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
+			style="@style/Base.Widget.AppCompat.Button.Borderless"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
 			app:srcCompat="@drawable/savepostbox3" />
-
-	</LinearLayout>
-
-	<LinearLayout
-		android:id="@+id/boardLayout"
-		android:layout_width="0dp"
-		android:layout_height="match_parent"
-		android:layout_weight="7"
-		android:orientation="vertical">
 
 	</LinearLayout>
 

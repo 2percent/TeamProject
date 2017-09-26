@@ -79,13 +79,15 @@
     </LinearLayout>
 
 
-    <ImageButton
-        android:id="@+id/imagebtn_diary_write_add_picture"
+    <ImageView
+        android:id="@+id/image_diary_write_add_picture"
         style="@style/Base.Widget.AppCompat.Button.Borderless"
         android:layout_width="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
         android:layout_height="0dp"
         android:layout_weight="3"
-        app:srcCompat="@drawable/addpicture" />
+        />
 
 
     <LinearLayout
