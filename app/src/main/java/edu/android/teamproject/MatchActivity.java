@@ -52,17 +52,29 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
 
             String id = member[0]; // id 값
             String pw = member[1]; // pw 값
-            String my = edit_match_my_phone.getText().toString(); // 내폰번
-            String your = edit_match_your_phone.getText().toString(); // 상대폰번
-            String startday = text_match_start_day.getText().toString(); // 사귄 날짜
-            ModelMember m = new ModelMember(id,pw,my,your,startday); // 가져온 값 모델에 담아줌.
+            String my = edit_match_my_phone.getText().toString().trim(); // 내폰번
+            String your = edit_match_your_phone.getText().toString().trim(); // 상대폰번
+            String startday = text_match_start_day.getText().toString().trim(); // 사귄 날짜
 
-            dao.insertMember(m);
+            if(my.equals("")){
+                Toast.makeText(this, "자신의 전화번호를 적어주세요", Toast.LENGTH_SHORT).show();
+                edit_match_my_phone.setText("");
+            }else if(your.equals("")){
+                Toast.makeText(this, "상대의 전화번호를 적어주세요", Toast.LENGTH_SHORT).show();
+                edit_match_your_phone.setText("");
+            }else if(startday.equals("")){
+                Toast.makeText(this, "날짜를 선택해 주세요.", Toast.LENGTH_SHORT).show();
+                text_match_start_day.setText("");
+            }else{
+                ModelMember m = new ModelMember(id,pw,my,your,startday); // 가져온 값 모델에 담아줌.
 
-            Intent intent2 = new Intent(this, MainActivity.class);
-            intent2.putExtra("id",id);
-            startActivity(intent2);
-            finish();
+                dao.insertMember(m);
+
+                Intent intent2 = new Intent(this, MainActivity.class);
+                intent2.putExtra("id",id);
+                startActivity(intent2);
+                finish();
+            }
 
         }// 캘린더 버튼을 클릭 했을 때
         else if(btn == imagebtn_match_calender){

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -37,10 +38,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     // 로그인 버튼
     @Override
     public void onClick(View view) {
-        String id = edit_ID.getText().toString();
-        DiaryLab dao = DiaryLab.getInstance(this);
-        dao.isSelectAll(id);
+        String id = edit_ID.getText().toString().trim();
+        String pw = edit_PW.getText().toString().trim();
 
+        if(id.equals("")){
+            Toast.makeText(this,"아이디를 입력하세요.", Toast.LENGTH_SHORT).show();
+            edit_ID.setText("");
+        }else if(pw.equals("")){
+            Toast.makeText(this,"비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show();
+            edit_PW.setText("");
+        }else{
+            DiaryLab dao = DiaryLab.getInstance(this);
+            dao.isSelectAll(id);
+        }
     } // end onClick()
 
     public void idResult(boolean bool){
