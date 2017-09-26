@@ -36,7 +36,7 @@
     <ListView
         android:id="@+id/list_item_view"
         android:layout_width="match_parent"
-        android:layout_height="159dp"
+        android:layout_height="200dp"
         android:layout_margin="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -53,44 +53,18 @@
         android:layout_weight="2">
 
 
-
-        <Button
-            android:id="@+id/add"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Add" />
-
-        <Button
-            android:id="@+id/modify"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Modify" />
-
-        <Button
-            android:id="@+id/delete"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Delete" />
-
-
-
-    </LinearLayout>
-
         <TextView
             android:id="@+id/text_add_anniversary"
             android:layout_width="match_parent"
-            android:layout_height="211dp"
+            android:layout_height="match_parent"
             android:layout_margin="8dp"
-            android:layout_weight="0.93"
+            android:layout_weight="0.87"
             android:hint="추가된 기념일"
             android:scrollbars="vertical"
             android:textSize="24sp" />
 
 
-
+    </LinearLayout>
 
 
 </LinearLayout>
