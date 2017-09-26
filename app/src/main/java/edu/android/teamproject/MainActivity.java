@@ -110,7 +110,6 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         //MainActivity TabView Image
         int tabPosition = tab.getPosition();
         mainText.setText(TAB_TITLES[tabPosition]);
-
         mViewPager.setCurrentItem(tabPosition);
     }
 
