@@ -154,7 +154,7 @@
                 android:ems="10"
                 android:hint="여기에 일기를 써보세요"
                 android:inputType="textMultiLine"
-                android:lines="12"
+                android:lines="9"
                 android:scrollHorizontally="false"
                 android:scrollbars="vertical" />
 
