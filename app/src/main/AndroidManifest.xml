@@ -3,7 +3,7 @@
     package="edu.android.teamproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <!-- 메인 액티비티 -->
     <application
@@ -21,16 +21,15 @@
             </intent-filter>
         </activity>
 
-        <!-- 액티비티-->
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".MatchActivity"></activity>
-        <activity android:name=".LoadingActivity"></activity>
-        <activity android:name=".GoodPaintBoardActivity2"/>
-        <activity android:name=".GoodPaintBoardActivity"/>
-        <activity android:name=".ColorPaletteDialog"/>
-        <activity android:name=".PenPaletteDialog"/>
-
-
+        <!-- 액티비티 -->
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MatchActivity" />
+        <activity android:name=".LoadingActivity" />
+        <activity android:name=".GoodPaintBoardActivity2" />
+        <activity android:name=".GoodPaintBoardActivity" />
+        <activity android:name=".ColorPaletteDialog" />
+        <activity android:name=".PenPaletteDialog" />
+        <activity android:name=".SettingActivity"></activity>
     </application>
 
 </manifest>
