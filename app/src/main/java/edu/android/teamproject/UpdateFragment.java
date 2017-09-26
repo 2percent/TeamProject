@@ -18,7 +18,7 @@ public class UpdateFragment extends Fragment {
 
     TextView subtitle;
 
-    Button button;
+
 
     public UpdateFragment() {
         // Required empty public constructor

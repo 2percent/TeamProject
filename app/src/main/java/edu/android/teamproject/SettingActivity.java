@@ -20,7 +20,7 @@ import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 public class SettingActivity extends AppCompatActivity {
 
     ExpandableRelativeLayout expandableLayout1, expandableLayout2, expandableLayout3, expandableLayout4;
-    Toolbar toolbar;
+
     Button button2;
 
     public ExpandableRelativeLayout getExpandableLayout2() {
