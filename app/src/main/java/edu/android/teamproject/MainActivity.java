@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
-    private int i = 0;
+
     private static final String TAG = "edu.android";
     private static final String[] TAB_TITLES = {"일기쓰기", "일기장", "우리"};
 
