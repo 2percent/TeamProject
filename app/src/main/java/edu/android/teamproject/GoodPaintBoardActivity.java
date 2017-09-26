@@ -37,7 +37,8 @@ import java.io.IOException;
  */
 public class GoodPaintBoardActivity extends AppCompatActivity {
 
-	GoodPaintBoard board;
+    private static final String TAG ="edu.android" ;
+    GoodPaintBoard board;
 	ImageButton colorBtn;
 	ImageButton penBtn;
 	ImageButton saveBtn;
@@ -50,7 +51,7 @@ public class GoodPaintBoardActivity extends AppCompatActivity {
 	boolean eraserSelected = false;
     private Bitmap image_bitmap;
     public static LinearLayout boardLayout;
-
+    private Uri imageUri;
 
     private String getRealPathFromURI(Context context, Uri contentUri) {
         Cursor cursor = null;
@@ -76,6 +77,17 @@ public class GoodPaintBoardActivity extends AppCompatActivity {
         setContentView(R.layout.paint);
 
         Intent data = getIntent();
+
+        boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
+
+        colorBtn = (ImageButton) findViewById(R.id.colorBtn);
+        penBtn = (ImageButton) findViewById(R.id.penBtn);
+        saveBtn = (ImageButton) findViewById(R.id.savebtn);
+        undoBtn = (ImageButton) findViewById(R.id.undoBtn);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
         Uri imageUri = data.getParcelableExtra("image_uri");
 //        Bitmap bitmap = data.getParcelableExtra("image");
 //        Log.i("TAG","image_bitmap"+bitmap);
@@ -93,39 +105,19 @@ public class GoodPaintBoardActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
-
-        colorBtn = (ImageButton) findViewById(R.id.colorBtn);
-        penBtn = (ImageButton) findViewById(R.id.penBtn);
-        saveBtn = (ImageButton) findViewById(R.id.savebtn);
-        undoBtn = (ImageButton) findViewById(R.id.undoBtn);
-
-
-        Bitmap bitmap = drawableToBitmap(bitmapDrawable);
-        resizeBitmapImage(bitmap,1920);
-
-
-
-
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-        		LinearLayout.LayoutParams.MATCH_PARENT,
-        		LinearLayout.LayoutParams.MATCH_PARENT);
-        
         board = new GoodPaintBoard(this);
         board.setLayoutParams(params);
         board.setPadding(2, 2, 2, 2);
-//        Drawable drawable = (Drawable)new BitmapDrawable(image_bitmap);
-//        board.picture(bitmapDrawable);
-//        Log.i("TAG" , "image_bitmap" + image_bitmap);
-
-
-
-
-
-
-
-        boardLayout.addView(board);
         board.setBackground(bitmapDrawable);
+        boardLayout.addView(board);
+
+        image_bitmap =  drawableToBitmap(bitmapDrawable);
+        Log.i("TAG","image_bitmap"+image_bitmap);
+
+
+
+
+
 
 
         colorBtn.setOnClickListener(new OnClickListener() {
@@ -135,6 +127,7 @@ public class GoodPaintBoardActivity extends AppCompatActivity {
         			public void onColorSelected(int color) {
         				mColor = color;
         				board.updatePaintProperty(mColor, mSize);
+                        Log.i(TAG ,"image_bitmap"+image_bitmap);
         			}
         		};
         		
@@ -190,35 +183,6 @@ public class GoodPaintBoardActivity extends AppCompatActivity {
     
     public int getPenThickness() {
     	return mSize;
-    }
-    public Bitmap resizeBitmapImage(Bitmap source, int maxResolution)
-    {
-        int width = source.getWidth();
-        int height = source.getHeight();
-        int newWidth = width;
-        int newHeight = height;
-        float rate = 0.0f;
-
-        if(width > height)
-        {
-            if(maxResolution < width)
-            {
-                rate = maxResolution / (float) width;
-                newHeight = (int) (height * rate);
-                newWidth = maxResolution;
-            }
-        }
-        else
-        {
-            if(maxResolution < height)
-            {
-                rate = maxResolution / (float) height;
-                newWidth = (int) (width * rate);
-                newHeight = maxResolution;
-            }
-        }
-
-        return Bitmap.createScaledBitmap(source, newWidth, newHeight, true);
     }
 
 

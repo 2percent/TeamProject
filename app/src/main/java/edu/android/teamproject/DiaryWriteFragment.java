@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import java.net.URI;
 
@@ -31,7 +32,7 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
             edit_diary_write_kimozzi,
             edit_diary_write_content;
     ImageButton imagebtn_diary_write_sendTo;
-    ImageButton imagebtn_diary_write_add_picture;
+    ImageView image_diary_write_add_picture;
     ImageButton imagebtn_edit;
     Uri image_uri ;
     private Bitmap image_bitmap;
@@ -51,8 +52,9 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
         edit_diary_write_content = view.findViewById(R.id.edit_diary_write_content);
         //edittext 자동 줄바꿈
         edit_diary_write_content.setHorizontallyScrolling(false);
-        imagebtn_diary_write_add_picture = view.findViewById(R.id.imagebtn_diary_write_add_picture);
-        imagebtn_diary_write_add_picture.setOnClickListener(this);
+        image_diary_write_add_picture = view.findViewById(R.id.image_diary_write_add_picture);
+        image_diary_write_add_picture.setOnClickListener(this);
+        image_uri = null;
         imagebtn_edit = view.findViewById(R.id.imagebtn_edit);
         imagebtn_edit.setOnClickListener(this);
         imagebtn_diary_write_sendTo = view.findViewById(R.id.imagebtn_diary_write_sendto);
@@ -80,7 +82,7 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
                             image_uri);
 
                     //배치해놓은 ImageView에 set
-                    imagebtn_diary_write_add_picture.setImageBitmap(image_bitmap);
+                    image_diary_write_add_picture.setImageBitmap(image_bitmap);
 
 
                 } catch (Exception e) {
@@ -98,10 +100,16 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
             Log.i(TAG, "edit_diary_write_kimozzi : " + edit_diary_write_kimozzi.getText());
             Log.i(TAG, "edit_diary_write_content : " + edit_diary_write_content.getText());
         }else if(view == imagebtn_edit){
-            Intent intent = new Intent(getContext(), GoodPaintBoardActivity.class);
-            intent.putExtra("image_uri",image_uri);
-            startActivity(intent);
-        }else if(view == imagebtn_diary_write_add_picture){
+            if(image_uri != null){
+                Intent intent = new Intent(getContext(), GoodPaintBoardActivity.class);
+                intent.putExtra("image_uri",image_uri);
+                startActivity(intent);
+            }else{
+                Intent intent = new Intent(getContext(), GoodPaintBoardActivity2.class);
+                startActivity(intent);
+            }
+
+        }else if(view == image_diary_write_add_picture){
 
             Intent intent = new Intent(Intent.ACTION_PICK);
             intent.setType(android.provider.MediaStore.Images.Media.CONTENT_TYPE);

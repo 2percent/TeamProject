@@ -25,6 +25,7 @@
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".MatchActivity"></activity>
         <activity android:name=".LoadingActivity"></activity>
+        <activity android:name=".GoodPaintBoardActivity2"/>
         <activity android:name=".GoodPaintBoardActivity"/>
         <activity android:name=".ColorPaletteDialog"/>
         <activity android:name=".PenPaletteDialog"/>

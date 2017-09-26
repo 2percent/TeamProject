@@ -28,19 +28,19 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // 아이디 존재 유무에 따라 로그인창 보여줄지 말지
-//        SharedPreferences pref = getSharedPreferences("id", MODE_PRIVATE);
-//        String id = pref.getString("id", "0");
-//
-//         if(id.equals("0")){
-//             Intent intent2 = new Intent(this, LoginActivity.class);
-//             startActivity(intent2);
-//             finish();
-//         }
-//
-//
-//
-//        Intent intent = new Intent(this, LoadingActivity.class);
-//        startActivity(intent);
+        SharedPreferences pref = getSharedPreferences("id", MODE_PRIVATE);
+        String id = pref.getString("id", "0");
+
+         if(id.equals("0")){
+             Intent intent2 = new Intent(this, LoginActivity.class);
+             startActivity(intent2);
+             finish();
+         }
+
+
+
+        Intent intent = new Intent(this, LoadingActivity.class);
+        startActivity(intent);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         mViewPager = (ViewPager) findViewById(R.id.viewpager_main_container);
         mViewPager.setAdapter(mSelectionsPagerAdapter);
 
-        //MainActivity TabView Image -> onTabSelected()
+//        MainActivity TabView Image -> onTabSelected()
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs_main);
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.pen));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.lovediary));
