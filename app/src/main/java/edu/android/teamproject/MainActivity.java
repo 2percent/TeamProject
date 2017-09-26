@@ -44,8 +44,6 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
             finish();
         }
 
-
-
         Intent intent = new Intent(this, LoadingActivity.class);
         startActivity(intent);
 

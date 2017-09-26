@@ -2,6 +2,7 @@ package edu.android.teamproject;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -92,4 +93,11 @@ public class DiaryLab {
 
     }
 
+    public void updateMember(ModelMember m) {
+        try {
+            databaseReference.child(m.getId()).setValue(m);
+        }catch (Exception e){
+            Toast.makeText(context, "알수 없는 오류 발생", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

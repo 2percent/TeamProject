@@ -59,6 +59,11 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
             SharedPreferences pref = getSharedPreferences("id", MODE_PRIVATE);
             SharedPreferences.Editor edit = pref.edit();
             edit.putString("id", id);
+            edit.putString("pw", pw);
+            edit.putString("my", my);
+            edit.putString("your", your);
+            edit.putString("startday",startday);
+
             edit.commit();
 
 
