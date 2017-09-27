@@ -6,10 +6,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,18 +17,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 
 /**
  * 색상이나 선굵기를 선택할 수 있도록 기능 추가
@@ -83,9 +76,9 @@ public class GoodPaintBoardActivity extends AppCompatActivity {
 
         boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
 
-        colorBtn = (ImageButton) findViewById(R.id.colorBtn);
-        penBtn = (ImageButton) findViewById(R.id.penBtn);
-        saveBtn = (ImageButton) findViewById(R.id.savebtn);
+        colorBtn = (ImageButton) findViewById(R.id.imagebtn_paint_select_color);
+        penBtn = (ImageButton) findViewById(R.id.imagebtn_paint_select_brush);
+        saveBtn = (ImageButton) findViewById(R.id.imagebtn_paint_select_save);
 
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(

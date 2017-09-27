@@ -2,13 +2,11 @@ package edu.android.teamproject;
 
 
 import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -18,7 +16,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -26,8 +23,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URI;
 
 
 /**
@@ -49,7 +44,7 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
     ImageButton imagebtn_diary_write_calender;
     Uri image_uri ;
     private Bitmap image_bitmap;
-    private Bitmap image_return;
+
     Spinner spinner_diary_write_size , spinner_diary_write_font , spinner_diary_write_color;
     public DiaryWriteFragment() {
         // Required empty public constructor
@@ -66,11 +61,12 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
         edit_diary_write_content = view.findViewById(R.id.edit_diary_write_content);
         //edittext 자동 줄바꿈
         edit_diary_write_content.setHorizontallyScrolling(false);
+
         image_diary_write_add_picture = view.findViewById(R.id.image_diary_write_add_picture);
-        add_picture = view.findViewById(R.id.add_picture);
+        add_picture = view.findViewById(R.id.imagebtn_diary_write_add_picture);
         add_picture.setOnClickListener(this);
         image_uri = null;
-        edit_picture = view.findViewById(R.id.edit_picture);
+        edit_picture = view.findViewById(R.id.imagebtn_diary_write_edit_picture);
         edit_picture.setOnClickListener(this);
         imagebtn_diary_write_sendTo = view.findViewById(R.id.imagebtn_diary_write_sendto);
         imagebtn_diary_write_sendTo.setOnClickListener(this);
@@ -78,11 +74,15 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
         imagebtn_diary_write_calender.setOnClickListener(this);
 
         text_diary_write_receiveday = view.findViewById(R.id.text_diary_write_receiveday);
-        spinner_diary_write_size = view.findViewById(R.id.spinner_diary_write_size);
-        spinner_diary_write_size.setOnItemSelectedListener(this);
-        spinner_diary_write_color = view.findViewById(R.id.spinner_diary_write_color);
-        spinner_diary_write_color.setOnItemSelectedListener(this);
 
+        // 폰트 찾고 리스너 등록
+        spinner_diary_write_color = view.findViewById(R.id.spinner_diary_write_color);
+        spinner_diary_write_font = view.findViewById(R.id.spinner_diary_write_font);
+        spinner_diary_write_size = view.findViewById(R.id.spinner_diary_write_size);
+        // 스피너 아이템 등록
+        spinner_diary_write_color.setOnItemSelectedListener(this);
+        spinner_diary_write_size.setOnItemSelectedListener(this);
+        spinner_diary_write_font.setOnItemSelectedListener(this);
 
 
         return view;
@@ -214,7 +214,9 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
             }else if(i == 2){
                 edit_diary_write_content.setTextSize(32);
             }
-        }else if(adapterView == spinner_diary_write_color){
+        }
+        if(adapterView == spinner_diary_write_color){
+            Log.i(TAG,"컬러");
             if(i == 0){
                 edit_diary_write_content.setTextColor(Color.BLUE);
             }else if(i == 1){
@@ -222,15 +224,20 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
             }else if(i == 2){
                 edit_diary_write_content.setTextColor(Color.RED);
             }
-        }else if(adapterView == spinner_diary_write_font){
+        }
+        if(adapterView == spinner_diary_write_font){
+            Log.i(TAG,"폰트");
             if(i == 0){
-                Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(),"fonts/BMJUA.ttf");
+                Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/BMHANNA.ttf");
+                edit_diary_write_content.setTypeface(typeface);
+            } else if(i == 1) {
+                Typeface typeface = Typeface.createFromAsset(getContext().getAssets(),"fonts/BMJUA.ttf");
                 edit_diary_write_content.setTypeface(typeface);
             }
 
         }
 
-    }
+    }// end onselected
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
