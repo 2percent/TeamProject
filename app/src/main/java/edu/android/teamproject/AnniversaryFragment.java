@@ -13,12 +13,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class AnniversaryFragment extends Fragment implements View.OnClickListener,DateDialogFragment.DateSelectListener {
-
 
 
     private static final String MEMBER = "member";
@@ -31,10 +32,13 @@ public class AnniversaryFragment extends Fragment implements View.OnClickListene
     private AppCompatActivity compatActivity;
     private ListView listView;
 
+    List<String> list;
+    StringBuffer buffer;
+
+
     public AnniversaryFragment() {
         // Required empty public constructor
     }
-
 
 
     //값!!!!!!
@@ -51,7 +55,7 @@ public class AnniversaryFragment extends Fragment implements View.OnClickListene
 
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_anniversary,null);
+        View view = inflater.inflate(R.layout.fragment_anniversary, null);
 
         //우선 빈 데이터 리스트 생성
         ArrayList<String> items = new ArrayList<String>();
@@ -65,9 +69,13 @@ public class AnniversaryFragment extends Fragment implements View.OnClickListene
 
         Log.i(TAG, "뷰뷰뷰뷰");
 
-        imagebtn_anniversary_calender = (ImageButton)view.findViewById(R.id.imagebtn_anniversary_calender);
+        imagebtn_anniversary_calender = (ImageButton) view.findViewById(R.id.imagebtn_anniversary_calender);
         imagebtn_anniversary_calender.setOnClickListener(this);
         text_add_anniversary = (TextView) view.findViewById(R.id.text_add_anniversary);
+
+
+        //
+        list = new ArrayList<>();
 
 
 
@@ -82,26 +90,53 @@ public class AnniversaryFragment extends Fragment implements View.OnClickListene
     }
 
 
-
-
-   // 달력
+    // 달력
     @Override
     public void onClick(View view) {
 
-        ImageButton btn = (ImageButton) view;
 
+        ImageButton btn = (ImageButton) view;
         // 캘린더 버튼 클릭 시,
         if (btn == imagebtn_anniversary_calender) {
             DateDialogFragment d = new DateDialogFragment(this);
             d.show(getFragmentManager(), "datePicker");
 
-        } //end if()
+
+        } else {
+            Toast.makeText(compatActivity, " 날짜를 다시 선택해주세요 ", Toast.LENGTH_SHORT).show();
+
+        } // end if()
+
+
     } // end onClick()
 
 
-   @Override
+    @Override
     public void dateSelected(int year, int month, int day) {
-        text_add_anniversary.setText(year+"/"+(month+1)+"/"+day);
-    }
 
-}
+        // 서버에 올릴 때 list 로 올리기 ! ( 값 list에 있당 )
+
+        list.add(year + "년 " + (month + 1) + "월 " + day + "일\n");
+
+        buffer = new StringBuffer();
+
+        if(list != null) {
+          for(String s : list){
+             buffer.append(s);
+          } // end for()
+            text_add_anniversary.setText(buffer);
+
+
+        } // end if()
+
+        Log.i(TAG, "//"+list);
+
+    } // end dateSelected
+
+
+    } // end class
+
+
+
+
+
