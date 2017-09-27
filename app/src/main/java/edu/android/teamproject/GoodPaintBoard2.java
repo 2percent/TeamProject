@@ -64,7 +64,7 @@ public class GoodPaintBoard2 extends View {
 	/**
 	 * Initialize paint object and coordinates
 	 * 
-	 * @param c
+	 * @param
 	 */
 	public GoodPaintBoard2(Context context) {
 		super(context);
@@ -143,9 +143,8 @@ public class GoodPaintBoard2 extends View {
 	/**
 	 * Paint background
 	 * 
-	 * @param g
-	 * @param w
-	 * @param h
+	 * @param
+	 * @param 	 * @param
 	 */
 	public void drawBackground(Canvas canvas)
 	{
@@ -157,7 +156,7 @@ public class GoodPaintBoard2 extends View {
 	/**
 	 * Update paint properties
 	 * 
-	 * @param canvas
+	 * @param
 	 */
 	public void updatePaintProperty(int color, int size)
 	{
@@ -248,6 +247,7 @@ public class GoodPaintBoard2 extends View {
 	protected void onDraw(Canvas canvas) {
 		if (mBitmap != null) {
 			canvas.drawBitmap(mBitmap, 0, 0, null);
+
 		}
 	}
 
@@ -307,12 +307,14 @@ public class GoodPaintBoard2 extends View {
 	/**
 	 * Save this contents into a Jpeg image
 	 * 
-	 * @param outstream
+	 * @param
 	 * @return
 	 */
-	public boolean Save(OutputStream outstream) {
+	public boolean Save(OutputStream out) {
 		try {
-			mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outstream);
+
+//			draw(new Canvas((mBitmap)));
+//			mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outstream);
 			invalidate();
 			
 			return true;

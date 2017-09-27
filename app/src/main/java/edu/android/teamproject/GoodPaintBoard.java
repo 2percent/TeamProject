@@ -10,10 +10,13 @@ import android.graphics.Path;
 import android.graphics.Picture;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Environment;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.Stack;
 
@@ -139,7 +142,7 @@ public class GoodPaintBoard extends View {
 		}
 		
 		if (prev != null){
-			drawBackground(mCanvas);
+
 			mCanvas.drawBitmap(prev, 0, 0, mPaint);
 			invalidate();
 			
@@ -311,19 +314,27 @@ public class GoodPaintBoard extends View {
 	/**
 	 * Save this contents into a Jpeg image
 	 * 
-	 * @param outstream
+	 * @param
 	 * @return
 	 */
-	public boolean Save(OutputStream outstream) {
+	public boolean Save(OutputStream out) {
+
 		try {
-			mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outstream);
+
+
+//			draw(new Canvas((mBitmap)));
+//			mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+
+
+
 			invalidate();
-			
+
 			return true;
 		} catch (Exception e) {
 			return false;
 		}
 	}
-	
+
+
 	
 }

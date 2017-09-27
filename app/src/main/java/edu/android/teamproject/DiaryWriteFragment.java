@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -19,6 +21,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URI;
 
 
@@ -40,7 +44,7 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
     ImageButton imagebtn_diary_write_calender;
     Uri image_uri ;
     private Bitmap image_bitmap;
-
+    private Bitmap image_return;
     public DiaryWriteFragment() {
         // Required empty public constructor
     }
@@ -96,7 +100,59 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
                     e.printStackTrace();
                 }
             }
+        }else if(requestCode == 1){
+            if(resultCode == Activity.RESULT_OK){
+
+                try {
+                    if (data != null) {
+                        String fileName = data.getStringExtra("image");
+                        Log.i(TAG, "onActivityResult:fileName=" + fileName);
+                        File imgFile = new  File(fileName);
+
+                        if(imgFile.exists()){
+
+                            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+
+                            image_diary_write_add_picture.setImageBitmap(myBitmap);
+
+
+
+                        }
+                    }
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         }
+        else if (requestCode == 2){
+            if(resultCode == Activity.RESULT_OK){
+
+                try {
+                    if (data != null) {
+                        String fileName = data.getStringExtra("image");
+                        Log.i(TAG, "onActivityResult:fileName=" + fileName);
+                        File imgFile = new  File(fileName);
+
+                        if(imgFile.exists()){
+
+                            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+
+                            image_diary_write_add_picture.setImageBitmap(myBitmap);
+
+
+
+                        }
+                    }
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
     }
 
 
@@ -110,10 +166,13 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
             if(image_uri != null){
                 Intent intent = new Intent(getContext(), GoodPaintBoardActivity.class);
                 intent.putExtra("image_uri",image_uri);
-                startActivity(intent);
+                startActivityForResult(intent,1);
+
+
+
             }else{
                 Intent intent = new Intent(getContext(), GoodPaintBoardActivity2.class);
-                startActivity(intent);
+                startActivityForResult(intent,2);
             }
 
         }else if(view == image_diary_write_add_picture){

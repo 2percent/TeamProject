@@ -23,11 +23,14 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * 색상이나 선굵기를 선택할 수 있도록 기능 추가
@@ -76,7 +79,7 @@ public class GoodPaintBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.paint);
 
-        Intent data = getIntent();
+        final Intent data = getIntent();
 
         boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
 
@@ -159,11 +162,24 @@ public class GoodPaintBoardActivity extends AppCompatActivity {
         
         saveBtn.setOnClickListener(new OnClickListener() {
         	public void onClick(View v) {
+                boardLayout.buildDrawingCache();
+                Bitmap bitmapfinal = boardLayout.getDrawingCache();
 
-                board.saveUndo();
+                try {
+                    String fileName = "/sdcard/DCIM/Camera" + System.currentTimeMillis() + ".jpg";
+                    FileOutputStream out = new FileOutputStream(fileName);
+                    bitmapfinal.compress(Bitmap.CompressFormat.JPEG,100,out);
+                    Toast.makeText(GoodPaintBoardActivity.this, fileName + " 저장되었습니다.", Toast.LENGTH_SHORT).show();
 
-        		
-        	}
+                    Intent intent = new Intent();
+                    intent.putExtra("image", fileName);
+                    setResult(RESULT_OK,intent);
+                    finish();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
         });
         
         undoBtn.setOnClickListener(new OnClickListener() {

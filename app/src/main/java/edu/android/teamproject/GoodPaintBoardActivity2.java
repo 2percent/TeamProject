@@ -1,6 +1,7 @@
 package edu.android.teamproject;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
 /**
  * 색상이나 선굵기를 선택할 수 있도록 기능 추가
@@ -23,6 +28,7 @@ public class GoodPaintBoardActivity2 extends AppCompatActivity {
     ImageButton penBtn;
     ImageButton saveBtn;
     ImageButton undoBtn;
+    public static LinearLayout boardLayout;
 	int mColor = 0xff000000;
 	int mSize = 2;
 	int oldColor;
@@ -35,7 +41,7 @@ public class GoodPaintBoardActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.paint);
         
-        LinearLayout boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
+        boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
         colorBtn = (ImageButton) findViewById(R.id.colorBtn);
         penBtn = (ImageButton) findViewById(R.id.penBtn);
         saveBtn = (ImageButton) findViewById(R.id.savebtn);
@@ -89,41 +95,26 @@ public class GoodPaintBoardActivity2 extends AppCompatActivity {
         
         saveBtn.setOnClickListener(new OnClickListener() {
         	public void onClick(View v) {
-        		
-        		eraserSelected = !eraserSelected;
-        		
-        		if (eraserSelected) {
-                    colorBtn.setEnabled(false);
-                    penBtn.setEnabled(false);
-                    undoBtn.setEnabled(false);
-        			
-                    colorBtn.invalidate();
-                    penBtn.invalidate();
-                    undoBtn.invalidate();
-                    
-                    oldColor = mColor;
-                    oldSize = mSize;
-                    
-                    mColor = Color.WHITE;
-                    mSize = 15;
-                    
-                    board.updatePaintProperty(mColor, mSize);
-                    
-                } else {
-                	colorBtn.setEnabled(true);
-                    penBtn.setEnabled(true);
-                    undoBtn.setEnabled(true);
-        			
-                    colorBtn.invalidate();
-                    penBtn.invalidate();
-                    undoBtn.invalidate();
-                    
-                    mColor = oldColor;
-                    mSize = oldSize;
-                    
-                    board.updatePaintProperty(mColor, mSize);
-                    
+                boardLayout.buildDrawingCache();
+                Bitmap bitmapfinal = boardLayout.getDrawingCache();
+
+                try {
+                    String fileName = "/sdcard/DCIM/Camera" + System.currentTimeMillis() + ".jpg";
+                    FileOutputStream out = new FileOutputStream(fileName);
+                    bitmapfinal.compress(Bitmap.CompressFormat.JPEG,100,out);
+                    Toast.makeText(GoodPaintBoardActivity2.this, fileName + " 저장되었습니다.", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent();
+                    intent.putExtra("image", fileName);
+                    setResult(RESULT_OK,intent);
+                    finish();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
                 }
+
+
+
+
         		
         	}
         });
@@ -137,8 +128,9 @@ public class GoodPaintBoardActivity2 extends AppCompatActivity {
         });
         
     }
-    
-        
+
+
+
     public int getChosenColor() {
     	return mColor;
     }
