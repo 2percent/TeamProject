@@ -113,37 +113,28 @@
                     android:layout_weight="1"
                     app:srcCompat="@drawable/happy" />
 
-                <ImageButton
-                    android:id="@+id/imagebtn_emoticon2"
-                    style="@style/Base.Widget.AppCompat.Button.Borderless"
+                <Spinner
+                    android:id="@+id/spinner_diary_write_size"
+                    android:entries="@array/size"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/happy2" />
+                    android:layout_weight="1" />
 
-                <ImageButton
-                    android:id="@+id/imagebtn_emoticon3"
-                    style="@style/Base.Widget.AppCompat.Button.Borderless"
+                <Spinner
+                    android:id="@+id/spinner_diary_write_font"
+                    android:entries="@array/font"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/loveeye" />
+                    android:layout_weight="1" />
 
-                <ImageButton
-                    android:id="@+id/imagebtn_emoticon4"
-                    style="@style/Base.Widget.AppCompat.Button.Borderless"
+                <Spinner
+                    android:id="@+id/spinner_diary_write_color"
+                    android:entries="@array/color"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/unhappy" />
+                    android:layout_weight="1" />
 
-                <ImageButton
-                    android:id="@+id/imagebtn_emoticon5"
-                    style="@style/Base.Widget.AppCompat.Button.Borderless"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/heart" />
+
 
             </LinearLayout>
 

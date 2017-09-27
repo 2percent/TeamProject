@@ -44,12 +44,10 @@ public class SettingActivity extends AppCompatActivity {
 //            }
 //        });
 
-
         Typeface typeFace = Typeface.createFromAsset(getAssets(), "fonts/BMJUA.ttf");
         button2.setTypeface(typeFace);
 
     }
-
 
     @Override
     public void onBackPressed() {

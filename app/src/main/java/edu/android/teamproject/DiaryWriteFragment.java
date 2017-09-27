@@ -72,7 +72,6 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
 
         text_diary_write_receiveday = view.findViewById(R.id.text_diary_write_receiveday);
 
-
         return view;
     }
 
@@ -176,7 +175,6 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
             }
 
         }else if(view == image_diary_write_add_picture){
-
             Intent intent = new Intent(Intent.ACTION_PICK);
             intent.setType(android.provider.MediaStore.Images.Media.CONTENT_TYPE);
             intent.setData(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);

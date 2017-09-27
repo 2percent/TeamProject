@@ -30,7 +30,7 @@
         <activity android:name=".GoodPaintBoardActivity" />
         <activity android:name=".ColorPaletteDialog" />
         <activity android:name=".PenPaletteDialog" />
-        <activity android:name=".SettingActivity"></activity>
+        <activity android:name=".SettingActivity" />
     </application>
 
 </manifest>

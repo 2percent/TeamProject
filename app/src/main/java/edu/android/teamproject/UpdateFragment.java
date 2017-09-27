@@ -50,6 +50,7 @@ public class UpdateFragment extends Fragment implements View.OnClickListener{
         editMyPhone.setText(my);
         editYourPhone.setText(you);
 
+
         btn_update.setOnClickListener(this);
 
         return view;
