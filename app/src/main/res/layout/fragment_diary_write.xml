@@ -93,10 +93,13 @@
                 android:id="@+id/image_diary_write_add_picture"
                 style="@style/Base.Widget.AppCompat.Button.Borderless"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3"
+                android:layout_height="260dp"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter" />
+                android:scaleType="fitXY"
+                android:src="@drawable/border"/>
+                <!--app:srcCompat="@drawable/savepicture"/>-->
+                <!--android:layout_weight="5"-->
+
 
 
 
@@ -107,12 +110,20 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/imagebtn_edit"
+                    android:id="@+id/add_picture"
                     style="@style/Base.Widget.AppCompat.Button.Borderless"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/happy" />
+                    app:srcCompat="@drawable/pictureadd" />
+
+                <ImageButton
+                    android:id="@+id/edit_picture"
+                    style="@style/Base.Widget.AppCompat.Button.Borderless"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/selfpicture" />
 
                 <Spinner
                     android:id="@+id/spinner_diary_write_size"
@@ -145,11 +156,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
                 android:ems="10"
                 android:hint="여기에 일기를 써보세요"
                 android:inputType="textMultiLine"
-                android:lines="9"
+                android:lines="6"
                 android:scrollHorizontally="false"
                 android:scrollbars="vertical" />
 

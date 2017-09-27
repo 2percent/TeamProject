@@ -45,7 +45,7 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
     TextView text_diary_write_receiveday;
     ImageButton imagebtn_diary_write_sendTo;
     ImageView image_diary_write_add_picture;
-    ImageButton imagebtn_edit;
+    ImageButton add_picture , edit_picture;
     ImageButton imagebtn_diary_write_calender;
     Uri image_uri ;
     private Bitmap image_bitmap;
@@ -67,10 +67,11 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
         //edittext 자동 줄바꿈
         edit_diary_write_content.setHorizontallyScrolling(false);
         image_diary_write_add_picture = view.findViewById(R.id.image_diary_write_add_picture);
-        image_diary_write_add_picture.setOnClickListener(this);
+        add_picture = view.findViewById(R.id.add_picture);
+        add_picture.setOnClickListener(this);
         image_uri = null;
-        imagebtn_edit = view.findViewById(R.id.imagebtn_edit);
-        imagebtn_edit.setOnClickListener(this);
+        edit_picture = view.findViewById(R.id.edit_picture);
+        edit_picture.setOnClickListener(this);
         imagebtn_diary_write_sendTo = view.findViewById(R.id.imagebtn_diary_write_sendto);
         imagebtn_diary_write_sendTo.setOnClickListener(this);
         imagebtn_diary_write_calender = view.findViewById(R.id.imagebtn_diary_write_calender);
@@ -173,7 +174,7 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
             Log.i(TAG, "edit_diary_write_weather : " + edit_diary_write_weather.getText());
             Log.i(TAG, "edit_diary_write_kimozzi : " + edit_diary_write_kimozzi.getText());
             Log.i(TAG, "edit_diary_write_content : " + edit_diary_write_content.getText());
-        }else if(view == imagebtn_edit){
+        }else if(view == edit_picture){
             if(image_uri != null){
                 Intent intent = new Intent(getContext(), GoodPaintBoardActivity.class);
                 intent.putExtra("image_uri",image_uri);
@@ -186,7 +187,7 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
                 startActivityForResult(intent,2);
             }
 
-        }else if(view == image_diary_write_add_picture){
+        }else if(view == add_picture){
             Intent intent = new Intent(Intent.ACTION_PICK);
             intent.setType(android.provider.MediaStore.Images.Media.CONTENT_TYPE);
             intent.setData(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
