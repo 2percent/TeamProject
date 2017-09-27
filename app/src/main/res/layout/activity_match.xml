@@ -59,12 +59,12 @@
 
         <ImageButton
             android:id="@+id/imagebtn_match_calender"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginLeft="16dp"
             android:layout_gravity="center"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="24dp"
             app:srcCompat="@drawable/calender" />
 
 

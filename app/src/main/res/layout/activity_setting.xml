@@ -25,7 +25,7 @@
                 android:id="@+id/expandableButton1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="#9c27b0"
+                android:background="#FCB9BD"
                 android:drawableRight="@android:drawable/arrow_down_float"
                 android:onClick="expandableButton1"
                 android:paddingRight="10dp"
@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/expandableButton1"
-                android:background="#ba68c8"
+                android:background="#ffffff"
                 android:padding="16dp"
                 app:ael_duration="400"
                 app:ael_expanded="false"
@@ -56,7 +56,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/expandableLayout1"
-                android:background="#2196f3"
+                android:background="#FA404D"
                 android:drawableRight="@android:drawable/arrow_down_float"
                 android:onClick="expandableButton2"
                 android:paddingRight="10dp"
@@ -69,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/expandableButton2"
-                android:background="#90caf9"
+                android:background="#fff"
                 android:padding="0.1dp"
                 app:ael_duration="400"
                 app:ael_expanded="false"
@@ -80,7 +80,8 @@
                     android:id="@+id/fragment2"
                     android:name="edu.android.teamproject.UpdateFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    tools:layout="@layout/fragment_update" />
 
             </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
@@ -89,7 +90,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/expandableLayout2"
-                android:background="#10a106"
+                android:background="#FCB9BD"
                 android:drawableRight="@android:drawable/arrow_down_float"
                 android:onClick="expandableButton3"
                 android:paddingRight="10dp"
@@ -101,7 +102,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/expandableButton3"
-                android:background="#9010a106"
+                android:background="#fff"
                 android:padding="0.1dp"
                 app:ael_duration="400"
                 app:ael_expanded="false"
@@ -120,7 +121,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/expandableLayout3"
-                android:background="#ff9800"
+                android:background="#FCB9BD"
                 android:drawableRight="@android:drawable/arrow_down_float"
                 android:onClick="expandableButton4"
                 android:paddingRight="10dp"
@@ -132,7 +133,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/expandableButton4"
-                android:background="#ffcc80"
+                android:background="#fff"
                 app:ael_duration="400"
                 app:ael_expanded="false"
                 app:ael_interpolator="accelerate"
@@ -142,7 +143,8 @@
                     android:id="@+id/fragment"
                     android:name="edu.android.teamproject.UpdateFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    tools:layout="@layout/fragment_update" />
             </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
         </LinearLayout>

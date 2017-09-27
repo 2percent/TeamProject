@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -65,7 +64,6 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
             edit.putString("startday",startday);
 
             edit.commit();
-
 
             if(my.equals("")){
                 edit_match_my_phone.setHintTextColor(getResources().getColor(R.color.colorAccent));

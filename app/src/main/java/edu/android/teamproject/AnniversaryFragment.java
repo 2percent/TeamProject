@@ -27,7 +27,7 @@ public class AnniversaryFragment extends Fragment implements View.OnClickListene
     private static final String TAG = "edu.android";
 
     ImageButton imagebtn_anniversary_calender;
-    TextView text_add_anniversary;
+    TextView text_add_anniversary, text_match_start_day;
 
     private AppCompatActivity compatActivity;
     private ListView listView;
@@ -107,9 +107,7 @@ public class AnniversaryFragment extends Fragment implements View.OnClickListene
 
         } // end if()
 
-
     } // end onClick()
-
 
     @Override
     public void dateSelected(int year, int month, int day) {
@@ -125,7 +123,6 @@ public class AnniversaryFragment extends Fragment implements View.OnClickListene
              buffer.append(s);
           } // end for()
             text_add_anniversary.setText(buffer);
-
 
         } // end if()
 

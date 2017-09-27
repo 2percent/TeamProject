@@ -21,7 +21,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            app:srcCompat="@drawable/heart" />
+            app:srcCompat="@drawable/logo" />
 
         <ImageButton
             android:id="@+id/imagebtn_anniversary_calender"
@@ -57,9 +57,12 @@
             android:id="@+id/text_add_anniversary"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_margin="8dp"
             android:layout_weight="0.87"
+            android:gravity="center"
             android:hint="추가된 기념일"
+            android:lines="5"
             android:scrollbars="vertical"
             android:textSize="24sp" />
 
