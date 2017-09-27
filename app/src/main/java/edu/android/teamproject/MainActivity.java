@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,SettingActivity.class);
+                overridePendingTransition(R.anim.anim_slide_in_bottom, R.anim.anim_slide_out_top);
                 startActivity(intent);
             }
         });
