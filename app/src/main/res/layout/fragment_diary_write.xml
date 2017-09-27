@@ -9,13 +9,13 @@
     tools:context="edu.android.teamproject.DiaryDivideFragment">
 
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="6"
         android:fillViewport="true">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -124,6 +124,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/selfpicture" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
                 <Spinner
                     android:id="@+id/spinner_diary_write_size"
@@ -146,21 +153,18 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
 
-
-
             </LinearLayout>
-
 
             <EditText
                 android:id="@+id/edit_diary_write_content"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:ems="10"
                 android:hint="여기에 일기를 써보세요"
                 android:inputType="textMultiLine"
-                android:lines="6"
+                android:lines="4"
                 android:scrollHorizontally="false"
                 android:scrollbars="vertical" />
 
