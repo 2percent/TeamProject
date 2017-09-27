@@ -89,42 +89,48 @@
             </LinearLayout>
 
 
-            <ImageView
-                android:id="@+id/image_diary_write_add_picture"
-                style="@style/Base.Widget.AppCompat.Button.Borderless"
-                android:layout_width="match_parent"
-                android:layout_height="260dp"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/border"/>
-                <!--app:srcCompat="@drawable/savepicture"/>-->
+            <!--app:srcCompat="@drawable/savepicture"/>-->
                 <!--android:layout_weight="5"-->
 
 
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/imagebtn_diary_write_add_picture"
-                    style="@style/Base.Widget.AppCompat.Button.Borderless"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/pictureadd" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="250dp">
+    <ImageView
+        android:id="@+id/image_diary_write_add_picture"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/border" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-                <ImageButton
-                    android:id="@+id/imagebtn_diary_write_edit_picture"
-                    style="@style/Base.Widget.AppCompat.Button.Borderless"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/selfpicture" />
-            </LinearLayout>
+        <ImageButton
+            android:id="@+id/imagebtn_diary_write_add_picture"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/pictureadd" />
+
+        <ImageButton
+            android:id="@+id/imagebtn_diary_write_edit_picture"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/selfpicture" />
+    </LinearLayout>
+</LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
