@@ -10,23 +10,41 @@
 
     <!-- spinner 속성값 -->
     <string-array name="color">
-        <item>검은색</item>
-        <item>초록색</item>
-        <item>빨간색</item>
-        <item>파란색</item>
+        <item>색깔</item>
+        <item>BLACK</item>
+        <item>RED</item>
+        <item>GREEN</item>
+        <item>BLUE</item>
+        <item>YELLOW</item>
+        <item>WHITE</item>
     </string-array>
 
     <!-- spinner 속성값 -->
     <string-array name="font">
-        <item>한나체</item>
-        <item>주아체</item>
+        <item>폰트</item>
+        <item>배민주아체</item>
+        <item>배민한나체</item>
+        <item>배민도현체</item>
+        <item>배민연성체</item>
+
     </string-array>
 
     <!-- spinner 속성값 -->
     <string-array name="size">
+        <item>크기</item>
         <item>16sp</item>
+        <item>18sp</item>
         <item>20sp</item>
+        <item>22sp</item>
         <item>24sp</item>
+        <item>26sp</item>
+        <item>28sp</item>
+        <item>30sp</item>
+        <item>32sp</item>
+        <item>34sp</item>
+        <item>36sp</item>
+        <item>38sp</item>
+        <item>40sp</item>
     </string-array>
 
 </resources>

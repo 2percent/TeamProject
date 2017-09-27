@@ -42,8 +42,8 @@
                     android:layout_gravity="center"
                     android:layout_weight="3"
                     android:gravity="center"
-                    android:text="2017/12/25"
-                    android:textSize="18sp" />
+                    android:hint="일기를 보여줄 날짜를 선택하세요"
+                    android:textSize="14sp" />
 
                 <ImageButton
                     android:id="@+id/imagebtn_diary_write_calender"
@@ -69,8 +69,8 @@
                         android:gravity="center"
                         android:inputType="text"
                         android:maxLength="6"
-                        android:text="맑음^^"
-                        android:textSize="10sp" />
+                        android:hint="오늘 날씨는요?"
+                        android:textSize="14sp" />
 
                     <EditText
                         android:id="@+id/edit_diary_write_kimozzi"
@@ -80,8 +80,8 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:inputType="text"
-                        android:text="행복해요 ^-^"
-                        android:textSize="10sp" />
+                        android:hint="기분은 어때요?"
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -93,24 +93,25 @@
                 <!--android:layout_weight="5"-->
 
 
-
-
-
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="250dp">
+    android:layout_height="0dp"
+    android:layout_weight="3">
+
     <ImageView
         android:id="@+id/image_diary_write_add_picture"
         style="@style/Base.Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="250dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
+        android:layout_weight="8"
         android:src="@drawable/border" />
+
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:orientation="vertical">
 
         <ImageButton
@@ -119,6 +120,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_marginRight="20dp"
             app:srcCompat="@drawable/pictureadd" />
 
         <ImageButton
@@ -127,15 +129,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_marginRight="20dp"
             app:srcCompat="@drawable/selfpicture" />
-    </LinearLayout>
-</LinearLayout>
 
+    </LinearLayout>
+
+</LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
                 android:orientation="horizontal">
 
                 <Spinner
@@ -166,7 +170,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:ems="10"
                 android:hint="여기에 일기를 써보세요"
                 android:inputType="textMultiLine"
