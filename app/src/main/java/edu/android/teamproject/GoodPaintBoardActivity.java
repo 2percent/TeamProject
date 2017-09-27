@@ -45,7 +45,7 @@ public class GoodPaintBoardActivity extends AppCompatActivity {
 	ImageButton colorBtn;
 	ImageButton penBtn;
 	ImageButton saveBtn;
-	ImageButton undoBtn;
+
 
     int mColor = 0xff000000;
 	int mSize = 2;
@@ -86,7 +86,7 @@ public class GoodPaintBoardActivity extends AppCompatActivity {
         colorBtn = (ImageButton) findViewById(R.id.colorBtn);
         penBtn = (ImageButton) findViewById(R.id.penBtn);
         saveBtn = (ImageButton) findViewById(R.id.savebtn);
-        undoBtn = (ImageButton) findViewById(R.id.undoBtn);
+
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -182,13 +182,7 @@ public class GoodPaintBoardActivity extends AppCompatActivity {
             }
         });
         
-        undoBtn.setOnClickListener(new OnClickListener() {
-        	public void onClick(View v) {
-        		
-        		board.undo();
-        		
-        	}
-        });
+
         
     }
     

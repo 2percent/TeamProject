@@ -6,6 +6,8 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,10 +17,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.File;
@@ -29,7 +33,8 @@ import java.net.URI;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DiaryWriteFragment extends Fragment implements View.OnClickListener, DateDialogFragment.DateSelectListener{
+public class DiaryWriteFragment extends Fragment implements View.OnClickListener, DateDialogFragment.DateSelectListener
+, AdapterView.OnItemSelectedListener{
 
     private static final String TAG = "edu.android";
     private static final int SELECT_IMAGE = 100;
@@ -45,6 +50,7 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
     Uri image_uri ;
     private Bitmap image_bitmap;
     private Bitmap image_return;
+    Spinner spinner_diary_write_size , spinner_diary_write_font , spinner_diary_write_color;
     public DiaryWriteFragment() {
         // Required empty public constructor
     }
@@ -71,6 +77,12 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
         imagebtn_diary_write_calender.setOnClickListener(this);
 
         text_diary_write_receiveday = view.findViewById(R.id.text_diary_write_receiveday);
+        spinner_diary_write_size = view.findViewById(R.id.spinner_diary_write_size);
+        spinner_diary_write_size.setOnItemSelectedListener(this);
+        spinner_diary_write_color = view.findViewById(R.id.spinner_diary_write_color);
+        spinner_diary_write_color.setOnItemSelectedListener(this);
+
+
 
         return view;
     }
@@ -188,5 +200,39 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
     @Override
     public void dateSelected(int year, int month, int dayOfMonth) {
         text_diary_write_receiveday.setText(year + " / " + (1+month) + " / " + dayOfMonth);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        // 현호형 이거 view 객체로 하는게아니라 adapterView로 하니까 됩니다. 이걸로 하시면 될듯요!!!
+        if(adapterView == spinner_diary_write_size){
+            if(i == 0){
+                edit_diary_write_content.setTextSize(10);
+            }else if(i == 1){
+                edit_diary_write_content.setTextSize(16);
+            }else if(i == 2){
+                edit_diary_write_content.setTextSize(32);
+            }
+        }else if(adapterView == spinner_diary_write_color){
+            if(i == 0){
+                edit_diary_write_content.setTextColor(Color.BLUE);
+            }else if(i == 1){
+                edit_diary_write_content.setTextColor(Color.GREEN);
+            }else if(i == 2){
+                edit_diary_write_content.setTextColor(Color.RED);
+            }
+        }else if(adapterView == spinner_diary_write_font){
+            if(i == 0){
+                Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(),"fonts/BMJUA.ttf");
+                edit_diary_write_content.setTypeface(typeface);
+            }
+
+        }
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

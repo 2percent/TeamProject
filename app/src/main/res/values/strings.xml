@@ -11,7 +11,7 @@
     <!-- spinner 속성값 -->
     <string-array name="color">
         <item>파란색</item>
-        <item>남색</item>
+        <item>초록색</item>
         <item>빨간색</item>
     </string-array>
 
