@@ -11,7 +11,7 @@
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="7.4"
+        android:layout_weight="6"
         android:fillViewport="true">
 
         <LinearLayout
@@ -70,7 +70,7 @@
                         android:inputType="text"
                         android:maxLength="6"
                         android:text="맑음^^"
-                        android:textSize="16sp" />
+                        android:textSize="10sp" />
 
                     <EditText
                         android:id="@+id/edit_diary_write_kimozzi"
@@ -81,7 +81,7 @@
                         android:gravity="center"
                         android:inputType="text"
                         android:text="행복해요 ^-^"
-                        android:textSize="16sp" />
+                        android:textSize="10sp" />
 
 
                 </LinearLayout>
