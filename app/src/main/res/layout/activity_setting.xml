@@ -19,12 +19,14 @@
 
             <Button
                 android:id="@+id/expandableButton1"
+
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/radiusu"
+                android:background="#fff"
                 android:drawableRight="@drawable/down_arrow"
                 android:onClick="expandableButton1"
                 android:paddingRight="10dp"
+
                 android:text="A"
                 android:textColor="#706162" />
 
@@ -117,7 +119,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/expandableLayout3"
-                android:background="@drawable/radiusb"
+                android:background="#fff"
                 android:drawableRight="@drawable/down_arrow"
                 android:onClick="expandableButton4"
                 android:paddingRight="10dp"
