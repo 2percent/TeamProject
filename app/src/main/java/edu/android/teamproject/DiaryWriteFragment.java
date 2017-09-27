@@ -208,21 +208,24 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
         // 현호형 이거 view 객체로 하는게아니라 adapterView로 하니까 됩니다. 이걸로 하시면 될듯요!!!
         if(adapterView == spinner_diary_write_size){
             if(i == 0){
-                edit_diary_write_content.setTextSize(10);
-            }else if(i == 1){
                 edit_diary_write_content.setTextSize(16);
+            }else if(i == 1){
+                edit_diary_write_content.setTextSize(20);
             }else if(i == 2){
-                edit_diary_write_content.setTextSize(32);
+                edit_diary_write_content.setTextSize(24);
             }
         }
         if(adapterView == spinner_diary_write_color){
             Log.i(TAG,"컬러");
             if(i == 0){
-                edit_diary_write_content.setTextColor(Color.BLUE);
+                edit_diary_write_content.setTextColor(Color.BLACK);
             }else if(i == 1){
                 edit_diary_write_content.setTextColor(Color.GREEN);
             }else if(i == 2){
                 edit_diary_write_content.setTextColor(Color.RED);
+            }
+            else if(i == 3){
+                edit_diary_write_content.setTextColor(Color.BLUE);
             }
         }
         if(adapterView == spinner_diary_write_font){
