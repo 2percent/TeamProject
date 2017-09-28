@@ -7,6 +7,7 @@
     <string name="DW">일기쓰기</string>
     <string name="us">우리</string>
     <string name="title_activity_basic">BasicActivity</string>
+    <string name="hint"><font size="8">나는 모든 추억을 불사르겠습니다 를 입력</font></string>
 
     <!-- spinner 속성값 -->
     <string-array name="color">

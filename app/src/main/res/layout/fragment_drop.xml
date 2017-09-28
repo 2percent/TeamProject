@@ -1,0 +1,43 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="edu.android.teamproject.DropFragment">
+
+    <TextView
+        android:id="@+id/areYouSure"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="탈퇴하시겠습니까?"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        android:textSize="30dp"/>
+
+
+    <TextView
+        android:id="@+id/areYouSure2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:gravity="center"
+        android:text="모든 회원 정보가 영구히 삭제됩니다." />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+        <EditText
+            android:id="@+id/EditReally"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:hint="@string/hint"
+            android:inputType="textPersonName" />
+    </android.support.design.widget.TextInputLayout>
+</LinearLayout>
+
