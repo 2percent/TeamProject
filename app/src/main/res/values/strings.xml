@@ -47,5 +47,15 @@
         <item>38sp</item>
         <item>40sp</item>
     </string-array>
-
+    <string-array name="back">
+        <item>배경</item>
+        <item>꽃</item>
+        <item>분홍</item>
+        <item>천사</item>
+        <item>빈티지1</item>
+        <item>빈티지2</item>
+        <item>빈티지3</item>
+        <item>책</item>
+        <item>풀</item>
+    </string-array>
 </resources>

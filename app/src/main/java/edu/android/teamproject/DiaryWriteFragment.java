@@ -2,7 +2,6 @@ package edu.android.teamproject;
 
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,13 +16,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.File;
 
@@ -43,12 +40,12 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
     TextView text_diary_write_receiveday;
     ImageButton imagebtn_diary_write_sendTo;
     ImageView image_diary_write_add_picture;
-    ImageButton add_picture, edit_picture;
+    TextView add_picture, edit_picture;
     ImageButton imagebtn_diary_write_calender;
     Uri image_uri;
     private Bitmap image_bitmap;
 
-    Spinner spinner_diary_write_size, spinner_diary_write_font, spinner_diary_write_color;
+    Spinner spinner_diary_write_size, spinner_diary_write_font, spinner_diary_write_color , spinner_diary_write_background;
 
     public DiaryWriteFragment() {
         // Required empty public constructor
@@ -83,11 +80,12 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
         spinner_diary_write_size = view.findViewById(R.id.spinner_diary_write_size);
         spinner_diary_write_font = view.findViewById(R.id.spinner_diary_write_font);
         spinner_diary_write_color = view.findViewById(R.id.spinner_diary_write_color);
+        spinner_diary_write_background = view.findViewById(R.id.spinner_diary_write_background);
         // 스피너 아이템 등록
         spinner_diary_write_size.setOnItemSelectedListener(this);
         spinner_diary_write_font.setOnItemSelectedListener(this);
         spinner_diary_write_color.setOnItemSelectedListener(this);
-
+        spinner_diary_write_background.setOnItemSelectedListener(this);
 //        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/BMJUA.ttf");
 //        edit_diary_write_content.setTypeface(typeface);
 
@@ -267,10 +265,30 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
             } else if (i == 4) {
                 Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/BMYEONSUNG.ttf");
                 edit_diary_write_content.setTypeface(typeface);
+            }else if(i==0){
+                edit_diary_write_content.setTypeface(null);
             }
-
-
-
+        }
+        if (adapterView == spinner_diary_write_background){
+            if(i==1){
+                edit_diary_write_content.setBackground(getResources().getDrawable(R.drawable.textback1));
+            }else if (i==2){
+                edit_diary_write_content.setBackground(getResources().getDrawable(R.drawable.textback2));
+            }else if(i ==3){
+                edit_diary_write_content.setBackground(getResources().getDrawable(R.drawable.textback3));
+            }else if(i ==4){
+                edit_diary_write_content.setBackground(getResources().getDrawable(R.drawable.textback4));
+            }else if(i ==5){
+                edit_diary_write_content.setBackground(getResources().getDrawable(R.drawable.textback5));
+            }else if(i ==6){
+                edit_diary_write_content.setBackground(getResources().getDrawable(R.drawable.textback6));
+            }else if(i ==7){
+                edit_diary_write_content.setBackground(getResources().getDrawable(R.drawable.textback7));
+            }else if(i ==8){
+                edit_diary_write_content.setBackground(getResources().getDrawable(R.drawable.textback8));
+            }else if(i==0){
+                edit_diary_write_content.setBackground(null);
+            }
         }
 
     }// end onselected

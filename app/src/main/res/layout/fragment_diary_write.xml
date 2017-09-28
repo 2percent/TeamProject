@@ -8,21 +8,23 @@
     android:layout_margin="8dp"
     tools:context="edu.android.teamproject.DiaryDivideFragment">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="6"
-        android:fillViewport="true">
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="6"-->
+        <!--android:fillViewport="true">-->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/border2"
+            android:layout_weight="10"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border2"
                 android:orientation="horizontal">
 
                 <TextView
@@ -50,6 +52,7 @@
                     style="@style/Base.Widget.AppCompat.Button.Borderless"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/calender" />
@@ -57,7 +60,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="1.7"
                     android:orientation="vertical">
 
                     <EditText
@@ -68,6 +71,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:inputType="text"
+                        android:background="@drawable/border2"
                         android:maxLength="6"
                         android:hint="오늘 날씨는요?"
                         android:textSize="14sp" />
@@ -77,6 +81,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_gravity="center"
+                        android:background="@drawable/border2"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:inputType="text"
@@ -93,53 +98,63 @@
                 <!--android:layout_weight="5"-->
 
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="3">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4.21">
 
-    <ImageView
-        android:id="@+id/image_diary_write_add_picture"
-        style="@style/Base.Widget.AppCompat.Button.Borderless"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        android:layout_weight="8"
-        android:src="@drawable/border" />
+                <ImageView
+                    android:id="@+id/image_diary_write_add_picture"
+                    style="@style/Base.Widget.AppCompat.Button.Borderless"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="4dp"
+                    android:layout_weight="6"
+                    android:adjustViewBounds="true"
+                    android:padding="1dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/border" />
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/imagebtn_diary_write_add_picture"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="20dp"
-            app:srcCompat="@drawable/pictureadd" />
+                    <TextView
+                        android:id="@+id/imagebtn_diary_write_add_picture"
+                        style="@style/Base.Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/addpicture"
+                        android:layout_height="match_parent"
+                        android:scaleX="0.4"
+                        android:scaleY="0.4"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1" />
 
-        <ImageButton
-            android:id="@+id/imagebtn_diary_write_edit_picture"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="20dp"
-            app:srcCompat="@drawable/selfpicture" />
+                    <TextView
+                        android:id="@+id/imagebtn_diary_write_edit_picture"
+                        style="@style/Base.Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="#FFFFFF"
+                        android:scaleY="0.6"
+                        android:scaleX="0.6"
+                        android:textSize="12dp"
+                        android:text="그림을 그려주세요"
+                        android:background="@drawable/editpicture"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"/>
 
-    </LinearLayout>
+                </LinearLayout>
 
-</LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.5"
+                android:background="@drawable/border2"
                 android:orientation="horizontal">
 
                 <Spinner
@@ -147,6 +162,7 @@
                     android:entries="@array/size"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/border2"
                     android:layout_weight="1" />
 
                 <Spinner
@@ -154,6 +170,7 @@
                     android:entries="@array/font"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/border2"
                     android:layout_weight="1" />
 
                 <Spinner
@@ -161,6 +178,17 @@
                     android:entries="@array/color"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/border2"
+
+                    android:layout_weight="1" />
+
+                <Spinner
+                    android:id="@+id/spinner_diary_write_background"
+                    android:entries="@array/back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border2"
+
                     android:layout_weight="1" />
 
             </LinearLayout>
@@ -170,22 +198,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="4.10"
                 android:ems="10"
-                android:hint="여기에 일기를 써보세요"
+                android:hint="    여기에 일기를 써보세요"
                 android:inputType="textMultiLine"
-                android:lines="4"
                 android:scrollHorizontally="false"
                 android:scrollbars="vertical" />
 
-        </LinearLayout>
-
-    </ScrollView>
-
-    <LinearLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.5"
+                android:background="@drawable/border2"
+                android:layout_weight="0.6"
                 android:orientation="horizontal">
 
                 <ImageButton
@@ -193,6 +217,7 @@
                     style="@style/Base.Widget.AppCompat.Button.Borderless"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/temporarysave" />
 
@@ -201,10 +226,16 @@
                     style="@style/Base.Widget.AppCompat.Button.Borderless"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/sendto" />
 
             </LinearLayout>
+        </LinearLayout>
+
+    <!--</ScrollView>-->
+
+
 
 
 </LinearLayout>

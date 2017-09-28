@@ -5,7 +5,7 @@
             <stroke android:width="1dp"
                 android:color="#4F4C4C" />
             <solid android:color="#00FFFFFF" />
-            <corners android:radius = "4dp"/>
+
         </shape>
     </item>
 </layer-list>

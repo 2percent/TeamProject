@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         setContentView(R.layout.activity_main);
 
         AppBarLayout app = (AppBarLayout)findViewById(R.id.appbar);
+
         app.setBackgroundColor(Color.rgb(232,60,60));
 
         mainText = (TextView) findViewById(R.id.text_main_tab_selected);
@@ -81,9 +82,9 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
 //        MainActivity TabView Image -> onTabSelected()
         tabLayout = (TabLayout) findViewById(R.id.tabs_main);
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.pen));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.lovediary));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.couple));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.write));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.diary));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.calendar));
         tabLayout.addOnTabSelectedListener(this);
 
         ImageButton setting = (ImageButton) findViewById(R.id.btn_main_settings);
