@@ -92,9 +92,9 @@ public class GoodPaintBoardActivity extends AppCompatActivity {
 
         boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
 
-        colorBtn = (ImageButton) findViewById(R.id.colorBtn);
-        penBtn = (ImageButton) findViewById(R.id.penBtn);
-        saveBtn = (ImageButton) findViewById(R.id.savebtn);
+        colorBtn = (ImageButton) findViewById(R.id.imagebtn_paint_select_color);
+        penBtn = (ImageButton) findViewById(R.id.imagebtn_paint_select_brush);
+        saveBtn = (ImageButton) findViewById(R.id.imagebtn_paint_select_save);
 
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(

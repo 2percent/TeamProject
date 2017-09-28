@@ -2,27 +2,22 @@ package edu.android.teamproject;
 
 
 import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.media.Image;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -33,8 +28,6 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -51,14 +44,12 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
     EditText edit_diary_write_weather,
             edit_diary_write_kimozzi,
             edit_diary_write_content;
-    TextView text_diary_write_receiveday;
+    TextView text_diary_write_receiveday ,imagebtn_diary_write_add_picture ,imagebtn_diary_write_edit_picture ;
     ImageButton imagebtn_diary_write_sendTo;
     ImageView image_diary_write_add_picture;
-    TextView add_picture, edit_picture;
     ImageButton imagebtn_diary_write_calender;
-    Uri image_uri ;
+    Uri image_uri;
     private Bitmap image_bitmap;
-    Spinner spinner_diary_write_size , spinner_diary_write_font , spinner_diary_write_color;
     private String fileName;
     private int count;
 
@@ -83,12 +74,13 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
         edit_diary_write_content = view.findViewById(R.id.edit_diary_write_content);
         //edittext 자동 줄바꿈
         edit_diary_write_content.setHorizontallyScrolling(false);
+
         image_diary_write_add_picture = view.findViewById(R.id.image_diary_write_add_picture);
-        add_picture = view.findViewById(R.id.imagebtn_diary_write_add_picture);
-        add_picture.setOnClickListener(this);
+        imagebtn_diary_write_add_picture = view.findViewById(R.id.imagebtn_diary_write_add_picture);
+        imagebtn_diary_write_add_picture.setOnClickListener(this);
         image_uri = null;
-        edit_picture = view.findViewById(R.id.imagebtn_diary_write_edit_picture);
-        edit_picture.setOnClickListener(this);
+        imagebtn_diary_write_edit_picture = view.findViewById(R.id.imagebtn_diary_write_edit_picture);
+        imagebtn_diary_write_edit_picture.setOnClickListener(this);
         imagebtn_diary_write_sendTo = view.findViewById(R.id.imagebtn_diary_write_sendto);
         imagebtn_diary_write_sendTo.setOnClickListener(this);
         imagebtn_diary_write_calender = view.findViewById(R.id.imagebtn_diary_write_calender);
@@ -159,12 +151,11 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
                         Log.i(TAG, "onActivityResult:fileName=" + fileName);
                         File imgFile = new  File(fileName);
 
-                        if(imgFile.exists()){
+                        if (imgFile.exists()) {
 
                             Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
 
                             image_diary_write_add_picture.setImageBitmap(myBitmap);
-
 
 
                         }
@@ -175,19 +166,22 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
                     e.printStackTrace();
                 }
             }
-        }
-        else if (requestCode == 2){
-            if(resultCode == Activity.RESULT_OK){
+        } else if (requestCode == 2) {
+            if (resultCode == Activity.RESULT_OK) {
 
                 try {
                     if (data != null) {
                         fileName = data.getStringExtra("image");
                         Log.i(TAG, "onActivityResult:fileName=" + fileName);
-                        File imgFile = new  File(fileName);
+                        File imgFile = new File(fileName);
 
-                        if(imgFile.exists()){
-                            image_bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-                            image_diary_write_add_picture.setImageBitmap(image_bitmap);
+                        if (imgFile.exists()) {
+
+                            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+
+                            image_diary_write_add_picture.setImageBitmap(myBitmap);
+
+
                         }
                     }
 
@@ -206,7 +200,7 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
         if(view == imagebtn_diary_write_sendTo){
             // 일기장 등록
             insertDiary();
-        }else if(view == imagebtn_edit){
+        }else if(view == imagebtn_diary_write_edit_picture){
             if(image_uri != null){
                 Intent intent = new Intent(getContext(), GoodPaintBoardActivity.class);
                 intent.putExtra("image_uri",image_uri);
@@ -215,17 +209,17 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
                 startActivityForResult(intent,1);
             }else{
                 Intent intent = new Intent(getContext(), GoodPaintBoardActivity2.class);
-                startActivityForResult(intent,2);
+                startActivityForResult(intent, 2);
             }
 
-        }else if(view == image_diary_write_add_picture){
+        } else if (view == imagebtn_diary_write_add_picture) {
             Intent intent = new Intent(Intent.ACTION_PICK);
             intent.setType(android.provider.MediaStore.Images.Media.CONTENT_TYPE);
             intent.setData(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(intent, SELECT_IMAGE);
-        }else if(view == imagebtn_diary_write_calender){
+        } else if (view == imagebtn_diary_write_calender) {
             DateDialogFragment dlg = new DateDialogFragment(this);
-            dlg.show(getFragmentManager(),"DiaryWrite_Fragment_Date_dlg");
+            dlg.show(getFragmentManager(), "DiaryWrite_Fragment_Date_dlg");
         }
     }
 
@@ -267,16 +261,14 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void dateSelected(int year, int month, int dayOfMonth) {
-        text_diary_write_receiveday.setText(year + "/" + (1+month) + "/" + dayOfMonth);
+        text_diary_write_receiveday.setText(year + " / " + (1 + month) + " / " + dayOfMonth);
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         // 현호형 이거 view 객체로 하는게아니라 adapterView로 하니까 됩니다. 이걸로 하시면 될듯요!!!
-        if(adapterView == spinner_diary_write_size){
-            if(i == 0){
-                edit_diary_write_content.setTextSize(10);
-            }else if(i == 1){
+        if (adapterView == spinner_diary_write_size) {
+            if (i == 1) {
                 edit_diary_write_content.setTextSize(16);
             } else if (i == 2) {
                 edit_diary_write_content.setTextSize(18);
@@ -339,7 +331,6 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
             }else if(i==0){
                 edit_diary_write_content.setTypeface(null);
             }
-
         }
         if (adapterView == spinner_diary_write_background){
             if(i==1){
