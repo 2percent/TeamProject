@@ -138,10 +138,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textColor="#FFFFFF"
-                        android:scaleY="0.6"
-                        android:scaleX="0.6"
-                        android:textSize="12dp"
-                        android:text="그림을 그려주세요"
+                        android:scaleY="0.4"
+                        android:scaleX="0.4"
                         android:background="@drawable/editpicture"
                         android:layout_marginRight="5dp"
                         android:layout_weight="1"/>
