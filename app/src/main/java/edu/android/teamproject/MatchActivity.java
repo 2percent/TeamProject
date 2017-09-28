@@ -62,6 +62,7 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
             edit.putString("my", my);
             edit.putString("your", your);
             edit.putString("startday",startday);
+            edit.putInt("key", 0);
 
             edit.commit();
 

@@ -61,15 +61,16 @@ public class DiaryFragment extends Fragment {
             Fragment fragment = null;
             if(position == 0){
                 fragment = new DiaryDivideFragment();
-            } else if (position == 1){
-                fragment = new DiaryDivideFragment();
             }
+//            else if (position == 1){
+//                fragment = new DiaryDivideFragment();
+//            }
             return fragment;
         }
 
         @Override
         public int getCount() {
-            return 2;
+            return 1;
         }
 
         @Override
@@ -77,8 +78,8 @@ public class DiaryFragment extends Fragment {
             switch (position){
                 case 0:
                     return "나";
-                case 1:
-                    return "너";
+//                case 1:
+//                    return "너";
             }
             return null;
         }

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -22,7 +23,7 @@ public class UpdateFragment extends Fragment implements View.OnClickListener{
 
     EditText editPw, editMyPhone, editYourPhone;
     private Button btn_update;
-
+    private String startday;
     public UpdateFragment() {
         // Required empty public constructor
     }
@@ -46,6 +47,8 @@ public class UpdateFragment extends Fragment implements View.OnClickListener{
         String pw = pref.getString("pw", "");
         String my = pref.getString("my", "");
         String you = pref.getString("your", "");
+        startday = pref.getString("startday", "");
+
         editPw.setText(pw);
         editMyPhone.setText(my);
         editYourPhone.setText(you);
@@ -66,9 +69,12 @@ public class UpdateFragment extends Fragment implements View.OnClickListener{
             m.setPassword(editPw.getText().toString());
             m.setMyPhoneNum(editMyPhone.getText().toString());
             m.setYourPhoneNum(editYourPhone.getText().toString());
+            m.setStartDay(startday);
 
             DiaryLab dao = DiaryLab.getInstance();
             dao.updateMember(m);
+
+            Toast.makeText(getContext(), "회원정보수정 완료 되었습니다.", Toast.LENGTH_SHORT).show();
 
         }
     }

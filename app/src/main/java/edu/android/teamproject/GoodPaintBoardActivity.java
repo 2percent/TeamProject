@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,13 +19,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 색상이나 선굵기를 선택할 수 있도록 기능 추가
@@ -49,6 +58,8 @@ public class GoodPaintBoardActivity extends AppCompatActivity {
     public static LinearLayout boardLayout;
     private Uri imageUri;
 
+    private String id, sendDate;
+
     private String getRealPathFromURI(Context context, Uri contentUri) {
         Cursor cursor = null;
         try {
@@ -73,12 +84,17 @@ public class GoodPaintBoardActivity extends AppCompatActivity {
         setContentView(R.layout.paint);
 
         final Intent data = getIntent();
+        id = data.getStringExtra("id");
+        SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
+        sendDate = df.format(new Date());
+
+
 
         boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
 
-        colorBtn = (ImageButton) findViewById(R.id.imagebtn_paint_select_color);
-        penBtn = (ImageButton) findViewById(R.id.imagebtn_paint_select_brush);
-        saveBtn = (ImageButton) findViewById(R.id.imagebtn_paint_select_save);
+        colorBtn = (ImageButton) findViewById(R.id.colorBtn);
+        penBtn = (ImageButton) findViewById(R.id.penBtn);
+        saveBtn = (ImageButton) findViewById(R.id.savebtn);
 
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
@@ -159,7 +175,8 @@ public class GoodPaintBoardActivity extends AppCompatActivity {
                 Bitmap bitmapfinal = boardLayout.getDrawingCache();
 
                 try {
-                    String fileName = "/sdcard/DCIM/Camera" + System.currentTimeMillis() + ".jpg";
+                    String fileName = "/sdcard/DCIM/" + id + "_" + sendDate + ".jpg";
+
                     FileOutputStream out = new FileOutputStream(fileName);
                     bitmapfinal.compress(Bitmap.CompressFormat.JPEG,100,out);
                     Toast.makeText(GoodPaintBoardActivity.this, fileName + " 저장되었습니다.", Toast.LENGTH_SHORT).show();

@@ -8,52 +8,31 @@ import java.util.List;
  * Created by STU on 2017-09-19.
  */
 
+// Model
 public class ModelDday {
 
-    private int MemberNum;
-    private int AnniverNum;
-    Date firstMeeting;
-    List<String> anniversary = new ArrayList<>();
+    private String Anniversary;
+    private String id;
 
-    private static ModelDday instance;
-    public static ModelDday getInstace(){
-        if(instance == null){
-            instance = new ModelDday();
-        }
-        return instance;
+    public ModelDday(){}
+    public ModelDday(String anniversary, String id) {
+        this.Anniversary = anniversary;
+        this.id = id;
     }
 
-    public int getMemberNum() {
-        return MemberNum;
+    public String getId() {
+        return id;
     }
 
-    public void setMemberNum(int memberNum) {
-        MemberNum = memberNum;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public int getAnniverNum() {
-        return AnniverNum;
+    public String getAnniversary() {
+        return Anniversary;
     }
 
-    public void setAnniverNum(int anniverNum) {
-        AnniverNum = anniverNum;
+    public void setAnniversary(String anniversary) {
+        Anniversary = anniversary;
     }
-
-    public Date getFirstMeeting() {
-        return firstMeeting;
-    }
-
-    public void setFirstMeeting(Date firstMeeting) {
-        this.firstMeeting = firstMeeting;
-    }
-
-    public List<String> getAnniversary() {
-        return anniversary;
-    }
-
-    public void setAnniversary(List<String> anniversary) {
-        this.anniversary = anniversary;
-    }
-
-
 }

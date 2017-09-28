@@ -318,15 +318,9 @@ public class GoodPaintBoard extends View {
 	 * @return
 	 */
 	public boolean Save(OutputStream out) {
-
 		try {
-
-
 //			draw(new Canvas((mBitmap)));
 //			mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
-
-
-
 			invalidate();
 
 			return true;

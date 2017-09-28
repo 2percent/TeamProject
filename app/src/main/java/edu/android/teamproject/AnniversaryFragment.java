@@ -51,7 +51,7 @@ public class AnniversaryFragment extends Fragment implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_anniversary);
 
-        Log.i(TAG, "뷰_ㅠ");
+
 
 
         // Inflate the layout for this fragment
@@ -62,6 +62,12 @@ public class AnniversaryFragment extends Fragment implements View.OnClickListene
 
         ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, items);
 
+//        String startday = getContext().getSharedPreferences("id" , getContext().MODE_PRIVATE).getString("startday", "0");
+        // TODO: startday 날짜로 바꿔서 거기에 사귄날짜 현재날짜를 구해서 (현재날짜 - 사귄날짜) 사귄날짜 100, 200 , 365(1년) , 730(2년) , 1095(3년)
+//        int day = (현재날짜 - 사귄날짜);
+//        if(day == 100){
+//
+//        }
 
         // listView 생성 및 adapter 지정.
         ListView listView = (ListView) view.findViewById(R.id.list_item_view);
@@ -107,7 +113,9 @@ public class AnniversaryFragment extends Fragment implements View.OnClickListene
 
         } // end if()
 
+
     } // end onClick()
+
 
     @Override
     public void dateSelected(int year, int month, int day) {
@@ -123,6 +131,18 @@ public class AnniversaryFragment extends Fragment implements View.OnClickListene
              buffer.append(s);
           } // end for()
             text_add_anniversary.setText(buffer);
+
+
+//            String Anniversary = text_add_anniversary.getText().toString();
+//            String id = getContext().getSharedPreferences("id" , getContext().MODE_PRIVATE).getString("id", "0");
+//
+//            // Model
+//            ModelDday dday = new ModelDday(Anniversary, id);
+//
+//            // Controller
+//            DiaryLab dao = DiaryLab.getInstance();
+//            dao.insertAnniversary(dday);
+
 
         } // end if()
 
