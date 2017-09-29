@@ -93,6 +93,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:onClick="openCal"
                     android:gravity="center"
                     android:text="2017 / 09 / 21"
                     android:textSize="12sp" />
