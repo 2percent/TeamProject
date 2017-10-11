@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -12,13 +15,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tsengvn.typekit.TypekitContextWrapper;
 
@@ -30,11 +31,12 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     private TabLayout tabLayout;
     private SelectionsPagerAdapter mSelectionsPagerAdapter;
     private ViewPager mViewPager;
-    private TextView mainText;
+    private TextView mainText, text_main_count_day;
 
     private int loginCount = 0;
+    int year,month, day;
 
-
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // 아이디 존재 유무에 따라 로그인창 보여줄지 말지
@@ -60,6 +62,53 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         mainText = (TextView) findViewById(R.id.text_main_tab_selected);
         Typeface typeFace = Typeface.createFromAsset(getAssets(), "fonts/BMJUA.ttf");
         mainText.setTypeface(typeFace);
+
+      /*  // 만난지 얼마나됐는지 계산 해주는 코드
+        try{
+            Calendar todayCal = new GregorianCalendar(); // 오늘 날짜
+
+            long today = todayCal.getTimeInMillis();
+
+           // 시작일 불러주기
+            String startday = get().getSharedPreferences("id", getContext().MODE_PRIVATE).getString("startday", "");
+
+            try {
+
+                Calendar todayCal1 = new GregorianCalendar(); // 현재 날
+                Log.i(TAG, "*****" + todayCal.get(Calendar.YEAR) + "/" + todayCal.get(Calendar.MONTH) + "/" + todayCal.get(Calendar.DAY_OF_MONTH));
+
+                // 오늘 날짜
+                long today1 = todayCal.getTimeInMillis();
+                Log.i(TAG, "오늘 : "+ today1);
+
+                // 시작일
+                String[] temp = startday.split("/");
+                int year = Integer.parseInt(temp[0]);
+                int month = Integer.parseInt(temp[1]) - 1;
+                int day = Integer.parseInt(temp[2]);
+                Log.i(TAG, "*****" + year + "/" + month + "/" + day);
+
+                Calendar calendar = new GregorianCalendar(year, month, day);
+                long s = calendar.getTimeInMillis();
+
+                Log.i(TAG, "시작일 : " + s);
+
+                // getTimeInMiillis 는 millisecond 단위로 일정 시간을 반환하는 method
+                long count = (today1 - s)/ (24 * 60 * 60 * 1000);  // 총 만난날로 계산됨.
+               // text_main_count_day.setText(count);
+
+                Log.i(TAG, "총 만난 날 ..... : "+ count);
+
+
+
+
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+*/
+
+
+      //-----------------------------------------------------------------------------------
 
         mSelectionsPagerAdapter = new SelectionsPagerAdapter(getSupportFragmentManager());
 
