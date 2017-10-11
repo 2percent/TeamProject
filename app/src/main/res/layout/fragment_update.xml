@@ -16,7 +16,7 @@
         android:text="수정할 정보를 입력하세요"
         android:gravity="center"
         android:textSize="26sp"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:textColor="#FE5964"/>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/pwInputLayout"

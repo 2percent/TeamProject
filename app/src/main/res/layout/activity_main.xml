@@ -38,7 +38,7 @@
                 android:layout_gravity="center"
                 android:textColor="#FFFFFF"
                 android:gravity="center"
-                android:text="만난지 77일♥" />
+                android:text="" />
 
             <ImageButton
                 android:id="@+id/btn_main_settings"
