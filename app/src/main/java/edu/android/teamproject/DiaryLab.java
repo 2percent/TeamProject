@@ -9,8 +9,12 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.Target;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -40,15 +44,18 @@ public class DiaryLab {
     FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
     StorageReference rootReference = firebaseStorage.getReferenceFromUrl("gs://teamproject-4600b.appspot.com/");
 
-
-
     private static Context context;
 
-    private DiaryLab() {}
+    private DiaryLab() {
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
+    }
     private DiaryLab(Context context){
+        this();
         this.context = context;
     }
     private DiaryLab(Fragment f){
+        this();
         this.f = f;
     }
 
@@ -58,24 +65,22 @@ public class DiaryLab {
     public static DiaryLab getInstance() {
         if (instance == null) {
             instance = new DiaryLab();
-            firebaseDatabase = FirebaseDatabase.getInstance();
-            databaseReference = firebaseDatabase.getReference();
         }
         return instance;
     }
     public static DiaryLab getInstance(Context context) {
         if (instance == null) {
             instance = new DiaryLab(context);
-            firebaseDatabase = FirebaseDatabase.getInstance();
-            databaseReference = firebaseDatabase.getReference();
+        } else {
+            instance.context = context;
         }
         return instance;
     }
     public static DiaryLab getInstance(Fragment f) {
         if (instance == null) {
             instance = new DiaryLab(f);
-            firebaseDatabase = FirebaseDatabase.getInstance();
-            databaseReference = firebaseDatabase.getReference();
+        } else {
+            instance.f = f;
         }
         return instance;
     }
@@ -90,6 +95,9 @@ public class DiaryLab {
         try{
             DatabaseReference data = databaseReference.child("Member");
             Task<Void> finalData = data.child(m.getId()).setValue(m);
+            DatabaseReference data2 = databaseReference.child("Diary");
+            data2.child(m.getYourPhoneNum()+"_"+m.getMyPhoneNum()).setValue("회원가입성공");
+
         }catch(Exception e){
             return 0;
         }
@@ -97,7 +105,6 @@ public class DiaryLab {
     }// end insertMember()
 
     // 회원 가입이 되어있는지 안되어있는지 확인하기위해 뽑아오는 메소드
-    private boolean bool = false;
     public void isSelectAll(String id) {
         DatabaseReference data = databaseReference.child("Member");
         data.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -175,28 +182,65 @@ public class DiaryLab {
         // 데이터만 뽑아오고
         DatabaseReference data = databaseReference.child("Diary");
         DatabaseReference data2 = data.child(your+"_"+my);
-        for(int i=0; i<Integer.parseInt(key); i++) {
-            data2.child(String.valueOf(i)).addListenerForSingleValueEvent(new ValueEventListener() {
+
+            data2.addChildEventListener(new ChildEventListener() {
                 @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    Log.i(TAG, "호출!!");
                     ArrayList<ModelDiary> list = new ArrayList();
                     list.add(dataSnapshot.getValue(ModelDiary.class));
-
                     if(list.size() == 0 || list == null){
                         ((DiaryDivideFragment)f).getlistDiary(false, list);
                     }else{
-                        ((DiaryDivideFragment)f).getlistDiary(true, list);
-                        selectImageFile(list.get(0).getFileName());
+                        ((DiaryDivideFragment) f).getlistDiary(true, list);
+
                     }
+                }
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
                 }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
 
                 }
+
             });
-        }
+
     }
+
+    // 일기장 이미지 파일 가져오는 메소드
+    public void getImage(ModelDiary m, ImageView imageview, Fragment con) {
+
+        StorageReference storage = FirebaseStorage.getInstance().getReference();
+        String filename = "images/"+m.getYourPhone()+"_"+m.getMyphone()+"/"+(Integer.parseInt(m.getKey())+1)+"/"+m.getId()+"_"+m.getSendDate()+".jpg";
+        if(con instanceof DiaryDivideFragment){
+            StorageReference storageReference = storage.child(filename);
+            Log.i(TAG, filename);
+            Glide.with(con/* context */)
+                    .using(new FirebaseImageLoader())
+                    .load(storageReference)
+                    .into(imageview);
+        }
+
+
+
+
+    }
+
+
 
     // 기념일 추가 데이터 저장
     public void insertAnniversary(ModelDday dday) {
@@ -204,8 +248,4 @@ public class DiaryLab {
 //        Task<Void> finalData = data.child(dday.getId()).setValue(dday);
     }
 
-
-    public void selectImageFile(String filename) {
-
-    }
 }

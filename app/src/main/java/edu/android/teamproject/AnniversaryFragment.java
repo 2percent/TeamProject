@@ -73,8 +73,6 @@ public class AnniversaryFragment extends Fragment implements View.OnClickListene
         ListView listView = (ListView) view.findViewById(R.id.list_item_view);
         listView.setAdapter(adapter);
 
-        Log.i(TAG, "뷰뷰뷰뷰");
-
         imagebtn_anniversary_calender = (ImageButton) view.findViewById(R.id.imagebtn_anniversary_calender);
         imagebtn_anniversary_calender.setOnClickListener(this);
         text_add_anniversary = (TextView) view.findViewById(R.id.text_add_anniversary);

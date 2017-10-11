@@ -25,12 +25,22 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     private static final String[] TAB_TITLES = {"일기쓰기", "일기장", "우리"};
 
     private TabLayout tabLayout;
+    private TabLayout.Tab tab;
     private SelectionsPagerAdapter mSelectionsPagerAdapter;
     private ViewPager mViewPager;
     private TextView mainText;
+    static public Fragment tempFrag;
 
     private int loginCount = 0;
 
+    public static Fragment getTempFrag() {
+        return tempFrag;
+    }
+
+    public TabLayout.Tab getTab() {
+        tab = tabLayout.getTabAt(1);
+        return tab;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +97,8 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.calendar));
         tabLayout.addOnTabSelectedListener(this);
 
+
+
         ImageButton setting = (ImageButton) findViewById(R.id.btn_main_settings);
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,8 +148,10 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
             Fragment fragment = null;
             if (position == 0) {
                 fragment = new DiaryWriteFragment();
+
             } else if (position == 1) {
                 fragment = new DiaryFragment();
+                tempFrag = fragment;
             } else if (position == 2) {
                 fragment = new AnniversaryFragment();
             }
