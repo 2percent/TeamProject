@@ -1,5 +1,6 @@
 package edu.android.teamproject;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -18,6 +19,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
     private int tem;
@@ -72,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
         mViewPager = (ViewPager) findViewById(R.id.viewpager_main_container);
         mViewPager.setAdapter(mSelectionsPagerAdapter);
+        mViewPager.setBackgroundColor(Color.rgb(255, 255, 255));
 
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -108,6 +112,11 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
     }
 
     @Override

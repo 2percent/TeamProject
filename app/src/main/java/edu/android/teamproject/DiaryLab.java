@@ -44,6 +44,8 @@ public class DiaryLab {
     FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
     StorageReference rootReference = firebaseStorage.getReferenceFromUrl("gs://teamproject-4600b.appspot.com/");
 
+
+
     private static Context context;
 
     private DiaryLab() {
@@ -65,6 +67,8 @@ public class DiaryLab {
     public static DiaryLab getInstance() {
         if (instance == null) {
             instance = new DiaryLab();
+            firebaseDatabase = FirebaseDatabase.getInstance();
+            databaseReference = firebaseDatabase.getReference();
         }
         return instance;
     }
@@ -216,7 +220,6 @@ public class DiaryLab {
                 public void onCancelled(DatabaseError databaseError) {
 
                 }
-
             });
 
     }
@@ -234,13 +237,7 @@ public class DiaryLab {
                     .load(storageReference)
                     .into(imageview);
         }
-
-
-
-
     }
-
-
 
     // 기념일 추가 데이터 저장
     public void insertAnniversary(ModelDday dday) {
