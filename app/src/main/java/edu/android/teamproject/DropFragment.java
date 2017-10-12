@@ -2,7 +2,9 @@ package edu.android.teamproject;
 
 
 import android.app.ActivityManager;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.text.method.KeyListener;
 import android.util.Log;
@@ -120,6 +122,10 @@ public class DropFragment extends Fragment {
 
             storage3.delete();
 
+            SharedPreferences preferences = getContext().getSharedPreferences("id", 0);
+            preferences.edit().remove("id").commit();
+            preferences.edit().remove("my").commit();
+            preferences.edit().remove("your").commit();
 
             Toast.makeText(getContext(), "일기 정보가 삭제되었습니다.".toString(), Toast.LENGTH_SHORT).show();
 
