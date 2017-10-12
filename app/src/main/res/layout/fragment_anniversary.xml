@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_weight="1"
-    tools:context="edu.android.teamproject.AnniversaryFragment">
+    tools:context="edu.android.teamproject.AnniversaryFragment"
+    android:weightSum="1">
 
 
 
@@ -14,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="43dp"
         android:layout_margin="8dp"
+        android:background="@drawable/border2"
         android:orientation="horizontal">
 
 
@@ -49,6 +51,7 @@
             android:text="  우리 \n만난 날"
             android:textColor="#000000"
             android:textSize="16dp"
+            android:background="@drawable/border2"
             android:layout_margin="8dp"
             android:layout_gravity="center"
             android:gravity="center" />
@@ -60,6 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:textSize="32dp"
+            android:background="@drawable/border2"
             android:textColor="#000000"
             android:text="TextView"
             android:layout_weight="1"/>
@@ -86,10 +90,11 @@
                 android:layout_marginRight="8dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:lines="5"
+                android:lines="3"
                 android:scrollbars="vertical"
+                android:background="@drawable/border2"
                 android:text="100일 단위 "
-                android:textSize="24sp"/>
+                android:textSize="16sp"/>
 
         </ScrollView>
 
@@ -106,18 +111,25 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_weight="1"
+                android:background="@drawable/border2"
                 android:gravity="center"
-                android:lines="5"
+                android:lines="3"
                 android:text="1주년 단위 "
-                android:textSize="24sp" />
+                android:textSize="16sp" />
 
         </ScrollView>
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/back_arrow"
+        android:layout_weight="0.85" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:weightSum="1">
 
 
@@ -125,19 +137,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.95">
-        <TextView
-            android:id="@+id/text_add_anniversary"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_margin="8dp"
-            android:layout_weight="0.87"
-            android:gravity="center"
-            android:hint="추가된 기념일"
-            android:lines="5"
-            android:scrollbars="vertical"
-            android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/text_add_anniversary"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:layout_weight="0.95"
+                android:gravity="center"
+                android:hint="추가된 기념일"
+                android:lines="5"
+                android:scrollbars="vertical"
+                android:textSize="24sp" />
         </ScrollView>
+
         <ImageButton
             android:id="@+id/imagebtn_anniversary_calender"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
