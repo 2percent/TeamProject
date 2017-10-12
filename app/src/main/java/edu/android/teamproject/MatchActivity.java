@@ -2,6 +2,7 @@ package edu.android.teamproject;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -42,6 +43,7 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Intent intent = getIntent();
         String[] member = intent.getStringArrayExtra(MEMBER);
 

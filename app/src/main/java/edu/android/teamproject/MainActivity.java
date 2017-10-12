@@ -3,6 +3,7 @@ package edu.android.teamproject;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -51,6 +52,8 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         // 아이디 존재 유무에 따라 로그인창 보여줄지 말지
         SharedPreferences pref = getSharedPreferences("id", MODE_PRIVATE);
         String id = pref.getString("id", "0");
