@@ -67,8 +67,6 @@ public class DiaryLab {
     public static DiaryLab getInstance() {
         if (instance == null) {
             instance = new DiaryLab();
-            firebaseDatabase = FirebaseDatabase.getInstance();
-            databaseReference = firebaseDatabase.getReference();
         }
         return instance;
     }
@@ -179,7 +177,6 @@ public class DiaryLab {
 
     }
 
-
     // 일기 불러오기
     public void selectMyDiary(String my, String your, String key) {
 
@@ -194,10 +191,9 @@ public class DiaryLab {
                     ArrayList<ModelDiary> list = new ArrayList();
                     list.add(dataSnapshot.getValue(ModelDiary.class));
                     if(list.size() == 0 || list == null){
-                        ((DiaryDivideFragment)f).getlistDiary(false, list);
+                            ((DiaryDivideFragment)f).getlistDiary(false, list);
                     }else{
-                        ((DiaryDivideFragment) f).getlistDiary(true, list);
-
+                            ((DiaryDivideFragment) f).getlistDiary(true, list);
                     }
                 }
 

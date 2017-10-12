@@ -33,14 +33,13 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     private TabLayout.Tab tab;
     private SelectionsPagerAdapter mSelectionsPagerAdapter;
     private ViewPager mViewPager;
-    private TextView mainText, text_main_count_day;
+    private TextView text_main_count_day;
     private TextView mainText;
     static public Fragment tempFrag;
 
     private int loginCount = 0;
     int year,month, day;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public static Fragment getTempFrag() {
         return tempFrag;
     }
@@ -162,7 +161,6 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
             Fragment fragment = null;
             if (position == 0) {
                 fragment = new DiaryWriteFragment();
-
             } else if (position == 1) {
                 fragment = new DiaryFragment();
                 tempFrag = fragment;

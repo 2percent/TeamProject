@@ -36,6 +36,10 @@ public class DiaryDivideFragment extends Fragment {
     private ImageView image_diary_divide_picture; // 이미지 (fileName)
     private TextView image_diary_divide_diary_contents; // 일기내용(Content(color+font+size))
     private Spinner diary_divide_spinner;
+    public Spinner getDiary_divide_spinner() {
+        return diary_divide_spinner;
+    }
+
     private ArrayAdapter<String> adapter;
 
     public DiaryDivideFragment() {
@@ -48,9 +52,7 @@ public class DiaryDivideFragment extends Fragment {
         this.diaryFragment = diaryFragment;
     }
 
-    public Spinner getDiary_divide_spinner() {
-        return diary_divide_spinner;
-    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,35 +66,7 @@ public class DiaryDivideFragment extends Fragment {
         text_diary_divide_writeday = view.findViewById(R.id.text_diary_divide_writeday); // 일기 쓴 날짜
         image_diary_divide_picture = view.findViewById(R.id.image_diary_divide_picture);               // 사진
         image_diary_divide_diary_contents = view.findViewById(R.id.image_diary_divide_diary_contents); // 일기 내용
-        diary_divide_spinner = view.findViewById(R.id.diary_divide_spinner);  // spinner
-
-//        // 스피너 아이템 디비로부터 받아온 날짜를 넣어줌.
-//        adapter = new ArrayAdapter<String>(getContext(),
-//                android.R.layout.simple_spinner_item, spinnerItem);
-//        diary_divide_spinner.setAdapter(adapter);
-//
-//        // 스피너 선택 되었을 때
-//        diary_divide_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                // 현재 선택된 스피너의 값을 가져옴(날짜)
-//                String date = (String) diary_divide_spinner.getSelectedItem();
-//                // 디비로부터 가지고온 모든 다이어리 데이터를 스피너에서 선택된 값과 같은지 비교하기 위해 for문 사용
-//                for(int index=0; index<list.size(); index++){
-//                    Log.i(TAG,index + "");
-//                    if(list.get(index).getSendDate().equals(date)){
-//                        Log.i(TAG, "Spinner 선택값과 일치하는 Diary 찾음");
-//                        ModelDiary m = list.get(index);
-//                    }
-//                }
-//            }
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//            }
-//        });
-
-
+        diary_divide_spinner = view.findViewById(R.id.diary_divide_spinner);
 
         showMyDiary();
 
@@ -162,7 +136,6 @@ public class DiaryDivideFragment extends Fragment {
             text_diary_divide_weather.setText(model.getWeather()); // 날씨
             text_diary_divide_kimozzi.setText(model.getKimozzi()); // 기분
             text_diary_divide_writeday.setText(model.getSendDate());   // 일기 쓴 날짜
-//            image_diary_divide_picture ;               // 사진
             image_diary_divide_diary_contents.setText(model.getContent()); // 일기 내용
             image_diary_divide_diary_contents.setTextColor(model.getColor()); // 컬러
             image_diary_divide_diary_contents.setTextSize(model.getSize());   // 사이즈
@@ -177,7 +150,6 @@ public class DiaryDivideFragment extends Fragment {
             text_diary_divide_weather.setText(m.getWeather()); // 날씨
             text_diary_divide_kimozzi.setText(m.getKimozzi()); // 기분
             text_diary_divide_writeday.setText(m.getSendDate());   // 일기 쓴 날짜
-//            image_diary_divide_picture ;               // 사진
             image_diary_divide_diary_contents.setText(m.getContent()); // 일기 내용
             image_diary_divide_diary_contents.setTextColor(m.getColor()); // 컬러
             image_diary_divide_diary_contents.setTextSize(TypedValue.COMPLEX_UNIT_PX,m.getSize());   // 사이즈

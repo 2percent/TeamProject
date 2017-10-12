@@ -71,7 +71,7 @@ public class DiaryFragment extends Fragment {
                 ((DiaryDivideFragment) fragment).setDiaryFragment(DiaryFragment.this);
             }
             else if (position == 1){
-               fragment = new DiaryDivideFragment2();
+                fragment = new DiaryDivideFragment2();
             }
             return fragment;
         }
