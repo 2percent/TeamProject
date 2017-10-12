@@ -71,7 +71,7 @@ public class DropFragment extends Fragment {
         String key = String.valueOf(getContext().getSharedPreferences("id", getContext().MODE_PRIVATE).getInt("key", 0));
         String yourmy = my+"_"+your;
 
-        if(editReally.equals("1")){
+        if(editReally.getText().toString().equals("나는 모든 추억을 불사르겠습니다")){
 
             DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
             DatabaseReference mConditionRef = mRootRef.child("Diary");

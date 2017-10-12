@@ -45,8 +45,13 @@ public class SettingActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         try {
-            if (expandableLayout2.isExpanded() == true) {
+
+             if(expandableLayout2.isExpanded() == true) {
                 expandableLayout2.collapse();
+            } else if(expandableLayout3.isExpanded() == true) {
+                expandableLayout3.collapse();
+            } else if(expandableLayout4.isExpanded() == true){
+                expandableLayout4.collapse();
             } else {
                 super.onBackPressed();
             }
