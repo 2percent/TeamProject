@@ -63,6 +63,7 @@ public class DropFragment extends Fragment {
     private void dropAccount() {
 
         Toast.makeText(getContext(), editReally.getText().toString(), Toast.LENGTH_SHORT).show();
+
         // TODO: 회원 탈퇴 액션 추가
 
         String your = getContext().getSharedPreferences("id", getContext().MODE_PRIVATE).getString("my", "0"); // 내 휴대폰

@@ -12,9 +12,9 @@ import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 
 public class SettingActivity extends AppCompatActivity {
 
-    ExpandableRelativeLayout expandableLayout1, expandableLayout2, expandableLayout3, expandableLayout4;
+    ExpandableRelativeLayout  expandableLayout2, expandableLayout3, expandableLayout4;
 
-    Button button1,button2,button3,button4;
+    Button button2,button3,button4;
 
     public ExpandableRelativeLayout getExpandableLayout2() {
         return expandableLayout2;
@@ -25,29 +25,20 @@ public class SettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
-        button1 = (Button) findViewById(R.id.expandableButton1);
+        button2 = (Button) findViewById(R.id.expandableButton2);
         button3 = (Button) findViewById(R.id.expandableButton3);
         button4 = (Button) findViewById(R.id.expandableButton4);
 
-        expandableLayout1 = (ExpandableRelativeLayout) findViewById(R.id.expandableLayout1);
+
         expandableLayout2 = (ExpandableRelativeLayout) findViewById(R.id.expandableLayout2);
         expandableLayout3 = (ExpandableRelativeLayout) findViewById(R.id.expandableLayout3);
         expandableLayout4 = (ExpandableRelativeLayout) findViewById(R.id.expandableLayout4);
 
-        //      toolbar = (Toolbar)findViewById(R.id.toolBar);
-        //      toolbar.setTitle("Expandable Layout Tutorial");
-        //     setSupportActionBar(toolbar);
-        button2 = (Button) findViewById(R.id.expandableButton2);
-//        button2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                InputMethodManager keyboard = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-//                keyboard.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-//            }
-//        });
-
         Typeface typeFace = Typeface.createFromAsset(getAssets(), "fonts/BMJUA.ttf");
+
         button2.setTypeface(typeFace);
+        button3.setTypeface(typeFace);
+        button4.setTypeface(typeFace);
 
     }
 
@@ -64,12 +55,7 @@ public class SettingActivity extends AppCompatActivity {
         }
     }
 
-    public void expandableButton1(View view) {
-        InputMethodManager keyboard = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        keyboard.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-        othersCollapse(view);
-        expandableLayout1.toggle(); // toggle expand and collapse
-    }
+
 
     public void expandableButton2(View view) {
         InputMethodManager keyboard = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -94,20 +80,8 @@ public class SettingActivity extends AppCompatActivity {
 
     private void othersCollapse(View view) {
 
-        if (view == button1){
-            if(expandableLayout2.isExpanded()){
-                expandableLayout2.collapse();
-            }
-            if(expandableLayout3.isExpanded()){
-                expandableLayout3.collapse();
-            }
-            if(expandableLayout4.isExpanded()){
-                expandableLayout4.collapse();
-            }
-        } else if (view == button2){
-            if(expandableLayout1.isExpanded()){
-                expandableLayout1.collapse();
-            }
+       if (view == button2){
+
             if(expandableLayout3.isExpanded()){
                 expandableLayout3.collapse();
             }
@@ -115,9 +89,7 @@ public class SettingActivity extends AppCompatActivity {
                 expandableLayout4.collapse();
             }
         } else if (view == button3){
-            if(expandableLayout1.isExpanded()){
-                expandableLayout1.collapse();
-            }
+
             if(expandableLayout2.isExpanded()){
                 expandableLayout2.collapse();
             }
@@ -125,9 +97,7 @@ public class SettingActivity extends AppCompatActivity {
                 expandableLayout4.collapse();
             }
         } else if (view == button4){
-            if(expandableLayout1.isExpanded()){
-                expandableLayout1.collapse();
-            }
+
             if(expandableLayout2.isExpanded()){
                 expandableLayout2.collapse();
             }

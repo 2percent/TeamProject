@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="edu.android.teamproject.InfoFragment"
+    android:orientation="vertical"
+
+    >
+
+    <TextView
+        android:id="@+id/setteinginfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" Duel Diary"
+        android:textSize="15dp"
+        />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="15dp"
+        android:text=" Ver 0.001Alpha" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="15dp"
+        android:text=" 개발사 : ITWILL 3조" />
+
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="15dp"
+        android:text=" 개발자 : 박종복, 석현호, 이수진 , 정남주 , 유원균" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="15dp"
+        android:text=" 문의 사항 :   starsj128@nate.com " />
+
+
+</LinearLayout>

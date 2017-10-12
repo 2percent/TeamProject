@@ -13,7 +13,7 @@
         android:id="@+id/subtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="수정할 정보를 입력하세요"
+        android:text="수정할 비밀번호를 입력하세요"
         android:gravity="center"
         android:textSize="26sp"
         android:textColor="#FE5964"/>
