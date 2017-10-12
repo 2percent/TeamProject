@@ -89,7 +89,7 @@
                 android:lines="5"
                 android:scrollbars="vertical"
                 android:text="100일 단위 "
-                android:textSize="24sp"></TextView>
+                android:textSize="24sp"/>
 
         </ScrollView>
 
