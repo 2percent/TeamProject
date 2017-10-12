@@ -1,6 +1,7 @@
 package edu.android.teamproject;
 
 
+import android.app.ActivityManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.method.KeyListener;
@@ -122,8 +123,10 @@ public class DropFragment extends Fragment {
 
             Toast.makeText(getContext(), "일기 정보가 삭제되었습니다.".toString(), Toast.LENGTH_SHORT).show();
 
-        } else {
+            System.exit(0);
 
+        } else {
+            Toast.makeText(getContext(), "잘못 입력하셨습니다", Toast.LENGTH_SHORT).show();
         }
 
     }
