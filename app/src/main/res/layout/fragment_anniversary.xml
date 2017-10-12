@@ -55,6 +55,7 @@
 
         <TextView
             android:id="@+id/text_start_day"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -65,43 +66,50 @@
 
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/text_100day"
-        android:layout_width="match_parent"
-        android:text="100일 단위 "
-        android:layout_weight="1"
-        android:lines="5"
-        android:scrollbars="vertical"
-        android:layout_height="50dp"
-        android:layout_margin="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp">
-    </TextView>
+
+            <TextView
+                android:id="@+id/text_100day"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:lines="5"
+                android:scrollbars="vertical"
+                android:text="100일 단위 "
+                android:textSize="24sp"/>
+
         </ScrollView>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/text_1year"
-            android:layout_width="match_parent"
-            android:text="1주년 단위 "
-            android:lines="5"
-            android:layout_weight="1"
-            android:layout_height="50dp"
-            android:layout_margin="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp">
-        </TextView>
+
+            <TextView
+                android:id="@+id/text_1year"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:lines="5"
+                android:text="1주년 단위 "
+                android:textSize="24sp" />
 
         </ScrollView>
     </LinearLayout>
@@ -109,9 +117,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:weightSum="1">
 
 
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.95">
         <TextView
             android:id="@+id/text_add_anniversary"
             android:layout_width="match_parent"
@@ -124,6 +137,7 @@
             android:lines="5"
             android:scrollbars="vertical"
             android:textSize="24sp" />
+        </ScrollView>
         <ImageButton
             android:id="@+id/imagebtn_anniversary_calender"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
