@@ -12,12 +12,15 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -29,7 +32,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+
+import static edu.android.teamproject.R.id.fragment;
 
 
 /**
@@ -53,10 +59,11 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
     private Bitmap image_bitmap;
     private String fileName;
     private int count;
+    private ArrayList<String> list;
 
     int color;
     String font;
-
+    long background;
 
     Spinner spinner_diary_write_size, spinner_diary_write_font, spinner_diary_write_color , spinner_diary_write_background;
 
@@ -69,6 +76,8 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_diary_write, container, false);
+
+
 
         edit_diary_write_weather = view.findViewById(R.id.edit_diary_write_weather);
         edit_diary_write_kimozzi = view.findViewById(R.id.edit_diary_write_kimozzi);
@@ -103,6 +112,8 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
 //        edit_diary_write_content.setTypeface(typeface);
 
 
+
+
         return view;
     }
 
@@ -133,9 +144,7 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
                     try {
                         out = new FileOutputStream(fileName);
                         image_bitmap.compress(Bitmap.CompressFormat.JPEG,100,out);
-                        Log.i(TAG, "파일 생성 성공!!");
                     } catch (FileNotFoundException e) {
-                        Log.i(TAG, "파일 생성 실패!!");
                         e.printStackTrace();
                     }
 
@@ -149,7 +158,6 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
                 try {
                     if (data != null) {
                         fileName = data.getStringExtra("image");
-                        Log.i(TAG, "onActivityResult:fileName=" + fileName);
                         File imgFile = new  File(fileName);
 
                         if (imgFile.exists()) {
@@ -173,7 +181,6 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
                 try {
                     if (data != null) {
                         fileName = data.getStringExtra("image");
-                        Log.i(TAG, "onActivityResult:fileName=" + fileName);
                         File imgFile = new File(fileName);
 
                         if (imgFile.exists()) {
@@ -242,9 +249,21 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
             String key = String.valueOf(getContext().getSharedPreferences("id", getContext().MODE_PRIVATE).getInt("key", 0)); // 상대 휴대폰
 
             // fileName
-            ModelDiary m = new ModelDiary( id,  weather,  kimozzi,  sendDate,  receivedayDate,  content,  size,  color,  font,  fileName,  yourPhone,  myPhone, key);
+            ModelDiary m = new ModelDiary( id,  weather,  kimozzi,  sendDate,  receivedayDate,  content,  size,  color,  font,  fileName,  yourPhone,  myPhone, key, background);
             DiaryLab dao = DiaryLab.getInstance();
             dao.insertDiary(m);
+
+            if(Integer.parseInt(key) == 0) {
+                MainActivity main = (MainActivity) getActivity();
+                Fragment fragment = main.getTempFrag();
+                list = ((DiaryDivideFragment) ((DiaryFragment) fragment).getTempFrag()).getSpinnerItem();
+
+                list.add(sendDate);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, list);
+                ((DiaryDivideFragment) ((DiaryFragment) fragment).getTempFrag()).getDiary_divide_spinner().setAdapter(adapter);
+                ((DiaryDivideFragment) ((DiaryFragment) fragment).getTempFrag()).setModel(m);
+            }
+
 
             SharedPreferences pref = getContext().getSharedPreferences("id", getContext().MODE_PRIVATE);
             SharedPreferences.Editor edit = pref.edit();
@@ -255,6 +274,7 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
             Toast.makeText(getContext(), "일기장 작성 완료되었습니다.", Toast.LENGTH_SHORT).show();
 
             count++;
+
 
         }
 
@@ -267,7 +287,6 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        // 현호형 이거 view 객체로 하는게아니라 adapterView로 하니까 됩니다. 이걸로 하시면 될듯요!!!
         if (adapterView == spinner_diary_write_size) {
             if (i == 1) {
                 edit_diary_write_content.setTextSize(16);
@@ -299,59 +318,77 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
         }
 
         if (adapterView == spinner_diary_write_color) {
-            Log.i(TAG, "컬러");
             if (i == 1) {
                 edit_diary_write_content.setTextColor(Color.BLACK);
+                color = Color.BLACK;
             } else if (i == 2) {
                 edit_diary_write_content.setTextColor(Color.RED);
+                color = Color.RED;
             } else if (i == 3) {
                 edit_diary_write_content.setTextColor(Color.GREEN);
+                color = Color.GREEN;
             } else if (i == 4) {
                 edit_diary_write_content.setTextColor(Color.BLUE);
+                color = Color.BLUE;
             } else if (i == 5) {
                 edit_diary_write_content.setTextColor(Color.YELLOW);
+                color = Color.YELLOW;
             } else if (i == 6) {
                 edit_diary_write_content.setTextColor(Color.WHITE);
+                color = Color.WHITE;
             }
         }
 
         if (adapterView == spinner_diary_write_font) {
-            Log.i(TAG, "폰트");
             if (i == 1) {
                 Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/BMJUA.ttf");
                 edit_diary_write_content.setTypeface(typeface);
+                font = "fonts/BMJUA.ttf";
             } else if (i == 2) {
                 Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/BMHANNA.ttf");
                 edit_diary_write_content.setTypeface(typeface);
+                font = "fonts/BMHANNA.ttf";
             } else if (i == 3) {
                 Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/BMDOHYEON.ttf");
                 edit_diary_write_content.setTypeface(typeface);
+                font = "fonts/BMDOHYEON.ttf";
             } else if (i == 4) {
                 Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/BMYEONSUNG.ttf");
                 edit_diary_write_content.setTypeface(typeface);
+                font = "fonts/BMYEONSUNG.ttf";
             }else if(i==0){
                 edit_diary_write_content.setTypeface(null);
+                font = null;
             }
         }
         if (adapterView == spinner_diary_write_background){
             if(i==1){
                 edit_diary_write_content.setBackground(getResources().getDrawable(R.drawable.textback1));
+                this.background = R.drawable.textback1;
             }else if (i==2){
                 edit_diary_write_content.setBackground(getResources().getDrawable(R.drawable.textback2));
+                this.background = R.drawable.textback2;
             }else if(i ==3){
                 edit_diary_write_content.setBackground(getResources().getDrawable(R.drawable.textback3));
+                this.background = R.drawable.textback3;
             }else if(i ==4){
                 edit_diary_write_content.setBackground(getResources().getDrawable(R.drawable.textback4));
+                this.background = R.drawable.textback4;
             }else if(i ==5){
                 edit_diary_write_content.setBackground(getResources().getDrawable(R.drawable.textback5));
+                this.background = R.drawable.textback5;
             }else if(i ==6){
                 edit_diary_write_content.setBackground(getResources().getDrawable(R.drawable.textback6));
+                this.background = R.drawable.textback6;
             }else if(i ==7){
                 edit_diary_write_content.setBackground(getResources().getDrawable(R.drawable.textback7));
+                this.background = R.drawable.textback7;
             }else if(i ==8){
                 edit_diary_write_content.setBackground(getResources().getDrawable(R.drawable.textback8));
+                this.background = R.drawable.textback8;
             }else if(i==0){
                 edit_diary_write_content.setBackground(null);
+                this.background = 0;
             }
         }
 

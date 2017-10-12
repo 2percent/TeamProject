@@ -20,9 +20,11 @@ public class ModelDiary {
     private String yourPhone;
     private String myphone;
     private String key;
+    private long background;
 
     public ModelDiary(){}
-    public ModelDiary(String id, String weather, String kimozzi, String sendDate, String receivedayDate, String content, int size, int color, String font, String fileName, String yourPhone, String myphone, String key) {
+
+    public ModelDiary(String id, String weather, String kimozzi, String sendDate, String receivedayDate, String content, int size, int color, String font, String fileName, String yourPhone, String myphone, String key, long background) {
         this.id = id;
         this.weather = weather;
         this.kimozzi = kimozzi;
@@ -36,6 +38,15 @@ public class ModelDiary {
         this.yourPhone = yourPhone;
         this.myphone = myphone;
         this.key = key;
+        this.background = background;
+    }
+
+    public long getBackground() {
+        return background;
+    }
+
+    public void setBackground(long background) {
+        this.background = background;
     }
 
     public String getMyphone() {

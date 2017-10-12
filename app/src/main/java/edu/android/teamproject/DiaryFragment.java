@@ -4,6 +4,7 @@ package edu.android.teamproject;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -21,6 +22,11 @@ public class DiaryFragment extends Fragment {
     private SelectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     private TabLayout tabLayout;
+    private Fragment tempFrag;
+
+    public Fragment getTempFrag() {
+        return tempFrag;
+    }
 
     public DiaryFragment() {
         // Required empty public constructor
@@ -61,16 +67,18 @@ public class DiaryFragment extends Fragment {
             Fragment fragment = null;
             if(position == 0){
                 fragment = new DiaryDivideFragment();
+                tempFrag = fragment;
+                ((DiaryDivideFragment) fragment).setDiaryFragment(DiaryFragment.this);
             }
-//            else if (position == 1){
-//                fragment = new DiaryDivideFragment();
-//            }
+            else if (position == 1){
+                fragment = new DiaryDivideFragment2();
+            }
             return fragment;
         }
 
         @Override
         public int getCount() {
-            return 1;
+            return 2;
         }
 
         @Override
@@ -78,8 +86,8 @@ public class DiaryFragment extends Fragment {
             switch (position){
                 case 0:
                     return "나";
-//                case 1:
-//                    return "너";
+                case 1:
+                    return "너";
             }
             return null;
         }

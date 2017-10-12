@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tsengvn.typekit.TypekitContextWrapper;
 
@@ -29,14 +30,25 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     private static final String[] TAB_TITLES = {"일기쓰기", "일기장", "우리"};
 
     private TabLayout tabLayout;
+    private TabLayout.Tab tab;
     private SelectionsPagerAdapter mSelectionsPagerAdapter;
     private ViewPager mViewPager;
-    private TextView mainText, text_main_count_day;
+    private TextView text_main_count_day;
+    private TextView mainText;
+    static public Fragment tempFrag;
 
     private int loginCount = 0;
     int year,month, day;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+    public static Fragment getTempFrag() {
+        return tempFrag;
+    }
+
+    public TabLayout.Tab getTab() {
+        tab = tabLayout.getTabAt(1);
+        return tab;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // 아이디 존재 유무에 따라 로그인창 보여줄지 말지
@@ -62,53 +74,6 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         mainText = (TextView) findViewById(R.id.text_main_tab_selected);
         Typeface typeFace = Typeface.createFromAsset(getAssets(), "fonts/BMJUA.ttf");
         mainText.setTypeface(typeFace);
-
-      /*  // 만난지 얼마나됐는지 계산 해주는 코드
-        try{
-            Calendar todayCal = new GregorianCalendar(); // 오늘 날짜
-
-            long today = todayCal.getTimeInMillis();
-
-           // 시작일 불러주기
-            String startday = get().getSharedPreferences("id", getContext().MODE_PRIVATE).getString("startday", "");
-
-            try {
-
-                Calendar todayCal1 = new GregorianCalendar(); // 현재 날
-                Log.i(TAG, "*****" + todayCal.get(Calendar.YEAR) + "/" + todayCal.get(Calendar.MONTH) + "/" + todayCal.get(Calendar.DAY_OF_MONTH));
-
-                // 오늘 날짜
-                long today1 = todayCal.getTimeInMillis();
-                Log.i(TAG, "오늘 : "+ today1);
-
-                // 시작일
-                String[] temp = startday.split("/");
-                int year = Integer.parseInt(temp[0]);
-                int month = Integer.parseInt(temp[1]) - 1;
-                int day = Integer.parseInt(temp[2]);
-                Log.i(TAG, "*****" + year + "/" + month + "/" + day);
-
-                Calendar calendar = new GregorianCalendar(year, month, day);
-                long s = calendar.getTimeInMillis();
-
-                Log.i(TAG, "시작일 : " + s);
-
-                // getTimeInMiillis 는 millisecond 단위로 일정 시간을 반환하는 method
-                long count = (today1 - s)/ (24 * 60 * 60 * 1000);  // 총 만난날로 계산됨.
-               // text_main_count_day.setText(count);
-
-                Log.i(TAG, "총 만난 날 ..... : "+ count);
-
-
-
-
-            }catch (Exception e) {
-                e.printStackTrace();
-            }
-*/
-
-
-      //-----------------------------------------------------------------------------------
 
         mSelectionsPagerAdapter = new SelectionsPagerAdapter(getSupportFragmentManager());
 
@@ -139,6 +104,8 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.diary));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.calendar));
         tabLayout.addOnTabSelectedListener(this);
+
+
 
         ImageButton setting = (ImageButton) findViewById(R.id.btn_main_settings);
         setting.setOnClickListener(new View.OnClickListener() {
@@ -196,6 +163,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 fragment = new DiaryWriteFragment();
             } else if (position == 1) {
                 fragment = new DiaryFragment();
+                tempFrag = fragment;
             } else if (position == 2) {
                 fragment = new AnniversaryFragment();
             }
