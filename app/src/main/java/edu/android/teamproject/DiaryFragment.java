@@ -9,9 +9,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 /**
@@ -19,6 +26,7 @@ import android.view.ViewGroup;
  */
 public class DiaryFragment extends Fragment {
 
+    private static final String TAG = "edu.android";
     private SelectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     private TabLayout tabLayout;
@@ -27,6 +35,7 @@ public class DiaryFragment extends Fragment {
     public Fragment getTempFrag() {
         return tempFrag;
     }
+
 
     public DiaryFragment() {
         // Required empty public constructor
@@ -65,7 +74,10 @@ public class DiaryFragment extends Fragment {
         @Override
         public Fragment getItem(int position) {
             Fragment fragment = null;
-            if(position == 0){
+            if (position == 0) {
+                fragment = new DiaryDivideFragment();
+                Log.i(TAG,"내 프래그먼트 생성");
+            } else if (position == 1) {
                 fragment = new DiaryDivideFragment();
                 tempFrag = fragment;
                 ((DiaryDivideFragment) fragment).setDiaryFragment(DiaryFragment.this);
@@ -82,8 +94,8 @@ public class DiaryFragment extends Fragment {
         }
 
         @Override
-        public CharSequence getPageTitle(int position){
-            switch (position){
+        public CharSequence getPageTitle(int position) {
+            switch (position) {
                 case 0:
                     return "나";
                 case 1:
@@ -92,5 +104,6 @@ public class DiaryFragment extends Fragment {
             return null;
         }
     }
-
 }
+
+

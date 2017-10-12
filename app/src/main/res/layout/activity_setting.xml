@@ -91,7 +91,7 @@
                 android:drawableRight="@drawable/down_arrow"
                 android:onClick="expandableButton3"
                 android:paddingRight="10dp"
-                android:text="C"
+                android:text="회원 탈퇴"
                 android:textColor="#706162" />
 
             <com.github.aakira.expandablelayout.ExpandableRelativeLayout

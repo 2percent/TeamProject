@@ -244,9 +244,9 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
             String content = edit_diary_write_content.getText().toString(); // 내용
             int size = (int) edit_diary_write_content.getTextSize();        // 글자크기
             String id = getContext().getSharedPreferences("id", getContext().MODE_PRIVATE).getString("id", "0"); // 사용자 아이디
-            String myPhone = getContext().getSharedPreferences("id", getContext().MODE_PRIVATE).getString("my", "0"); // 상대 휴대폰
+            String myPhone = getContext().getSharedPreferences("id", getContext().MODE_PRIVATE).getString("my", "0"); // 내 휴대폰
             String yourPhone = getContext().getSharedPreferences("id", getContext().MODE_PRIVATE).getString("your", "0"); // 상대 휴대폰
-            String key = String.valueOf(getContext().getSharedPreferences("id", getContext().MODE_PRIVATE).getInt("key", 0)); // 상대 휴대폰
+            String key = String.valueOf(getContext().getSharedPreferences("id", getContext().MODE_PRIVATE).getInt("key", 0)); // 일기장 고유키
 
             // fileName
             ModelDiary m = new ModelDiary( id,  weather,  kimozzi,  sendDate,  receivedayDate,  content,  size,  color,  font,  fileName,  yourPhone,  myPhone, key, background);
