@@ -123,7 +123,7 @@ public class DropFragment extends Fragment {
 
             Toast.makeText(getContext(), "일기 정보가 삭제되었습니다.".toString(), Toast.LENGTH_SHORT).show();
 
-            System.exit(0);
+            android.os.Process.killProcess(android.os.Process.myPid());
 
         } else {
             Toast.makeText(getContext(), "잘못 입력하셨습니다", Toast.LENGTH_SHORT).show();

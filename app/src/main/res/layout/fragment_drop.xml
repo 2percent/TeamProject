@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:textSize="14dp"
         android:gravity="center"
-        android:text="모든 회원 정보가 영구히 삭제됩니다." />
+        android:text="모든 회원 정보가 영구히 삭제된 후 \n어플리케이션이 재기동 됩니다." />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
