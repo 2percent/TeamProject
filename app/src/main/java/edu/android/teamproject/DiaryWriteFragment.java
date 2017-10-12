@@ -44,7 +44,8 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
     EditText edit_diary_write_weather,
             edit_diary_write_kimozzi,
             edit_diary_write_content;
-    TextView text_diary_write_receiveday ,imagebtn_diary_write_add_picture ,imagebtn_diary_write_edit_picture ;
+    TextView text_diary_write_receiveday;
+    ImageButton imagebtn_diary_write_add_picture, imagebtn_diary_write_edit_picture ;
     ImageButton imagebtn_diary_write_sendTo;
     ImageView image_diary_write_add_picture;
     ImageButton imagebtn_diary_write_calender;

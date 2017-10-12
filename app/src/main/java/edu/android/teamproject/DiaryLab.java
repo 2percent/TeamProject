@@ -41,14 +41,16 @@ public class DiaryLab {
     StorageReference rootReference = firebaseStorage.getReferenceFromUrl("gs://teamproject-4600b.appspot.com/");
 
 
-
     private static Context context;
 
-    private DiaryLab() {}
-    private DiaryLab(Context context){
+    private DiaryLab() {
+    }
+
+    private DiaryLab(Context context) {
         this.context = context;
     }
-    private DiaryLab(Fragment f){
+
+    private DiaryLab(Fragment f) {
         this.f = f;
     }
 
@@ -63,6 +65,7 @@ public class DiaryLab {
         }
         return instance;
     }
+
     public static DiaryLab getInstance(Context context) {
         if (instance == null) {
             instance = new DiaryLab(context);
@@ -71,6 +74,7 @@ public class DiaryLab {
         }
         return instance;
     }
+
     public static DiaryLab getInstance(Fragment f) {
         if (instance == null) {
             instance = new DiaryLab(f);
@@ -87,10 +91,10 @@ public class DiaryLab {
 
     // 회원 가입 메소드
     public int insertMember(ModelMember m) {
-        try{
+        try {
             DatabaseReference data = databaseReference.child("Member");
             Task<Void> finalData = data.child(m.getId()).setValue(m);
-        }catch(Exception e){
+        } catch (Exception e) {
             return 0;
         }
         return 1;
@@ -98,6 +102,7 @@ public class DiaryLab {
 
     // 회원 가입이 되어있는지 안되어있는지 확인하기위해 뽑아오는 메소드
     private boolean bool = false;
+
     public void isSelectAll(String id) {
         DatabaseReference data = databaseReference.child("Member");
         data.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -126,7 +131,7 @@ public class DiaryLab {
         try {
             DatabaseReference data = databaseReference.child("Member");
             Task<Void> finalData = data.child(m.getId()).setValue(m);
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(context, "알수 없는 오류 발생", Toast.LENGTH_SHORT).show();
         }
     }
@@ -138,8 +143,8 @@ public class DiaryLab {
 
         // 이미지 저장
         StorageReference reference = rootReference.child("images");
-        StorageReference reference1 = reference.child(m.getYourPhone()+"_"+m.getMyphone());
-        int b = Integer.parseInt(m.getKey())+1;
+        StorageReference reference1 = reference.child(m.getYourPhone() + "_" + m.getMyphone());
+        int b = Integer.parseInt(m.getKey()) + 1;
         String keyimage = String.valueOf(b);
         StorageReference reference2 = reference1.child(keyimage);
 
@@ -157,11 +162,11 @@ public class DiaryLab {
         // 일기 정보 업로드
         try {
             DatabaseReference data = databaseReference.child("Diary");
-            DatabaseReference data2 = data.child(m.getYourPhone()+"_"+m.getMyphone());
-            int a = Integer.parseInt(m.getKey())+1;
+            DatabaseReference data2 = data.child(m.getYourPhone() + "_" + m.getMyphone());
+            int a = Integer.parseInt(m.getKey()) + 1;
             String key = String.valueOf(a);
             data2.child(key).setValue(m);
-        }catch(Exception e){
+        } catch (Exception e) {
             Log.e(TAG, e.getMessage());
         }
 
@@ -174,19 +179,18 @@ public class DiaryLab {
 
         // 데이터만 뽑아오고
         DatabaseReference data = databaseReference.child("Diary");
-        DatabaseReference data2 = data.child(your+"_"+my);
-        for(int i=0; i<Integer.parseInt(key); i++) {
+        DatabaseReference data2 = data.child(your + "_" + my);
+        for (int i = 0; i < Integer.parseInt(key); i++) {
             data2.child(String.valueOf(i)).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     ArrayList<ModelDiary> list = new ArrayList();
                     list.add(dataSnapshot.getValue(ModelDiary.class));
 
-                    if(list.size() == 0 || list == null){
-                        ((DiaryDivideFragment)f).getlistDiary(false, list);
-                    }else{
-                        ((DiaryDivideFragment)f).getlistDiary(true, list);
-                        selectImageFile(list.get(0).getFileName());
+                    if (list.size() == 0 || list == null) {
+                        ((DiaryDivideFragment) f).getlistDiary(false, list);
+                    } else {
+                        ((DiaryDivideFragment) f).getlistDiary(true, list);
                     }
                 }
 
@@ -202,10 +206,5 @@ public class DiaryLab {
     public void insertAnniversary(ModelDday dday) {
 //        DatabaseReference data = databaseReference.child("Anniversary");
 //        Task<Void> finalData = data.child(dday.getId()).setValue(dday);
-    }
-
-
-    public void selectImageFile(String filename) {
-
     }
 }
