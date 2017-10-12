@@ -6,9 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -24,6 +22,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tsengvn.typekit.TypekitContextWrapper;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
     private int tem;
@@ -52,11 +53,62 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         // 아이디 존재 유무에 따라 로그인창 보여줄지 말지
         SharedPreferences pref = getSharedPreferences("id", MODE_PRIVATE);
         String id = pref.getString("id", "0");
+
+
+
+        text_main_count_day = (TextView) findViewById(R.id.text_main_count_day);
+
+
+        // 시작한 날 서버에서 가져오는 것.
+        String startday =getSharedPreferences("id", MODE_PRIVATE).getString("startday", "");
+
+        Log.i(TAG, "시작일: " + startday);
+
+        // 기념일 보여주기 (100일 단위, 1주년 단위)
+        try {
+
+            Calendar todayCal = new GregorianCalendar(); // 현재 날
+            Log.i(TAG, "*****" + todayCal.get(Calendar.YEAR) + "/" + todayCal.get(Calendar.MONTH) + "/" + todayCal.get(Calendar.DAY_OF_MONTH));
+
+            // 오늘 날짜
+            long today = todayCal.getTimeInMillis();
+            Log.i(TAG, "오늘 : " + today);
+
+            // 시작일
+            String[] temp = startday.split("/");
+            int year = Integer.parseInt(temp[0]);
+            int month = Integer.parseInt(temp[1]) - 1;
+            int day = Integer.parseInt(temp[2]);
+            Log.i(TAG, "*****" + year + "/" + month + "/" + day);
+
+            Calendar calendar = new GregorianCalendar(year, month, day);
+            long s = calendar.getTimeInMillis();
+
+            Log.i(TAG, "시작일 : " + s);
+
+            // getTimeInMiillis 는 millisecond 단위로 일정 시간을 반환하는 method
+            long count = (today - s) / (24 * 60 * 60 * 1000);  // 총 만난날로 계산됨.
+
+            Log.i(TAG, "총 만난 날 ..... : " + count);
+
+
+            Toast.makeText(this, "만난지 " + count + "일 ♥", Toast.LENGTH_SHORT).show();
+            text_main_count_day.setText("만난지 " + count + "일 ♥");
+
+        }catch (Exception e){
+            Log.e(TAG, e.getMessage());
+
+        }
+
 
         if(id.equals("0")){
             Intent intent2 = new Intent(this, LoginActivity.class);
@@ -67,8 +119,6 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         Intent intent = new Intent(this, LoadingActivity.class);
         startActivity(intent);
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         AppBarLayout app = (AppBarLayout)findViewById(R.id.appbar);
 
