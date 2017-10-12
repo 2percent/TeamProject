@@ -4,6 +4,7 @@ package edu.android.teamproject;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.method.KeyListener;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,7 @@ import com.google.firebase.storage.StorageReference;
  */
 public class DropFragment extends Fragment {
 
+    private static final String TAG = "edu.android2";
     EditText editReally;
 
     public DropFragment() {
@@ -68,18 +70,22 @@ public class DropFragment extends Fragment {
         String key = String.valueOf(getContext().getSharedPreferences("id", getContext().MODE_PRIVATE).getInt("key", 0));
         String yourmy = my+"_"+your;
 
-        if(editReally.equals("나는 모든 추억을 불사르겠습니다")){
+        if(editReally.equals("1")){
 
             DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
             DatabaseReference mConditionRef = mRootRef.child("Diary");
             DatabaseReference data2 = mConditionRef.child(yourmy);
+
+            data2.removeValue();
+
+            Log.i(TAG,yourmy);
 
             data2.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
                         appleSnapshot.getRef().removeValue();
-                    }
+                    };
                 }
 
                 @Override
@@ -90,14 +96,13 @@ public class DropFragment extends Fragment {
 
             StorageReference storage = FirebaseStorage.getInstance().getReference();
             StorageReference storage2 = storage.child("images");
-            StorageReference storage3 = storage2.child("yourmy");
+            StorageReference storage3 = storage2.child(yourmy);
 
-            storage3.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
+            storage3.delete();
 
-                }
-            });
+
+        } else {
+
         }
 
     }
