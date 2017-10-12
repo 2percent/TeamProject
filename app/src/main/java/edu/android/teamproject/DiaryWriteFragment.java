@@ -256,11 +256,6 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
             if(Integer.parseInt(key) == 0) {
                 MainActivity main = (MainActivity) getActivity();
                 Fragment fragment = main.getTempFrag();
-                list = ((DiaryDivideFragment) ((DiaryFragment) fragment).getTempFrag()).getSpinnerItem();
-
-                list.add(sendDate);
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, list);
-                ((DiaryDivideFragment) ((DiaryFragment) fragment).getTempFrag()).getDiary_divide_spinner().setAdapter(adapter);
                 ((DiaryDivideFragment) ((DiaryFragment) fragment).getTempFrag()).setModel(m);
             }
 

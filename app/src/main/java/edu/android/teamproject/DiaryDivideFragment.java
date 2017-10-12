@@ -86,18 +86,15 @@ public class DiaryDivideFragment extends Fragment {
 
     // 여기서 일 하면 됌.
     private void selectDiary() {
-        Log.i(TAG, "selectDiary == Spinner item 추가 메소드. -> "+ spinnerItem.size());
         // 스피너 선택 되었을 때
         diary_divide_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
                 // 현재 선택된 스피너의 값을 가져옴(날짜)
                 String date = (String) diary_divide_spinner.getSelectedItem();
                 // 디비로부터 가지고온 모든 다이어리 데이터를 스피너에서 선택된 값과 같은지 비교하기 위해 for문 사용
                 for(int index=0; index<list.size(); index++){
                     if(list.get(index).getSendDate().equals(date)){
-                        Log.i(TAG, "selectDiary == Spinner item 추가 메소드. -> index : "+ index);
 
                         ModelDiary m = list.get(index);
                         showDiary(m);
@@ -119,6 +116,31 @@ public class DiaryDivideFragment extends Fragment {
 
     }
 
+    private ArrayList<String> spinnerItem = new ArrayList<>();
+
+    public ArrayList<String> getSpinnerItem() {
+        return spinnerItem;
+    }
+
+    private ArrayList<ModelDiary> list = new ArrayList<>();
+    public void getlistDiary(boolean b, ArrayList<ModelDiary> list) {
+        // 일기내용을 전부 가져옴.
+        if(b) {
+            // 전부 가져와서 멤버변수 list에 저장
+            this.list.add(list.get(0));
+            spinnerItem.add(list.get(0).getSendDate());
+
+            int key = getContext().getSharedPreferences("id", getContext().MODE_PRIVATE).getInt("key", 0);
+            if(this.list.size() == key){
+
+                selectDiary();
+            }
+        }else{
+            Toast.makeText(getContext(), "첫번째 일기를 작성해 보세요.", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
     // 최종적으로 위젯에 다이어리를 보여주는 메소드
     private ModelDiary model = null;
     public void setModel(ModelDiary m) {
@@ -126,11 +148,11 @@ public class DiaryDivideFragment extends Fragment {
     }
     private void showDiary(ModelDiary m) {
 
-        DiaryLab lab = DiaryLab.getInstance();
+        DiaryLab lab = DiaryLab.getInstance(this);
 
         if(model != null){
 
-            lab.getImage(model,image_diary_divide_picture,this);
+            lab.getImage(model,image_diary_divide_picture, this);
 
             text_diary_divide_receiveday.setText(model.getReceivedayDate());  // 일기 도착 날
             text_diary_divide_weather.setText(model.getWeather()); // 날씨
@@ -138,10 +160,12 @@ public class DiaryDivideFragment extends Fragment {
             text_diary_divide_writeday.setText(model.getSendDate());   // 일기 쓴 날짜
             image_diary_divide_diary_contents.setText(model.getContent()); // 일기 내용
             image_diary_divide_diary_contents.setTextColor(model.getColor()); // 컬러
-            image_diary_divide_diary_contents.setTextSize(model.getSize());   // 사이즈
+            image_diary_divide_diary_contents.setTextSize(TypedValue.COMPLEX_UNIT_PX, model.getSize());   // 사이즈
             Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), model.getFont());
             image_diary_divide_diary_contents.setTypeface(typeface);    // font
             image_diary_divide_diary_contents.setBackground(getResources().getDrawable((int) model.getBackground())); // Background
+
+
         }else{
 
             lab.getImage(m,image_diary_divide_picture,this);
@@ -160,29 +184,10 @@ public class DiaryDivideFragment extends Fragment {
         }
     }
 
-    private ArrayList<String> spinnerItem = new ArrayList<>();
-
-    public ArrayList<String> getSpinnerItem() {
-        return spinnerItem;
-    }
-
-    private ArrayList<ModelDiary> list = new ArrayList<>();
-    public void getlistDiary(boolean b, ArrayList<ModelDiary> list) {
-        // 일기내용을 전부 가져옴.
-        if(b) {
-            // 전부 가져와서 멤버변수 list에 저장
-            this.list.add(list.get(0));
-            spinnerItem.add(list.get(0).getSendDate());
-
-            int key = getContext().getSharedPreferences("id", getContext().MODE_PRIVATE).getInt("key", 0);
-            if(this.list.size() == key){
-                selectDiary();
-//                adapter.notifyDataSetChanged();
-            }
-        }else{
-            Toast.makeText(getContext(), "첫번째 일기를 작성해 보세요.", Toast.LENGTH_SHORT).show();
-        }
-
-    }
-
 }
+
+
+//    이미지 바로 안나옴. 탭뷰가 미리 만들어 줌으로써 리스너가 먼저 호출되고나서
+//        이미지를 띄워줄려고하니 첫 게시물이 이미지가 안들어감
+//
+//        프래그먼트 생각하자

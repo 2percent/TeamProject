@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,7 +32,9 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 // Controller 기능들은 여기에
 public class DiaryLab {
@@ -55,13 +59,14 @@ public class DiaryLab {
     private DiaryLab(Context context){
         this();
         this.context = context;
+        fragSet = new HashSet<>();
     }
     private DiaryLab(Fragment f){
         this();
-        this.f = f;
+        fragSet = new HashSet<>();
     }
 
-    private Fragment f;
+    private Set<Fragment> fragSet;
 
 
     public static DiaryLab getInstance() {
@@ -81,9 +86,9 @@ public class DiaryLab {
     public static DiaryLab getInstance(Fragment f) {
         if (instance == null) {
             instance = new DiaryLab(f);
-        } else {
-            instance.f = f;
         }
+        instance.fragSet.add(f);
+
         return instance;
     }
     /////////////////////////////// 싱글턴 디자인 여기까지 /////////////////////////
@@ -187,13 +192,19 @@ public class DiaryLab {
             data2.addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    Log.i(TAG, "호출!!");
                     ArrayList<ModelDiary> list = new ArrayList();
                     list.add(dataSnapshot.getValue(ModelDiary.class));
-                    if(list.size() == 0 || list == null){
-                            ((DiaryDivideFragment)f).getlistDiary(false, list);
-                    }else{
-                            ((DiaryDivideFragment) f).getlistDiary(true, list);
+                    for (Fragment f : fragSet) {
+                        if (list.size() == 0 || list == null) {
+                            if (f instanceof DiaryDivideFragment) {
+                                ((DiaryDivideFragment) f).getlistDiary(false, list);
+                            }
+                        } else {
+                            Log.i(TAG, f + "");
+                            if (f instanceof DiaryDivideFragment) {
+                                ((DiaryDivideFragment) f).getlistDiary(true, list);
+                            }
+                        }
                     }
                 }
 
@@ -220,19 +231,98 @@ public class DiaryLab {
 
     }
 
+//    private ArrayList<ModelDiary> diaryList;
+//    public ArrayList<ModelDiary> getDiaryList() {
+//        return diaryList;
+//    }
+    // 일기 불러오기
+    public void selectMyDiary2(String my, String your, String key) {
+
+        // 데이터만 뽑아오고
+        DatabaseReference data = databaseReference.child("Diary");
+        DatabaseReference data2 = data.child(my+"_"+your);
+
+        data2.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                ArrayList<ModelDiary> list = new ArrayList();
+                list.add(dataSnapshot.getValue(ModelDiary.class));
+                for (Fragment f : fragSet) {
+                    if (list.size() == 0 || list == null) {
+                        if (f instanceof DiaryDivideFragment2) {
+                            ((DiaryDivideFragment2) f).getlistDiary(false, list);
+                        }
+                    } else {
+                        if (f instanceof DiaryDivideFragment2) {
+                            ((DiaryDivideFragment2) f).getlistDiary(true, list);
+                        }
+                    }
+                }
+//                diaryList = new ArrayList<ModelDiary>();
+//                diaryList.add(dataSnapshot.getValue(ModelDiary.class));
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
     // 일기장 이미지 파일 가져오는 메소드
     public void getImage(ModelDiary m, ImageView imageview, Fragment con) {
 
         StorageReference storage = FirebaseStorage.getInstance().getReference();
         String filename = "images/"+m.getYourPhone()+"_"+m.getMyphone()+"/"+(Integer.parseInt(m.getKey())+1)+"/"+m.getId()+"_"+m.getSendDate()+".jpg";
-        if(con instanceof DiaryDivideFragment){
             StorageReference storageReference = storage.child(filename);
-            Log.i(TAG, filename);
-            Glide.with(con/* context */)
-                    .using(new FirebaseImageLoader())
-                    .load(storageReference)
-                    .into(imageview);
-        }
+                Glide.with(con/* context */)
+                        .using(new FirebaseImageLoader())
+                        .load(storageReference)
+//                        .listener(new RequestListener<StorageReference, GlideDrawable>() {
+//                            @Override
+//                            public boolean onException(Exception e, StorageReference model, Target<GlideDrawable> target, boolean isFirstResource) {
+//                                return false;
+//                            }
+//
+//                            @Override
+//                            public boolean onResourceReady(GlideDrawable resource, StorageReference model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+//                                return false;
+//                            }
+//                        })
+                        .into(imageview);
+
+
+    }
+
+    // 일기장 이미지 파일 가져오는 메소드
+    public void getImage2(ModelDiary m, ImageView imageview, Fragment con) {
+
+        StorageReference storage = FirebaseStorage.getInstance().getReference();
+        String filename = "images/"+m.getYourPhone()+"_"+m.getMyphone()+"/"+(Integer.parseInt(m.getKey())+1)+"/"+m.getId()+"_"+m.getSendDate()+".jpg";
+        StorageReference storageReference = storage.child(filename);
+
+                Glide.with(con/* context */)
+                        .using(new FirebaseImageLoader())
+                        .load(storageReference)
+                        .into(imageview);
+
+
     }
 
     // 기념일 추가 데이터 저장

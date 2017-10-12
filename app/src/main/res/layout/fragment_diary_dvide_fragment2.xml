@@ -115,9 +115,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:scaleType="fitCenter"
-        android:scaleX="0.4"
-        android:scaleY="0.4"
+        android:scaleType="fitXY"
         android:layout_margin="8dp" />
 
 

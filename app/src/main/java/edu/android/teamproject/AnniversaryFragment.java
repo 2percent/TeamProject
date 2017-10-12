@@ -81,34 +81,31 @@ public class AnniversaryFragment extends Fragment implements View.OnClickListene
         // 시작한 날 서버에서 가져오는 것.
         String startday = getContext().getSharedPreferences("id", getContext().MODE_PRIVATE).getString("startday", "");
         text_start_day.setText(startday);
-        Log.i(TAG, "시작일: " + startday);
 
         // 기념일 보여주기 (100일 단위, 1주년 단위)
         try {
 
             Calendar todayCal = new GregorianCalendar(); // 현재 날
-            Log.i(TAG, "*****" + todayCal.get(Calendar.YEAR) + "/" + todayCal.get(Calendar.MONTH) + "/" + todayCal.get(Calendar.DAY_OF_MONTH));
 
             // 오늘 날짜
             long today = todayCal.getTimeInMillis();
-            Log.i(TAG, "오늘 : "+ today);
 
             // 시작일
             String[] temp = startday.split("/");
             int year = Integer.parseInt(temp[0]);
             int month = Integer.parseInt(temp[1]) - 1;
             int day = Integer.parseInt(temp[2]);
-            Log.i(TAG, "*****" + year + "/" + month + "/" + day);
+
 
             Calendar calendar = new GregorianCalendar(year, month, day);
             long s = calendar.getTimeInMillis();
 
-            Log.i(TAG, "시작일 : " + s);
+
 
             // getTimeInMiillis 는 millisecond 단위로 일정 시간을 반환하는 method
             long count = (today - s)/ (24 * 60 * 60 * 1000);  // 총 만난날로 계산됨.
 
-            Log.i(TAG, "총 만난 날 ..... : "+ count);
+
 
             //1. 100일 단위 날짜 D-day 보여주기
             for(int d =1 ; d<100; d++) {
@@ -119,7 +116,6 @@ public class AnniversaryFragment extends Fragment implements View.OnClickListene
 
                         buffer1.append("♥" + (100 * d) + "일이 " + "D-day " + ((100 * d) - count) + " 입니다 ♥" + "\n");
                     text_100day.setText(buffer1);
-                    Log.i(TAG, today + "  " + "D-day" + ((100 * d) - count) + " 입니다.");
                 }
             }
 
@@ -168,13 +164,11 @@ public class AnniversaryFragment extends Fragment implements View.OnClickListene
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void dateSelected(int year, int month, int  day) {
-        Log.i(TAG, "----------------------------------------------------------------------------------------------" );
 
             String year2 = String.valueOf(year);
             String month2 = String.valueOf(month+1);
             String day2 = String.valueOf(day);
         list.add(year2 + "년 " + (month2) + "월 " + day2 + "일 \n") ;
-        Log.i(TAG, "-------------" +year2 + "년 " + (month2) + "월 " + day2 + "일 \n" );
 
 
             if (list != null) {
@@ -185,7 +179,6 @@ public class AnniversaryFragment extends Fragment implements View.OnClickListene
                 buffer2.delete(0,buffer2.length());
 
 
-                Log.i(TAG, "//" + list);
 
 
             }// end if()

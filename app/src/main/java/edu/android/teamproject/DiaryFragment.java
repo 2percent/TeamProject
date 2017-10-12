@@ -76,13 +76,9 @@ public class DiaryFragment extends Fragment {
             Fragment fragment = null;
             if (position == 0) {
                 fragment = new DiaryDivideFragment();
-                Log.i(TAG,"내 프래그먼트 생성");
-            } else if (position == 1) {
-                fragment = new DiaryDivideFragment();
                 tempFrag = fragment;
                 ((DiaryDivideFragment) fragment).setDiaryFragment(DiaryFragment.this);
-            }
-            else if (position == 1){
+            }else if (position == 1){
                 fragment = new DiaryDivideFragment2();
             }
             return fragment;

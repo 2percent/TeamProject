@@ -25,6 +25,6 @@
         android:layout_gravity="center"
         android:textSize="48sp"
         android:textColor="#ff0000"
-        android:text="Time Capsule" />
+        android:text="Dual Diary" />
 
 </LinearLayout>
