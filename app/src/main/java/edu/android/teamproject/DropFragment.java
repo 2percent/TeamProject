@@ -62,12 +62,13 @@ public class DropFragment extends Fragment {
 
     private void dropAccount() {
 
-        Toast.makeText(getContext(), editReally.getText().toString(), Toast.LENGTH_SHORT).show();
+   //     Toast.makeText(getContext(), editReally.getText().toString(), Toast.LENGTH_SHORT).show();
 
         // TODO: 회원 탈퇴 액션 추가
 
         String your = getContext().getSharedPreferences("id", getContext().MODE_PRIVATE).getString("my", "0"); // 내 휴대폰
         String my = getContext().getSharedPreferences("id", getContext().MODE_PRIVATE).getString("your", "0"); // 상대 휴대폰
+        String member = getContext().getSharedPreferences("id", getContext().MODE_PRIVATE).getString("id", "0");
         String key = String.valueOf(getContext().getSharedPreferences("id", getContext().MODE_PRIVATE).getInt("key", 0));
         String yourmy = my+"_"+your;
 
@@ -95,12 +96,31 @@ public class DropFragment extends Fragment {
                 }
             });
 
+            DatabaseReference mConditionRef2 = mRootRef.child("Member");
+            DatabaseReference memberDelete = mConditionRef2.child(member);
+            memberDelete.removeValue();
+            memberDelete.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
+                        appleSnapshot.getRef().removeValue();
+                    };
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
             StorageReference storage = FirebaseStorage.getInstance().getReference();
             StorageReference storage2 = storage.child("images");
             StorageReference storage3 = storage2.child(yourmy);
 
             storage3.delete();
 
+
+            Toast.makeText(getContext(), "일기 정보가 삭제되었습니다.".toString(), Toast.LENGTH_SHORT).show();
 
         } else {
 
