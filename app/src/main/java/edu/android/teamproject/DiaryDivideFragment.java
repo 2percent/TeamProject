@@ -2,6 +2,8 @@ package edu.android.teamproject;
 
 
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -19,6 +21,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.ArrayList;
 
 
@@ -152,7 +155,12 @@ public class DiaryDivideFragment extends Fragment {
 
         if(model != null){
 
-            lab.getImage(model,image_diary_divide_picture, this);
+            File file = new File(m.getFileName());
+            if(file.exists()){
+                Bitmap mybitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+                image_diary_divide_picture.setImageBitmap(mybitmap);
+
+            }
 
             text_diary_divide_receiveday.setText(model.getReceivedayDate());  // 일기 도착 날
             text_diary_divide_weather.setText(model.getWeather()); // 날씨

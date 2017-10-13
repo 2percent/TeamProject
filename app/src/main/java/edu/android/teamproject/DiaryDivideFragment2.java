@@ -193,6 +193,7 @@ public class DiaryDivideFragment2 extends Fragment {
                 image_diary_divide_diary_contents.setBackground(getResources().getDrawable((int) m.getBackground())); // Background
             }
             if(sysdate < receivedate) {
+                image_diary_divide_diary_contents.setText("");
                 image_diary_divide_diary_contents.setBackground(getResources().getDrawable(R.drawable.padlock));
             }
         }
