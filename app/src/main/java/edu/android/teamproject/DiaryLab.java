@@ -294,17 +294,6 @@ public class DiaryLab {
                 Glide.with(con/* context */)
                         .using(new FirebaseImageLoader())
                         .load(storageReference)
-//                        .listener(new RequestListener<StorageReference, GlideDrawable>() {
-//                            @Override
-//                            public boolean onException(Exception e, StorageReference model, Target<GlideDrawable> target, boolean isFirstResource) {
-//                                return false;
-//                            }
-//
-//                            @Override
-//                            public boolean onResourceReady(GlideDrawable resource, StorageReference model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-//                                return false;
-//                            }
-//                        })
                         .into(imageview);
 
 
@@ -314,7 +303,7 @@ public class DiaryLab {
     public void getImage2(ModelDiary m, ImageView imageview, Fragment con) {
 
         StorageReference storage = FirebaseStorage.getInstance().getReference();
-        String filename = "images/"+m.getYourPhone()+"_"+m.getMyphone()+"/"+(Integer.parseInt(m.getKey())+1)+"/"+m.getId()+"_"+m.getSendDate()+".jpg";
+        String filename = "images/"+m.getMyphone()+"_"+m.getYourPhone()+"/"+(Integer.parseInt(m.getKey())+1)+"/"+m.getId()+"_"+m.getSendDate()+".jpg";
         StorageReference storageReference = storage.child(filename);
 
                 Glide.with(con/* context */)
