@@ -54,7 +54,7 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
     ImageButton imagebtn_diary_write_add_picture, imagebtn_diary_write_edit_picture ;
     ImageButton imagebtn_diary_write_sendTo;
     ImageView image_diary_write_add_picture;
-    ImageButton imagebtn_diary_write_calender;
+    ImageButton imagebtn_diary_write_calender, imagebtn_temporary_save;
     Uri image_uri;
     private Bitmap image_bitmap;
     private String fileName;
@@ -95,6 +95,8 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
         imagebtn_diary_write_sendTo.setOnClickListener(this);
         imagebtn_diary_write_calender = view.findViewById(R.id.imagebtn_diary_write_calender);
         imagebtn_diary_write_calender.setOnClickListener(this);
+        imagebtn_temporary_save = view.findViewById(R.id.imagebtn_temporary_save);
+        imagebtn_temporary_save.setOnClickListener(this);
 
         text_diary_write_receiveday = view.findViewById(R.id.text_diary_write_receiveday);
 
@@ -228,6 +230,8 @@ public class DiaryWriteFragment extends Fragment implements View.OnClickListener
         } else if (view == imagebtn_diary_write_calender) {
             DateDialogFragment dlg = new DateDialogFragment(this);
             dlg.show(getFragmentManager(), "DiaryWrite_Fragment_Date_dlg");
+        }else if( view == imagebtn_temporary_save){
+            Toast.makeText(getContext(), "임시저장 되었습니다.", Toast.LENGTH_SHORT).show();
         }
     }
 

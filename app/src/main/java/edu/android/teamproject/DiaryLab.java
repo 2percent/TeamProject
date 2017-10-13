@@ -210,7 +210,6 @@ public class DiaryLab {
 
                 @Override
                 public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
                 }
 
                 @Override
@@ -264,7 +263,19 @@ public class DiaryLab {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
+                ArrayList<ModelDiary> list = new ArrayList();
+                list.add(dataSnapshot.getValue(ModelDiary.class));
+                for (Fragment f : fragSet) {
+                    if (list.size() == 0 || list == null) {
+                        if (f instanceof DiaryDivideFragment2) {
+                            ((DiaryDivideFragment2) f).getlistDiary(false, list);
+                        }
+                    } else {
+                        if (f instanceof DiaryDivideFragment2) {
+                            ((DiaryDivideFragment2) f).getlistDiary(true, list);
+                        }
+                    }
+                }
             }
 
             @Override
@@ -303,7 +314,7 @@ public class DiaryLab {
     public void getImage2(ModelDiary m, ImageView imageview, Fragment con) {
 
         StorageReference storage = FirebaseStorage.getInstance().getReference();
-        String filename = "images/"+m.getMyphone()+"_"+m.getYourPhone()+"/"+(Integer.parseInt(m.getKey())+1)+"/"+m.getId()+"_"+m.getSendDate()+".jpg";
+        String filename = "images/"+m.getYourPhone()+"_"+m.getMyphone()+"/"+(Integer.parseInt(m.getKey())+1)+"/"+m.getId()+"_"+m.getSendDate()+".jpg";
         StorageReference storageReference = storage.child(filename);
 
                 Glide.with(con/* context */)

@@ -192,6 +192,10 @@ public class DiaryDivideFragment extends Fragment {
         }
     }
 
+    public void show(){
+        Toast.makeText(getContext(), "임시저장 되었습니다.", Toast.LENGTH_SHORT).show();
+    }
+
 }
 
 

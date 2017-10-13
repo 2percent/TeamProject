@@ -179,10 +179,6 @@ public class DiaryDivideFragment2 extends Fragment {
             int day2 = Integer.parseInt(date.substring(6, 8));
             Calendar calendar2 = new GregorianCalendar(year2, month2, day2);
             long receivedate = calendar2.getTimeInMillis();
-            Log.i(TAG, "현재   날짜 : " + year + " / " + month + " / " + day);
-            Log.i(TAG, "보여줄 날짜 : " + year2 + " / " + month2 + " / " + day2);
-            Log.i(TAG, "현재   날짜 : " + sysdate );
-            Log.i(TAG, "보여줄 날짜 : " + receivedate );
 
             if (sysdate >= receivedate) {
                 image_diary_divide_diary_contents.setText(m.getContent()); // 일기 내용
